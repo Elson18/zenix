@@ -24,7 +24,7 @@ export default function RestaurantKitchen() {
       description: 'Designing ergonomic kitchen zones (Prep, Cook, Wash, Dispatch) to ensure raw ingredients and finished plates never cross paths, conforming to HACCP rules.',
       px: 90,
       py: 180,
-      color: '#C5A059'
+      color: '#F0B000'
     },
     {
       id: 'equipment',
@@ -32,7 +32,7 @@ export default function RestaurantKitchen() {
       description: 'Sourcing heavy-duty commercial kitchen ranges, custom exhausts, combi-ovens, food-grade fabrication tables, and cold chain coolers.',
       px: 180,
       py: 120,
-      color: '#166534'
+      color: '#111111'
     },
     {
       id: 'vendors',
@@ -40,7 +40,7 @@ export default function RestaurantKitchen() {
       description: 'Establishing trade agreements with certified ingredient suppliers, cold storage networks, and packing material providers.',
       px: 270,
       py: 90,
-      color: '#0B3C2D'
+      color: '#F0B000'
     },
     {
       id: 'staffing',
@@ -48,7 +48,7 @@ export default function RestaurantKitchen() {
       description: 'Structuring kitchen hierarchies (Executive Chef, Line Cooks, Stewards), scheduling mock runs, and establishing clear hygiene logs.',
       px: 360,
       py: 110,
-      color: '#C5A059'
+      color: '#111111'
     },
     {
       id: 'hygiene',
@@ -56,7 +56,7 @@ export default function RestaurantKitchen() {
       description: 'Simulating deep cleaning, executing water potability tests, setting pest control barriers, and verifying FSSAI safety ratings.',
       px: 440,
       py: 150,
-      color: '#166534'
+      color: '#F0B000'
     },
     {
       id: 'opening',
@@ -64,7 +64,7 @@ export default function RestaurantKitchen() {
       description: 'Running menu trials under pressure, adjusting kitchen order ticket (KOT) workflows, and opening doors for commercial dining.',
       px: 510,
       py: 200,
-      color: '#0B3C2D'
+      color: '#111111'
     }
   ];
 
@@ -79,24 +79,24 @@ export default function RestaurantKitchen() {
   const activeStep = steps[activeStepIdx];
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white rounded-3xl border border-brand-borderLight p-6 shadow-subtle flex flex-col justify-between min-h-[460px] select-none">
+    <div className="w-full max-w-2xl mx-auto bg-white rounded-3xl border border-brand-border p-6 shadow-subtle flex flex-col justify-between min-h-[460px] select-none">
       
       {/* Header */}
-      <div className="flex justify-between items-center border-b border-brand-borderSubtle pb-4">
+      <div className="flex justify-between items-center border-b border-brand-border pb-4">
         <div>
-          <h4 className="font-heading font-extrabold text-xs text-brand-charcoal uppercase tracking-wider">
+          <h4 className="font-heading font-extrabold text-xs text-brand-black uppercase tracking-wider">
             COMMERCIAL KITCHEN SETUP WORKFLOW
           </h4>
-          <p className="text-[10px] text-brand-muted mt-0.5">Isometric space allocation and launch milestones</p>
+          <p className="text-[10px] text-brand-textMuted mt-0.5">Isometric space allocation and launch milestones</p>
         </div>
-        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-lightGreen text-brand-emerald text-[10px] font-heading font-bold">
+        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-primaryLight text-brand-primaryDark text-[10px] font-heading font-bold">
           <ShieldCheck className="w-3.5 h-3.5" />
           <span>FSSAI RETRACTABLE LAYOUT</span>
         </div>
       </div>
 
       {/* Isometric SVG Kitchen Map */}
-      <div className="relative h-[220px] w-full flex items-center justify-center p-2 bg-brand-bgWarm/30 rounded-2xl border border-brand-borderSubtle/60 my-4">
+      <div className="relative h-[220px] w-full flex items-center justify-center p-2 bg-brand-backgroundSoft/30 rounded-2xl border border-brand-border my-4">
         <svg viewBox="0 0 600 300" className="w-full h-full" fill="none">
           
           <defs>
@@ -177,30 +177,30 @@ export default function RestaurantKitchen() {
       </div>
 
       {/* Active Step Description */}
-      <div className="p-5 rounded-2xl bg-brand-bgWarm border border-brand-borderLight space-y-2">
-        <div className="flex items-center justify-between border-b border-brand-borderSubtle pb-2">
-          <h5 className="font-heading font-extrabold text-sm text-brand-emerald">
+      <div className="p-5 rounded-2xl bg-brand-backgroundSoft border border-brand-border space-y-2">
+        <div className="flex items-center justify-between border-b border-brand-border pb-2">
+          <h5 className="font-heading font-extrabold text-sm text-brand-primaryDark">
             {activeStep.name}
           </h5>
-          <span className="text-[10px] font-heading font-bold text-brand-gold bg-brand-lightGold px-2.5 py-0.5 rounded-full border border-brand-goldBorder/40 uppercase">
+          <span className="text-[10px] font-heading font-bold text-brand-primaryDark bg-brand-primaryLight px-2.5 py-0.5 rounded-full border border-brand-primary/10 uppercase">
             Phase 0{activeStepIdx + 1}
           </span>
         </div>
-        <p className="text-xs text-brand-slate leading-relaxed">
+        <p className="text-xs text-brand-textSecondary leading-relaxed">
           {activeStep.description}
         </p>
       </div>
 
       {/* Selector pills */}
-      <div className="flex flex-wrap gap-2 justify-center pt-4 border-t border-brand-borderSubtle mt-4">
+      <div className="flex flex-wrap gap-2 justify-center pt-4 border-t border-brand-border mt-4">
         {steps.map((st, idx) => (
           <button
             key={st.id}
             onClick={() => handleStepClick(idx, st.name)}
             className={`px-3 py-1.5 rounded-xl font-heading text-[10px] font-bold uppercase tracking-wider transition-all ${
               activeStepIdx === idx
-                ? 'bg-brand-emerald text-white shadow-sm'
-                : 'bg-white border border-brand-borderLight text-brand-slate hover:border-brand-emerald/40 hover:text-brand-emerald'
+                ? 'bg-brand-primary text-brand-black shadow-sm'
+                : 'bg-white border border-brand-border text-brand-textSecondary hover:border-brand-primary/40 hover:text-brand-primaryDark'
             }`}
           >
             {st.name.split(' ')[1]}

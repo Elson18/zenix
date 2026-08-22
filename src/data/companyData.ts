@@ -4,12 +4,12 @@ export const companyData = {
   heroSubtitle: "From food testing and FSSAI licensing to certification, product development, hospitality consulting and factory setup, Zenix Food Worx helps food businesses stay compliant, efficient and ready to grow.",
   trustPillars: ["FSSAI", "HACCP", "ISO", "Food Testing", "Food Safety", "Hospitality", "Product Development"],
   contact: {
-    phone: "+91 98765 43210",
-    phoneClean: "919876543210",
+    phone: "+91 91595 90321",
+    phoneClean: "9159590321",
     email: "info@zenixfoodworx.com",
-    address: "Corporate Tower, Sector 62, Food Industry Hub, India",
+    address: "PLOT NO 202, SECRETARIAT COLONY MAIN ROAD, METTU KUPPAM, THORAIPAKKAM",
     workingHours: "Monday – Saturday: 9:00 AM – 6:30 PM (IST)",
-    whatsapp: "+91 98765 43210"
+    whatsapp: "+91 91595 90321"
   },
   whyChooseUs: [
     {

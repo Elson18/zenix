@@ -19,11 +19,11 @@ export default function CTASection({
   const whatsappUrl = `https://wa.me/${companyData.contact.phoneClean}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-brand-lightGreen via-white to-brand-lightGold/60 border-t border-brand-borderLight relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-brand-black border-t border-brand-primary relative overflow-hidden">
       
       {/* Decorative Blur Circles */}
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-brand-fresh/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-24 -right-24 w-96 h-96 bg-brand-primary/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-brand-primaryLight/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
         
@@ -34,15 +34,15 @@ export default function CTASection({
           transition={{ duration: 0.5 }}
           className="space-y-4"
         >
-          <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-gold px-4 py-1.5 rounded-full gold-badge inline-block">
+          <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-primary px-4 py-1.5 rounded-full bg-brand-black border border-brand-primary/30 inline-block">
             GET STARTED TODAY
           </span>
 
-          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-brand-charcoal tracking-tight leading-tight">
+          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
             {title}
           </h2>
 
-          <p className="text-brand-slate text-base sm:text-xl max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-300 text-base sm:text-xl max-w-2xl mx-auto leading-relaxed">
             {subtitle}
           </p>
         </motion.div>
@@ -57,19 +57,19 @@ export default function CTASection({
         >
           <NavLink
             to="/contact"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-brand-emerald hover:bg-brand-emeraldHover text-white font-heading font-semibold text-base shadow-card-hover hover:scale-105 transition-all duration-300 group"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-brand-primary hover:bg-brand-primaryDark text-brand-black font-heading font-semibold text-base shadow-gold hover:scale-105 transition-all duration-300 group"
           >
             <span>Get a Consultation</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-brand-black" />
           </NavLink>
 
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-heading font-semibold text-base shadow-subtle hover:scale-105 transition-all duration-300"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-brand-charcoal border border-brand-border text-white hover:bg-brand-primary hover:text-brand-black hover:border-brand-primary font-heading font-semibold text-base hover:scale-105 transition-all duration-300"
           >
-            <MessageCircle className="w-5 h-5 fill-current" />
+            <MessageCircle className="w-5 h-5 fill-current text-brand-primary group-hover:text-brand-black" />
             <span>WhatsApp an Expert</span>
           </a>
         </motion.div>

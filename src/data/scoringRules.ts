@@ -139,14 +139,14 @@ export function calculateResults(
       title: 'Strong Readiness',
       description: 'Your responses indicate strong preparation across the areas assessed. Continue monitoring requirements and maintaining your processes.',
       status: 'Strong',
-      color: 'text-brand-fresh bg-brand-softGreen border-brand-fresh/20'
+      color: 'text-brand-primaryDark bg-brand-primaryLight border-brand-primary/20'
     };
   } else if (overallScore >= 75) {
     interpretation = {
       title: 'Good Readiness',
       description: 'Your business appears reasonably prepared, with a few areas that may benefit from review.',
       status: 'Good',
-      color: 'text-brand-fresh bg-brand-softGreen border-brand-fresh/20'
+      color: 'text-brand-primaryDark bg-brand-primaryLight border-brand-primary/20'
     };
   } else if (overallScore >= 50) {
     interpretation = {
@@ -160,7 +160,7 @@ export function calculateResults(
       title: 'Significant Areas to Review',
       description: 'Your responses indicate multiple areas where professional guidance may be useful.',
       status: 'Review',
-      color: 'text-brand-charcoal bg-brand-bgWarm border-brand-goldBorder/40'
+      color: 'text-brand-black bg-brand-backgroundSoft border-brand-border'
     };
   }
 

@@ -24,7 +24,7 @@ export default function FoodFactory() {
       description: 'Incoming ingredients are checked for temperature, purity, quality specs, and sorted into sterile storage racks.',
       px: 80,
       py: 160,
-      highlightColor: '#C5A059'
+      highlightColor: '#F0B000'
     },
     {
       id: 'processing',
@@ -32,7 +32,7 @@ export default function FoodFactory() {
       description: 'Recipe formulation, thermal treatment, mixing, and baking in food-grade stainless steel chambers under strict SOP parameters.',
       px: 170,
       py: 110,
-      highlightColor: '#166534'
+      highlightColor: '#111111'
     },
     {
       id: 'quality',
@@ -40,7 +40,7 @@ export default function FoodFactory() {
       description: 'Analytical lab testing of inline batches for moisture, pathogen counts, contaminants, and sensory profiles.',
       px: 260,
       py: 70,
-      highlightColor: '#0B3C2D'
+      highlightColor: '#F0B000'
     },
     {
       id: 'packaging',
@@ -48,7 +48,7 @@ export default function FoodFactory() {
       description: 'Hermetic sealing and gas flushing of product bags/boxes. Imprinting legal declarations, FSSAI logos, and batch barcodes.',
       px: 360,
       py: 90,
-      highlightColor: '#C5A059'
+      highlightColor: '#111111'
     },
     {
       id: 'storage',
@@ -56,7 +56,7 @@ export default function FoodFactory() {
       description: 'Pallet warehousing in humidity and climate-controlled bays. Tracking stock movement via FIFO logs.',
       px: 440,
       py: 140,
-      highlightColor: '#166534'
+      highlightColor: '#F0B000'
     },
     {
       id: 'dispatch',
@@ -64,7 +64,7 @@ export default function FoodFactory() {
       description: 'Final shipping inspections and vehicle temperature verification before cargo loads onto delivery trucks.',
       px: 520,
       py: 190,
-      highlightColor: '#0B3C2D'
+      highlightColor: '#111111'
     }
   ];
 
@@ -79,24 +79,24 @@ export default function FoodFactory() {
   const activeZone = zones[activeZoneIdx];
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white rounded-3xl border border-brand-borderLight p-6 shadow-subtle flex flex-col justify-between min-h-[460px] select-none">
+    <div className="w-full max-w-2xl mx-auto bg-white rounded-3xl border border-brand-border p-6 shadow-subtle flex flex-col justify-between min-h-[460px] select-none">
       
       {/* Header */}
-      <div className="flex justify-between items-center border-b border-brand-borderSubtle pb-4">
+      <div className="flex justify-between items-center border-b border-brand-border pb-4">
         <div>
-          <h4 className="font-heading font-extrabold text-xs text-brand-charcoal uppercase tracking-wider">
+          <h4 className="font-heading font-extrabold text-xs text-brand-black uppercase tracking-wider">
             FACTORY LAYOUT & CONVEYOR WORKFLOW
           </h4>
-          <p className="text-[10px] text-brand-muted mt-0.5">Isometric material and production flow validation</p>
+          <p className="text-[10px] text-brand-textMuted mt-0.5">Isometric material and production flow validation</p>
         </div>
-        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-lightGreen text-brand-emerald text-[10px] font-heading font-bold">
+        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-primaryLight text-brand-primaryDark text-[10px] font-heading font-bold">
           <ShieldCheck className="w-3.5 h-3.5" />
           <span>HACCP COMPLIANT ROUTING</span>
         </div>
       </div>
 
       {/* Isometric SVG Factory Map */}
-      <div className="relative h-[220px] w-full flex items-center justify-center p-2 bg-brand-bgWarm/30 rounded-2xl border border-brand-borderSubtle/60 my-4">
+      <div className="relative h-[220px] w-full flex items-center justify-center p-2 bg-brand-backgroundSoft/30 rounded-2xl border border-brand-border my-4">
         <svg viewBox="0 0 600 300" className="w-full h-full" fill="none">
           
           <defs>
@@ -181,30 +181,30 @@ export default function FoodFactory() {
       </div>
 
       {/* Active Stage Description Detail */}
-      <div className="p-5 rounded-2xl bg-brand-bgWarm border border-brand-borderLight space-y-2">
-        <div className="flex items-center justify-between border-b border-brand-borderSubtle pb-2">
-          <h5 className="font-heading font-extrabold text-sm text-brand-emerald">
+      <div className="p-5 rounded-2xl bg-brand-backgroundSoft border border-brand-border space-y-2">
+        <div className="flex items-center justify-between border-b border-brand-border pb-2">
+          <h5 className="font-heading font-extrabold text-sm text-brand-primaryDark">
             {activeZone.name}
           </h5>
-          <span className="text-[10px] font-heading font-bold text-brand-gold bg-brand-lightGold px-2.5 py-0.5 rounded-full border border-brand-goldBorder/40 uppercase">
+          <span className="text-[10px] font-heading font-bold text-brand-primaryDark bg-brand-primaryLight px-2.5 py-0.5 rounded-full border border-brand-primary/10 uppercase">
             Zone 0{activeZoneIdx + 1}
           </span>
         </div>
-        <p className="text-xs text-brand-slate leading-relaxed">
+        <p className="text-xs text-brand-textSecondary leading-relaxed">
           {activeZone.description}
         </p>
       </div>
 
       {/* Interactive step selectors */}
-      <div className="flex flex-wrap gap-2 justify-center pt-4 border-t border-brand-borderSubtle mt-4">
+      <div className="flex flex-wrap gap-2 justify-center pt-4 border-t border-brand-border mt-4">
         {zones.map((zone, idx) => (
           <button
             key={zone.id}
             onClick={() => handleZoneClick(idx, zone.name)}
             className={`px-3 py-1.5 rounded-xl font-heading text-[10px] font-bold uppercase tracking-wider transition-all ${
               activeZoneIdx === idx
-                ? 'bg-brand-emerald text-white shadow-sm'
-                : 'bg-white border border-brand-borderLight text-brand-slate hover:border-brand-emerald/40 hover:text-brand-emerald'
+                ? 'bg-brand-primary text-brand-black shadow-sm'
+                : 'bg-white border border-brand-border text-brand-textSecondary hover:border-brand-primary/40 hover:text-brand-primaryDark'
             }`}
           >
             {zone.name.split(' ')[1]}

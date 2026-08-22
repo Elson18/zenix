@@ -53,17 +53,17 @@ export default function AssessmentResults({
     .join('\n');
 
   // Define score interpretation styling
-  let scoreColorClass = 'text-brand-slate';
-  let scoreBadgeBg = 'bg-brand-bgLight';
+  let scoreColorClass = 'text-brand-textSecondary';
+  let scoreBadgeBg = 'bg-brand-backgroundSoft';
   if (interpretation.status === 'Strong' || interpretation.status === 'Good') {
-    scoreColorClass = 'text-brand-fresh';
-    scoreBadgeBg = 'bg-brand-softGreen';
+    scoreColorClass = 'text-brand-black';
+    scoreBadgeBg = 'bg-brand-primary';
   } else if (interpretation.status === 'Attention') {
-    scoreColorClass = 'text-amber-600';
-    scoreBadgeBg = 'bg-amber-50';
+    scoreColorClass = 'text-amber-800';
+    scoreBadgeBg = 'bg-amber-100';
   } else {
-    scoreColorClass = 'text-brand-slate';
-    scoreBadgeBg = 'bg-brand-bgWarm';
+    scoreColorClass = 'text-brand-black';
+    scoreBadgeBg = 'bg-brand-backgroundSoft';
   }
 
   return (
@@ -105,14 +105,14 @@ export default function AssessmentResults({
       <div className="hidden print-header">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="font-heading font-extrabold text-2xl tracking-tight text-brand-emerald">
+            <h1 className="font-heading font-extrabold text-2xl tracking-tight text-brand-black">
               ZENIX FOOD WORX
             </h1>
-            <p className="text-[10px] font-bold tracking-widest text-brand-gold uppercase">
+            <p className="text-[10px] font-bold tracking-widest text-brand-primary uppercase">
               Food Business Readiness Assessment Report
             </p>
           </div>
-          <div className="text-right text-xs text-brand-muted">
+          <div className="text-right text-xs text-brand-textMuted">
             <p>Date: {new Date().toLocaleDateString()}</p>
             <p>Type: {bTypeLabel}</p>
             <p>Stage: {bStageLabel}</p>
@@ -121,9 +121,9 @@ export default function AssessmentResults({
       </div>
 
       {/* 1. Score Summary Hero Panel */}
-      <div className="bg-white rounded-3xl border border-brand-borderLight shadow-card-hover p-8 sm:p-12 relative overflow-hidden">
+      <div className="bg-white rounded-3xl border border-brand-border shadow-card-hover p-8 sm:p-12 relative overflow-hidden">
         {/* Subtle details */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-lightGreen/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primaryLight/20 rounded-full blur-3xl pointer-events-none" />
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
           
@@ -147,8 +147,8 @@ export default function AssessmentResults({
                   cy="80"
                   r={radius}
                   stroke={
-                    interpretation.status === 'Strong' || interpretation.status === 'Good' ? '#166534' :
-                    interpretation.status === 'Attention' ? '#D97706' : '#111827'
+                    interpretation.status === 'Strong' || interpretation.status === 'Good' ? '#F0B000' :
+                    interpretation.status === 'Attention' ? '#D97706' : '#111111'
                   }
                   strokeWidth={strokeWidth}
                   strokeDasharray={circumference}
@@ -161,10 +161,10 @@ export default function AssessmentResults({
 
               {/* Central Text */}
               <div className="absolute text-center">
-                <span className="font-heading font-black text-4xl text-brand-charcoal block leading-none">
+                <span className="font-heading font-black text-4xl text-brand-black block leading-none">
                   {overallScore}%
                 </span>
-                <span className="text-[9px] font-extrabold uppercase tracking-widest text-brand-muted mt-1 block">
+                <span className="text-[9px] font-extrabold uppercase tracking-widest text-brand-textMuted mt-1 block">
                   Readiness
                 </span>
               </div>
@@ -174,12 +174,12 @@ export default function AssessmentResults({
           {/* Right Text Block */}
           <div className="md:col-span-8 space-y-4 text-center md:text-left">
             <div className="flex flex-col md:flex-row md:items-center gap-2 justify-center md:justify-start">
-              <span className="text-xs font-heading font-bold text-brand-muted uppercase">
+              <span className="text-xs font-heading font-bold text-brand-textMuted uppercase">
                 {bTypeLabel} • {bStageLabel}
               </span>
             </div>
 
-            <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-brand-charcoal leading-tight">
+            <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-brand-black leading-tight">
               Your Food Business Readiness Score
             </h2>
 
@@ -189,7 +189,7 @@ export default function AssessmentResults({
               </span>
             </div>
 
-            <p className="text-brand-slate text-sm sm:text-base leading-relaxed max-w-2xl">
+            <p className="text-brand-textSecondary text-sm sm:text-base leading-relaxed max-w-2xl">
               {interpretation.description}
             </p>
           </div>
@@ -197,17 +197,17 @@ export default function AssessmentResults({
         </div>
 
         {/* Personalized focus paragraph */}
-        <div className="mt-8 pt-8 border-t border-brand-borderSubtle">
-          <p className="text-brand-charcoal font-heading font-semibold text-sm sm:text-base leading-relaxed">
+        <div className="mt-8 pt-8 border-t border-brand-border">
+          <p className="text-brand-black font-heading font-semibold text-sm sm:text-base leading-relaxed">
             {focusSummary}
           </p>
         </div>
 
         {/* Action Controls for Results */}
-        <div className="mt-8 pt-6 border-t border-brand-borderSubtle flex flex-wrap items-center justify-between gap-4 no-print">
+        <div className="mt-8 pt-6 border-t border-brand-border flex flex-wrap items-center justify-between gap-4 no-print">
           <button
             onClick={handlePrint}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-brand-borderLight text-brand-charcoal hover:bg-brand-bgLight transition-colors font-heading font-semibold text-sm shadow-subtle hover:scale-[1.01]"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-brand-border text-brand-black hover:bg-brand-backgroundSoft transition-colors font-heading font-semibold text-sm shadow-subtle hover:scale-[1.01]"
           >
             <Printer className="w-4 h-4" />
             <span>Print / Save Assessment Report</span>
@@ -215,7 +215,7 @@ export default function AssessmentResults({
 
           <button
             onClick={onRetake}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-brand-borderLight text-brand-charcoal hover:text-brand-emerald hover:border-brand-emerald transition-colors font-heading font-semibold text-sm hover:scale-[1.01]"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-brand-border text-brand-black hover:text-brand-primary hover:border-brand-primary transition-colors font-heading font-semibold text-sm hover:scale-[1.01]"
           >
             <RefreshCw className="w-4 h-4" />
             <span>Retake Assessment</span>
@@ -261,10 +261,10 @@ export default function AssessmentResults({
       </div>
 
       {/* 7. Disclaimer Notice */}
-      <div className="p-6 rounded-2xl bg-brand-bgLight/40 border border-brand-borderSubtle flex gap-3 text-xs sm:text-sm text-brand-slate leading-relaxed">
-        <ShieldAlert className="w-5 h-5 text-brand-slate shrink-0 mt-0.5" />
+      <div className="p-6 rounded-2xl bg-brand-backgroundSoft/40 border border-brand-border flex gap-3 text-xs sm:text-sm text-brand-textSecondary leading-relaxed">
+        <ShieldAlert className="w-5 h-5 text-brand-textSecondary shrink-0 mt-0.5" />
         <div className="space-y-1">
-          <span className="font-heading font-extrabold text-brand-charcoal block uppercase tracking-wider text-[10px]">
+          <span className="font-heading font-extrabold text-brand-black block uppercase tracking-wider text-[10px]">
             Regulatory Disclaimer
           </span>
           <p>

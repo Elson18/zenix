@@ -104,32 +104,32 @@ export default function AssessmentCTA({
   };
 
   return (
-    <div id="consultation-section" className="bg-brand-dark text-white rounded-3xl border border-brand-emerald/50 p-8 sm:p-12 relative overflow-hidden space-y-8 select-none">
+    <div id="consultation-section" className="bg-brand-black text-white rounded-3xl border border-brand-primary/30 p-8 sm:p-12 relative overflow-hidden space-y-8 select-none">
       {/* Background radial glow */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-brand-emerald/40 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl pointer-events-none" />
 
       {status === 'success' ? (
         <div className="text-center py-12 space-y-4 max-w-lg mx-auto relative z-10">
-          <div className="w-16 h-16 bg-brand-fresh/20 border border-brand-fresh/40 rounded-full flex items-center justify-center mx-auto text-brand-fresh">
+          <div className="w-16 h-16 bg-brand-primary/20 border border-brand-primary/40 rounded-full flex items-center justify-center mx-auto text-brand-primary">
             <CheckCircle2 className="w-10 h-10" />
           </div>
           <h3 className="font-heading font-extrabold text-2xl text-white">
             Consultation Request Sent!
           </h3>
-          <p className="text-brand-lightGreen/80 text-base leading-relaxed">
+          <p className="text-brand-primaryLight/80 text-base leading-relaxed">
             Thank you for sharing your profile. A Zenix food business consultant will review your assessment results and contact you within 24 hours.
           </p>
         </div>
       ) : (
         <div className="relative z-10 space-y-8">
           <div className="max-w-3xl space-y-4">
-            <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-gold px-3.5 py-1.5 rounded-full gold-badge inline-block bg-white/5 border border-white/10">
+            <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-primary px-3.5 py-1.5 rounded-full gold-badge inline-block bg-white/5 border border-white/10">
               NEXT STEP OPTIONS
             </span>
             <h2 className="font-heading font-extrabold text-2xl sm:text-3xl tracking-tight leading-tight text-white">
               Want a Clearer Path Forward?
             </h2>
-            <p className="text-brand-lightGreen/85 text-sm sm:text-base leading-relaxed">
+            <p className="text-brand-primaryLight/85 text-sm sm:text-base leading-relaxed">
               Your assessment is a starting point. Our team can help you understand your specific requirements, audit your layout details, and identify practical next steps.
             </p>
           </div>
@@ -137,7 +137,7 @@ export default function AssessmentCTA({
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <button
               onClick={() => setShowForm(!showForm)}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-brand-emerald hover:bg-brand-emeraldHover border border-brand-goldBorder/20 text-white font-heading font-semibold text-base shadow-subtle hover:scale-[1.01] transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-brand-primary hover:bg-brand-primaryDark border border-brand-primary/20 text-brand-black font-heading font-semibold text-base shadow-subtle hover:scale-[1.01] transition-all"
             >
               <MessageCircle className="w-5 h-5" />
               <span>Talk to a Zenix Expert</span>
@@ -157,7 +157,7 @@ export default function AssessmentCTA({
             <form onSubmit={handleSubmit} className="border-t border-white/10 pt-8 space-y-6 max-w-4xl animate-fadeIn">
               <div className="space-y-1">
                 <h3 className="font-heading font-bold text-lg text-white">Schedule Your Expert Consultation</h3>
-                <p className="text-xs text-brand-lightGreen/70">Please submit your details below to book a free 15-minute call.</p>
+                <p className="text-xs text-brand-primaryLight/70">Please submit your details below to book a free 15-minute call.</p>
               </div>
 
               {status === 'error' && (
@@ -169,7 +169,7 @@ export default function AssessmentCTA({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="fullName" className="block text-[10px] font-heading font-extrabold uppercase tracking-wider text-brand-lightGreen/70 mb-2">
+                  <label htmlFor="fullName" className="block text-[10px] font-heading font-extrabold uppercase tracking-wider text-brand-primaryLight/70 mb-2">
                     Name <span className="text-red-400">*</span>
                   </label>
                   <input
@@ -180,12 +180,12 @@ export default function AssessmentCTA({
                     onChange={handleChange}
                     required
                     placeholder="e.g. Rahul Verma"
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold text-white text-sm outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary text-white text-sm outline-none transition-all"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-[10px] font-heading font-extrabold uppercase tracking-wider text-brand-lightGreen/70 mb-2">
+                  <label htmlFor="email" className="block text-[10px] font-heading font-extrabold uppercase tracking-wider text-brand-primaryLight/70 mb-2">
                     Email Address <span className="text-red-400">*</span>
                   </label>
                   <input
@@ -196,14 +196,14 @@ export default function AssessmentCTA({
                     onChange={handleChange}
                     required
                     placeholder="name@company.com"
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold text-white text-sm outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary text-white text-sm outline-none transition-all"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="phone" className="block text-[10px] font-heading font-extrabold uppercase tracking-wider text-brand-lightGreen/70 mb-2">
+                  <label htmlFor="phone" className="block text-[10px] font-heading font-extrabold uppercase tracking-wider text-brand-primaryLight/70 mb-2">
                     Phone / WhatsApp <span className="text-red-400">*</span>
                   </label>
                   <input
@@ -214,12 +214,12 @@ export default function AssessmentCTA({
                     onChange={handleChange}
                     required
                     placeholder="+91 98765 43210"
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold text-white text-sm outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary text-white text-sm outline-none transition-all"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="companyName" className="block text-[10px] font-heading font-extrabold uppercase tracking-wider text-brand-lightGreen/70 mb-2">
+                  <label htmlFor="companyName" className="block text-[10px] font-heading font-extrabold uppercase tracking-wider text-brand-primaryLight/70 mb-2">
                     Company Name (Optional)
                   </label>
                   <input
@@ -229,14 +229,14 @@ export default function AssessmentCTA({
                     value={formData.companyName}
                     onChange={handleChange}
                     placeholder="e.g. Apex Foods"
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold text-white text-sm outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary text-white text-sm outline-none transition-all"
                   />
                 </div>
               </div>
 
               {/* Text message box */}
               <div>
-                <label htmlFor="message" className="block text-[10px] font-heading font-extrabold uppercase tracking-wider text-brand-lightGreen/70 mb-2">
+                <label htmlFor="message" className="block text-[10px] font-heading font-extrabold uppercase tracking-wider text-brand-primaryLight/70 mb-2">
                   Message <span className="text-red-400">*</span>
                 </label>
                 <textarea
@@ -247,7 +247,7 @@ export default function AssessmentCTA({
                   onChange={handleChange}
                   required
                   placeholder="Describe your current setup or queries..."
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold text-white text-sm outline-none transition-all resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary text-white text-sm outline-none transition-all resize-none"
                 />
               </div>
 
@@ -258,9 +258,9 @@ export default function AssessmentCTA({
                   id="includeSummary"
                   checked={includeSummary}
                   onChange={(e) => setIncludeSummary(e.target.checked)}
-                  className="w-4.5 h-4.5 accent-brand-emerald rounded border-white/20 focus:ring-0 cursor-pointer"
+                  className="w-4.5 h-4.5 accent-brand-primary rounded border-white/20 focus:ring-0 cursor-pointer"
                 />
-                <label htmlFor="includeSummary" className="text-xs sm:text-sm text-brand-lightGreen/90 cursor-pointer">
+                <label htmlFor="includeSummary" className="text-xs sm:text-sm text-brand-primaryLight/90 cursor-pointer">
                   Include my readiness assessment summary in the inquiry details
                 </label>
               </div>
@@ -268,17 +268,17 @@ export default function AssessmentCTA({
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-brand-gold hover:bg-brand-gold/90 text-brand-dark font-heading font-extrabold text-sm shadow-md disabled:opacity-75"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-brand-primary hover:bg-brand-primary/90 text-brand-black font-heading font-extrabold text-sm shadow-md disabled:opacity-75"
               >
                 {status === 'loading' ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin text-brand-dark" />
+                    <Loader2 className="w-4 h-4 animate-spin text-brand-black" />
                     <span>Sending consultation request...</span>
                   </>
                 ) : (
                   <>
                     <span>Submit Request</span>
-                    <ArrowRight className="w-4 h-4 text-brand-dark" />
+                    <ArrowRight className="w-4 h-4 text-brand-black" />
                   </>
                 )}
               </button>

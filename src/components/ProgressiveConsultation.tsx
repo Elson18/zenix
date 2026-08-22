@@ -193,7 +193,7 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleClose}
-            className="fixed inset-0 bg-brand-charcoal/60 backdrop-blur-sm"
+            className="fixed inset-0 bg-brand-black/60 backdrop-blur-sm"
           />
 
           {/* Dialog Card */}
@@ -202,15 +202,15 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 250 }}
-            className="bg-white rounded-3xl w-full max-w-2xl border border-brand-borderLight shadow-2xl relative z-10 flex flex-col overflow-hidden max-h-[90vh]"
+            className="bg-white rounded-3xl w-full max-w-2xl border border-brand-border shadow-2xl relative z-10 flex flex-col overflow-hidden max-h-[90vh]"
           >
             {/* Header */}
-            <div className="p-6 border-b border-brand-borderSubtle flex items-center justify-between bg-brand-bgWarm">
+            <div className="p-6 border-b border-brand-border flex items-center justify-between bg-brand-backgroundSoft">
               <div>
-                <h3 className="font-heading font-extrabold text-lg sm:text-xl text-brand-charcoal">
+                <h3 className="font-heading font-extrabold text-lg sm:text-xl text-brand-black">
                   Get a Zenix Food Consultation
                 </h3>
-                <p className="text-xs text-brand-muted mt-0.5">
+                <p className="text-xs text-brand-textMuted mt-0.5">
                   Step {step} of 4: {
                     step === 1 ? 'Business Context' :
                     step === 2 ? 'Your Needs' :
@@ -220,7 +220,7 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
               </div>
               <button
                 onClick={handleClose}
-                className="p-2 rounded-full text-brand-slate hover:bg-brand-bgLight hover:text-brand-emerald transition-colors"
+                className="p-2 rounded-full text-brand-textSecondary hover:bg-brand-border/30 hover:text-brand-primary transition-colors"
                 aria-label="Close form"
               >
                 <X className="w-5 h-5" />
@@ -232,13 +232,13 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
               
               {success ? (
                 <div className="text-center py-12 space-y-4">
-                  <div className="w-16 h-16 bg-brand-lightGreen rounded-full flex items-center justify-center mx-auto text-brand-fresh">
+                  <div className="w-16 h-16 bg-brand-primaryLight rounded-full flex items-center justify-center mx-auto text-brand-primaryDark">
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
-                  <h4 className="font-heading font-extrabold text-xl text-brand-charcoal">
+                  <h4 className="font-heading font-extrabold text-xl text-brand-black">
                     Consultation Request Sent!
                   </h4>
-                  <p className="text-sm text-brand-slate max-w-md mx-auto leading-relaxed">
+                  <p className="text-sm text-brand-textSecondary max-w-md mx-auto leading-relaxed">
                     Thank you. We have received your business profile and compliance requirements. One of our senior consultants will contact you within 24 hours.
                   </p>
                   <div className="flex flex-col sm:flex-row justify-center gap-3 pt-4">
@@ -246,14 +246,14 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                       href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-heading font-semibold text-sm shadow-sm transition-colors"
+                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-brand-black hover:bg-brand-charcoal text-brand-primary border border-brand-primary/20 font-heading font-semibold text-sm shadow-sm transition-colors"
                     >
-                      <MessageCircle className="w-4 h-4 fill-current" />
-                      <span>Chat on WhatsApp</span>
+                      <MessageCircle className="w-4 h-4 fill-current text-brand-primary" />
+                      <span className="text-white">Chat on WhatsApp</span>
                     </a>
                     <button
                       onClick={handleClose}
-                      className="px-5 py-2.5 rounded-xl border border-brand-borderLight hover:border-brand-emerald hover:text-brand-emerald text-brand-charcoal font-heading font-semibold text-sm transition-all"
+                      className="px-5 py-2.5 rounded-xl border border-brand-border hover:border-brand-primary hover:text-brand-primary text-brand-black font-heading font-semibold text-sm transition-all"
                     >
                       Close Window
                     </button>
@@ -272,13 +272,13 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                   {step === 1 && (
                     <div className="space-y-6">
                       <div>
-                        <label className="block text-xs font-heading font-bold text-brand-charcoal uppercase tracking-wider mb-2">
+                        <label className="block text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-2">
                           What type of food business are you?
                         </label>
                         <select
                           value={businessType}
                           onChange={(e) => setBusinessType(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl border border-brand-borderLight focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20 text-brand-charcoal text-sm outline-none bg-white transition-all"
+                          className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none bg-white transition-all"
                         >
                           {businessTypes.map(t => (
                             <option key={t.id} value={t.id}>{t.label}</option>
@@ -287,13 +287,13 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                       </div>
 
                       <div>
-                        <label className="block text-xs font-heading font-bold text-brand-charcoal uppercase tracking-wider mb-2">
+                        <label className="block text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-2">
                           Where are you in your journey?
                         </label>
                         <select
                           value={businessStage}
                           onChange={(e) => setBusinessStage(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl border border-brand-borderLight focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20 text-brand-charcoal text-sm outline-none bg-white transition-all"
+                          className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none bg-white transition-all"
                         >
                           {businessStages.map(s => (
                             <option key={s.id} value={s.id}>{s.label}</option>
@@ -301,7 +301,7 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                         </select>
                       </div>
 
-                      <div className="p-4 rounded-xl bg-brand-lightGreen/50 border border-brand-emerald/10 text-xs text-brand-slate leading-relaxed">
+                      <div className="p-4 rounded-xl bg-brand-primaryLight/30 border border-brand-primary/10 text-xs text-brand-textSecondary leading-relaxed">
                         Setting this context helps our algorithms recommend the specific testing, labeling, and licensing actions you need.
                       </div>
                     </div>
@@ -311,7 +311,7 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                   {step === 2 && (
                     <div className="space-y-6">
                       <div>
-                        <label className="block text-xs font-heading font-bold text-brand-charcoal uppercase tracking-wider mb-3">
+                        <label className="block text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-3">
                           What do you need help with? (Select all that apply)
                         </label>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[220px] overflow-y-auto pr-1">
@@ -320,19 +320,19 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                               key={req.id}
                               className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer select-none transition-all ${
                                 selectedReqs.includes(req.id)
-                                  ? 'bg-brand-softGreen border-brand-emerald/40 text-brand-emerald'
-                                  : 'bg-white border-brand-borderLight hover:bg-brand-bgWarm text-brand-slate'
+                                  ? 'bg-brand-primaryLight border-brand-primary/40 text-brand-black'
+                                  : 'bg-white border-brand-border hover:bg-brand-backgroundSoft text-brand-textSecondary'
                               }`}
                             >
                               <input
                                 type="checkbox"
                                 checked={selectedReqs.includes(req.id)}
                                 onChange={() => handleCheckboxChange(req.id)}
-                                className="mt-1 rounded border-brand-borderLight text-brand-emerald focus:ring-brand-emerald"
+                                className="mt-1 rounded border-brand-border text-brand-primary focus:ring-brand-primary"
                               />
                               <div className="text-xs">
                                 <p className="font-heading font-bold">{req.label}</p>
-                                <p className="text-[10px] text-brand-muted mt-0.5 leading-tight">{req.description}</p>
+                                <p className="text-[10px] text-brand-textMuted mt-0.5 leading-tight">{req.description}</p>
                               </div>
                             </label>
                           ))}
@@ -340,7 +340,7 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                       </div>
 
                       <div>
-                        <label className="block text-xs font-heading font-bold text-brand-charcoal uppercase tracking-wider mb-2">
+                        <label className="block text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-2">
                           Additional Requirements / Message (Optional)
                         </label>
                         <textarea
@@ -348,7 +348,7 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                           onChange={(e) => setMessage(e.target.value)}
                           placeholder="Describe specific products, license queries, or milestones..."
                           rows={3}
-                          className="w-full px-4 py-3 rounded-xl border border-brand-borderLight focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20 text-brand-charcoal text-sm outline-none transition-all resize-none"
+                          className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none transition-all resize-none"
                         />
                       </div>
                     </div>
@@ -358,10 +358,10 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                   {step === 3 && (
                     <div className="space-y-6">
                       <div>
-                        <h4 className="text-xs font-heading font-bold text-brand-charcoal uppercase tracking-wider mb-1">
+                        <h4 className="text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-1">
                           Recommended Services For Your Business
                         </h4>
-                        <p className="text-xs text-brand-slate mb-4">
+                        <p className="text-xs text-brand-textSecondary mb-4">
                           Based on your answers, our logic identified these high-relevance solutions.
                         </p>
 
@@ -369,16 +369,16 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                           {recommended.map(rec => (
                             <div
                               key={rec.service.id}
-                              className="p-4 rounded-2xl bg-brand-bgWarm border border-brand-borderLight flex items-start gap-4"
+                              className="p-4 rounded-2xl bg-brand-backgroundSoft border border-brand-border flex items-start gap-4"
                             >
-                              <span className="w-8 h-8 rounded-lg bg-brand-lightGreen text-brand-emerald font-heading font-bold text-xs flex items-center justify-center shrink-0">
+                              <span className="w-8 h-8 rounded-lg bg-brand-primaryLight text-brand-primaryDark font-heading font-bold text-xs flex items-center justify-center shrink-0">
                                 {rec.matchScore}%
                               </span>
                               <div>
-                                <h5 className="font-heading font-bold text-sm text-brand-charcoal">
+                                <h5 className="font-heading font-bold text-sm text-brand-black">
                                   {rec.service.title}
                                 </h5>
-                                <p className="text-xs text-brand-slate mt-1 leading-relaxed">
+                                <p className="text-xs text-brand-textSecondary mt-1 leading-relaxed">
                                   {rec.reason}
                                 </p>
                               </div>
@@ -387,16 +387,16 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                         </div>
                       </div>
 
-                      <div className="p-4 rounded-xl bg-brand-lightGold border border-brand-goldBorder/40 flex items-center justify-between text-xs">
-                        <span className="text-brand-slate font-medium">Prefer direct messaging?</span>
+                      <div className="p-4 rounded-xl bg-brand-primaryLight border border-brand-primary/10 flex items-center justify-between text-xs">
+                        <span className="text-brand-textSecondary font-medium">Prefer direct messaging?</span>
                         <a
                           href={whatsappUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-heading font-bold text-[11px]"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-black hover:bg-brand-charcoal text-brand-primary border border-brand-primary/20 font-heading font-bold text-[11px]"
                         >
-                          <MessageCircle className="w-3.5 h-3.5 fill-current" />
-                          <span>WhatsApp profile</span>
+                          <MessageCircle className="w-3.5 h-3.5 fill-current text-brand-primary" />
+                          <span className="text-white">WhatsApp profile</span>
                         </a>
                       </div>
                     </div>
@@ -407,7 +407,7 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                     <form onSubmit={handleSubmit} className="space-y-4">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-heading font-bold text-brand-charcoal uppercase tracking-wider mb-1.5">
+                          <label className="block text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-1.5">
                             Your Name <span className="text-red-500">*</span>
                           </label>
                           <input
@@ -416,12 +416,12 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                             placeholder="e.g. Anil Kumar"
                             value={contactInfo.fullName}
                             onChange={(e) => setContactInfo({ ...contactInfo, fullName: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl border border-brand-borderLight focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20 text-brand-charcoal text-sm outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none transition-all"
                           />
                         </div>
 
                         <div>
-                          <label className="block text-xs font-heading font-bold text-brand-charcoal uppercase tracking-wider mb-1.5">
+                          <label className="block text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-1.5">
                             Company Name
                           </label>
                           <input
@@ -429,14 +429,14 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                             placeholder="e.g. Organic Foods Hub"
                             value={contactInfo.companyName}
                             onChange={(e) => setContactInfo({ ...contactInfo, companyName: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl border border-brand-borderLight focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20 text-brand-charcoal text-sm outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none transition-all"
                           />
                         </div>
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-heading font-bold text-brand-charcoal uppercase tracking-wider mb-1.5">
+                          <label className="block text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-1.5">
                             Phone Number <span className="text-red-500">*</span>
                           </label>
                           <input
@@ -445,12 +445,12 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                             placeholder="e.g. +91 98765 43210"
                             value={contactInfo.phone}
                             onChange={(e) => setContactInfo({ ...contactInfo, phone: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl border border-brand-borderLight focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20 text-brand-charcoal text-sm outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none transition-all"
                           />
                         </div>
 
                         <div>
-                          <label className="block text-xs font-heading font-bold text-brand-charcoal uppercase tracking-wider mb-1.5">
+                          <label className="block text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-1.5">
                             Email Address <span className="text-red-500">*</span>
                           </label>
                           <input
@@ -459,12 +459,12 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                             placeholder="name@company.com"
                             value={contactInfo.email}
                             onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl border border-brand-borderLight focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20 text-brand-charcoal text-sm outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none transition-all"
                           />
                         </div>
                       </div>
 
-                      <div className="pt-2 text-xs text-brand-muted">
+                      <div className="pt-2 text-xs text-brand-textMuted">
                         * Required fields. By submitting this form you authorize Zenix Food Worx consultants to contact you. We keep your business details strictly confidential.
                       </div>
                     </form>
@@ -476,12 +476,12 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
 
             {/* Footer Buttons */}
             {!success && (
-              <div className="p-6 border-t border-brand-borderSubtle bg-brand-bgWarm flex items-center justify-between">
+              <div className="p-6 border-t border-brand-border bg-brand-backgroundSoft flex items-center justify-between">
                 <div>
                   {step > 1 ? (
                     <button
                       onClick={handleBack}
-                      className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-brand-borderLight hover:border-brand-emerald hover:text-brand-emerald text-brand-charcoal font-heading font-semibold text-sm transition-all"
+                      className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-brand-border hover:border-brand-primary hover:text-brand-primary text-brand-black font-heading font-semibold text-sm transition-all"
                     >
                       <ChevronLeft className="w-4 h-4" />
                       <span>Back</span>
@@ -489,7 +489,7 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                   ) : (
                     <button
                       onClick={handleClose}
-                      className="px-4 py-2.5 rounded-xl border border-transparent text-brand-slate hover:bg-brand-borderLight/30 font-heading font-semibold text-sm transition-all"
+                      className="px-4 py-2.5 rounded-xl border border-transparent text-brand-textSecondary hover:bg-brand-border/30 font-heading font-semibold text-sm transition-all"
                     >
                       Cancel
                     </button>
@@ -500,7 +500,7 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                   {step < 4 ? (
                     <button
                       onClick={handleNext}
-                      className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-brand-emerald hover:bg-brand-emeraldHover text-white font-heading font-semibold text-sm shadow-sm transition-all"
+                      className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-brand-primary hover:bg-brand-primaryDark text-brand-black font-heading font-semibold text-sm shadow-sm transition-all"
                     >
                       <span>Continue</span>
                       <ChevronRight className="w-4 h-4" />
@@ -509,7 +509,7 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                     <button
                       onClick={handleSubmit}
                       disabled={loading}
-                      className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-xl bg-brand-emerald hover:bg-brand-emeraldHover text-white font-heading font-semibold text-sm shadow-md disabled:opacity-75 transition-all"
+                      className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-xl bg-brand-primary hover:bg-brand-primaryDark text-brand-black font-heading font-semibold text-sm shadow-md disabled:opacity-75 transition-all"
                     >
                       {loading ? (
                         <>
@@ -519,7 +519,7 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                       ) : (
                         <>
                           <span>Submit Request</span>
-                          <CheckCircle2 className="w-4 h-4" />
+                          <CheckCircle2 className="w-4 h-4 text-brand-black" />
                         </>
                       )}
                     </button>

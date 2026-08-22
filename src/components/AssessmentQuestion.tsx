@@ -29,8 +29,8 @@ export default function AssessmentQuestionComponent({
       value: 'YES',
       label: 'Yes',
       icon: Check,
-      activeClass: 'border-brand-fresh bg-brand-softGreen text-brand-fresh ring-1 ring-brand-fresh',
-      hoverClass: 'hover:border-brand-fresh/40 hover:bg-brand-softGreen/30'
+      activeClass: 'border-brand-black bg-brand-black text-white ring-1 ring-brand-black',
+      hoverClass: 'hover:border-brand-black/40 hover:bg-brand-backgroundSoft'
     },
     {
       value: 'NO',
@@ -43,8 +43,8 @@ export default function AssessmentQuestionComponent({
       value: 'NOT_SURE',
       label: 'Not Sure',
       icon: QuestionIcon,
-      activeClass: 'border-brand-gold bg-brand-lightGold text-brand-gold ring-1 ring-brand-gold',
-      hoverClass: 'hover:border-brand-gold/40 hover:bg-brand-lightGold/30'
+      activeClass: 'border-brand-primary bg-brand-primaryLight text-brand-primaryDark ring-1 ring-brand-primary',
+      hoverClass: 'hover:border-brand-primary/40 hover:bg-brand-primaryLight/30'
     },
     {
       value: 'NA',
@@ -56,19 +56,19 @@ export default function AssessmentQuestionComponent({
   ];
 
   return (
-    <div className="max-w-3xl mx-auto bg-white rounded-3xl border border-brand-borderLight shadow-card-hover p-6 sm:p-10 space-y-8 select-none">
+    <div className="max-w-3xl mx-auto bg-white rounded-3xl border border-brand-border shadow-card-hover p-6 sm:p-10 space-y-8 select-none">
       
       {/* Top Meta info */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-gold">
+          <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-primary">
             Q{questionNumber} • {question.category.toUpperCase()}
           </span>
           
           {question.infoTooltip && (
             <button
               onClick={() => setShowTooltip(!showTooltip)}
-              className="p-1.5 rounded-full text-brand-muted hover:text-brand-emerald hover:bg-brand-bgLight transition-colors relative outline-none focus-visible:ring-1 focus-visible:ring-brand-emerald"
+              className="p-1.5 rounded-full text-brand-textMuted hover:text-brand-primary hover:bg-brand-backgroundSoft transition-colors relative outline-none focus-visible:ring-1 focus-visible:ring-brand-primary"
               title="Help information"
               aria-label="Toggle helpful information"
             >
@@ -79,17 +79,17 @@ export default function AssessmentQuestionComponent({
 
         {/* Question text & description */}
         <div className="space-y-2">
-          <h2 className="font-heading font-extrabold text-lg sm:text-xl md:text-2xl text-brand-charcoal tracking-tight leading-snug">
+          <h2 className="font-heading font-extrabold text-lg sm:text-xl md:text-2xl text-brand-black tracking-tight leading-snug">
             {question.text}
           </h2>
-          <p className="text-brand-slate text-xs sm:text-sm leading-relaxed">
+          <p className="text-brand-textSecondary text-xs sm:text-sm leading-relaxed">
             {question.explanation}
           </p>
         </div>
 
         {/* Info Tooltip box */}
         {question.infoTooltip && showTooltip && (
-          <div className="p-4 rounded-2xl bg-brand-lightGreen/50 border border-brand-emerald/10 text-xs sm:text-sm text-brand-emerald leading-relaxed flex items-start gap-3">
+          <div className="p-4 rounded-2xl bg-brand-primaryLight border border-brand-primary/10 text-xs sm:text-sm text-brand-primaryDark leading-relaxed flex items-start gap-3">
             <Info className="w-4 h-4 shrink-0 mt-0.5" />
             <span>{question.infoTooltip}</span>
           </div>
@@ -107,20 +107,18 @@ export default function AssessmentQuestionComponent({
               key={opt.value}
               onClick={() => {
                 onAnswer(opt.value);
-                // Simple feedback & auto-advance could be handled in page,
-                // but let's let the user read the explanation and click continue manually.
               }}
-              className={`flex flex-col items-center justify-center p-5 rounded-2xl border text-center transition-all outline-none focus-visible:ring-2 focus-visible:ring-brand-emerald focus-visible:ring-offset-2 ${
-                isSelected ? opt.activeClass : `border-brand-borderLight text-brand-charcoal ${opt.hoverClass}`
+              className={`flex flex-col items-center justify-center p-5 rounded-2xl border text-center transition-all outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 ${
+                isSelected ? opt.activeClass : `border-brand-border text-brand-black ${opt.hoverClass}`
               }`}
               aria-checked={isSelected}
               role="radio"
             >
               <div className={`w-8 h-8 rounded-full flex items-center justify-center mb-2.5 transition-colors ${
-                isSelected ? 'bg-current text-white' : 'bg-brand-bgWarm text-brand-muted'
+                isSelected ? 'bg-white text-brand-black' : 'bg-brand-backgroundSoft text-brand-textMuted'
               }`}>
                 {/* SVG icon inside button */}
-                <IconComp className="w-4 h-4 text-brand-slate" />
+                <IconComp className={`w-4 h-4 ${isSelected ? 'text-brand-black' : 'text-brand-textSecondary'}`} />
               </div>
               <span className="font-heading font-bold text-xs sm:text-sm">
                 {opt.label}
@@ -131,10 +129,10 @@ export default function AssessmentQuestionComponent({
       </div>
 
       {/* Navigation Buttons */}
-      <div className="flex items-center justify-between pt-6 border-t border-brand-borderSubtle">
+      <div className="flex items-center justify-between pt-6 border-t border-brand-border">
         <button
           onClick={onBack}
-          className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-brand-borderLight text-brand-charcoal font-heading font-semibold text-sm hover:bg-brand-bgLight transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-brand-border text-brand-black font-heading font-semibold text-sm hover:bg-brand-backgroundSoft transition-colors"
         >
           <ChevronLeft className="w-4 h-4" />
           <span>Back</span>
@@ -143,7 +141,7 @@ export default function AssessmentQuestionComponent({
         <button
           onClick={onContinue}
           disabled={!canContinue}
-          className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-brand-emerald hover:bg-brand-emeraldHover disabled:opacity-50 text-white font-heading font-semibold text-sm shadow-sm transition-colors"
+          className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-brand-primary hover:bg-brand-primaryDark disabled:opacity-50 text-brand-black font-heading font-semibold text-sm shadow-gold transition-colors"
         >
           <span>Continue</span>
           <ChevronRight className="w-4 h-4" />

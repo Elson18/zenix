@@ -32,12 +32,12 @@ export default function AssessmentBusinessType({
   // Let's show all 8 as defined in the source data file, or keep it standard. All 8 are extremely helpful.
   
   return (
-    <div className="max-w-4xl mx-auto bg-white rounded-3xl border border-brand-borderLight shadow-card-hover p-8 sm:p-12 space-y-8">
+    <div className="max-w-4xl mx-auto bg-white rounded-3xl border border-brand-border shadow-card-hover p-8 sm:p-12 space-y-8">
       <div className="space-y-2">
-        <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-brand-charcoal tracking-tight">
+        <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-brand-black tracking-tight">
           What type of food business are you?
         </h2>
-        <p className="text-brand-slate text-sm sm:text-base">
+        <p className="text-brand-textSecondary text-sm sm:text-base">
           This helps customize the compliance questions and recommendations for your business model.
         </p>
       </div>
@@ -57,32 +57,32 @@ export default function AssessmentBusinessType({
                   onChange(type.id);
                 }
               }}
-              className={`flex flex-col items-start text-left p-5 rounded-2xl border transition-all relative outline-none focus-visible:ring-2 focus-visible:ring-brand-emerald focus-visible:ring-offset-2 ${
+              className={`flex flex-col items-start text-left p-5 rounded-2xl border transition-all relative outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 ${
                 isSelected
-                  ? 'border-brand-emerald bg-brand-lightGreen/40 shadow-sm ring-1 ring-brand-emerald'
-                  : 'border-brand-borderLight hover:border-brand-emerald/40 hover:bg-brand-bgLight/40'
+                  ? 'border-brand-primary bg-brand-primaryLight/40 shadow-sm ring-1 ring-brand-primary'
+                  : 'border-brand-border hover:border-brand-primary/40 hover:bg-brand-backgroundSoft/45'
               }`}
               aria-checked={isSelected}
               role="radio"
             >
               <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-colors ${
-                isSelected ? 'bg-brand-emerald text-white' : 'bg-brand-bgWarm text-brand-emerald'
+                isSelected ? 'bg-brand-primary text-brand-black' : 'bg-brand-backgroundSoft text-brand-primaryDark'
               }`}>
                 <IconComponent className="w-5 h-5" />
               </div>
               
-              <h3 className="font-heading font-bold text-sm text-brand-charcoal mb-1">
+              <h3 className="font-heading font-bold text-sm text-brand-black mb-1">
                 {type.label}
               </h3>
               
-              <p className="text-[11px] sm:text-xs text-brand-muted leading-relaxed">
+              <p className="text-[11px] sm:text-xs text-brand-textMuted leading-relaxed">
                 {type.description}
               </p>
 
               {/* Selection Dot */}
-              <div className="absolute top-4 right-4 w-4 h-4 rounded-full border flex items-center justify-center border-brand-borderLight">
+              <div className="absolute top-4 right-4 w-4 h-4 rounded-full border flex items-center justify-center border-brand-border">
                 {isSelected && (
-                  <div className="w-2.5 h-2.5 rounded-full bg-brand-emerald" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-brand-primary" />
                 )}
               </div>
             </button>
@@ -91,17 +91,17 @@ export default function AssessmentBusinessType({
       </div>
 
       {/* Navigation Buttons */}
-      <div className="flex items-center justify-between pt-6 border-t border-brand-borderSubtle">
+      <div className="flex items-center justify-between pt-6 border-t border-brand-border">
         <button
           onClick={onBack}
-          className="px-6 py-3 rounded-xl border border-brand-borderLight text-brand-charcoal font-heading font-semibold text-sm hover:bg-brand-bgLight transition-colors"
+          className="px-6 py-3 rounded-xl border border-brand-border text-brand-black font-heading font-semibold text-sm hover:bg-brand-backgroundSoft transition-colors"
         >
           Back
         </button>
         <button
           onClick={onNext}
           disabled={!selectedId}
-          className="px-8 py-3.5 rounded-xl bg-brand-emerald hover:bg-brand-emeraldHover disabled:opacity-50 text-white font-heading font-semibold text-sm shadow-sm transition-colors"
+          className="px-8 py-3.5 rounded-xl bg-brand-primary hover:bg-brand-primaryDark disabled:opacity-50 text-brand-black font-heading font-semibold text-sm shadow-gold transition-colors"
         >
           Continue
         </button>

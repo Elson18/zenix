@@ -5,11 +5,11 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-b from-brand-bgWarm via-white to-brand-bgLight overflow-hidden">
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-b from-brand-backgroundSoft via-white to-brand-section overflow-hidden">
       {/* Background Subtle Geometric Accents */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
-        <div className="absolute top-1/4 left-10 w-96 h-96 bg-brand-lightGreen/50 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-brand-lightGold/80 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-10 w-96 h-96 bg-brand-primaryLight/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-brand-softGold/20 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -23,20 +23,20 @@ export default function Hero() {
             className="lg:col-span-7 space-y-6 text-left"
           >
             {/* Trust Pill */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full gold-badge text-xs sm:text-sm font-heading font-semibold shadow-sm bg-white border border-brand-borderLight">
-              <ShieldCheck className="w-4 h-4 text-brand-gold" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full gold-badge text-xs sm:text-sm font-heading font-semibold shadow-sm bg-white border border-brand-border">
+              <ShieldCheck className="w-4 h-4 text-brand-primary" />
               <span>Food Safety • Compliance • Quality • Growth</span>
             </div>
 
             {/* Large Hero Heading */}
-            <h1 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-brand-charcoal tracking-tight leading-[1.12]">
+            <h1 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-brand-black tracking-tight leading-[1.12]">
               Trusted Experts for <br className="hidden sm:inline" />
-              <span className="emerald-gradient-text">Every Stage</span> of Your <br className="hidden sm:inline" />
+              <span className="text-brand-primary font-extrabold">Every Stage</span> of Your <br className="hidden sm:inline" />
               Food Business.
             </h1>
 
             {/* Supporting Paragraph */}
-            <p className="text-lg sm:text-xl text-brand-slate max-w-2xl font-normal leading-relaxed">
+            <p className="text-lg sm:text-xl text-brand-textSecondary max-w-2xl font-normal leading-relaxed">
               From food testing and FSSAI licensing to certification, product development, hospitality consulting and factory setup, Zenix Food Worx helps food businesses stay compliant, efficient and ready to grow.
             </p>
 
@@ -44,30 +44,30 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
               <NavLink
                 to="/contact"
-                className="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-xl bg-brand-emerald hover:bg-brand-emeraldHover text-white font-heading font-semibold text-base shadow-card-hover transition-all duration-300 group"
+                className="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-xl bg-brand-primary hover:bg-brand-primaryDark text-brand-black font-heading font-semibold text-base shadow-gold transition-all duration-300 group"
               >
                 <span>Get a Consultation</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-brand-black" />
               </NavLink>
 
               <NavLink
                 to="/services"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-white hover:bg-brand-bgLight text-brand-emerald border-2 border-brand-emerald/20 hover:border-brand-emerald font-heading font-semibold text-base shadow-subtle transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-white hover:bg-brand-backgroundSoft text-brand-black border-2 border-brand-border hover:border-brand-primary font-heading font-semibold text-base shadow-subtle transition-all duration-300"
               >
                 <span>Explore Our Services</span>
               </NavLink>
             </div>
 
             {/* Quick Domain Badges */}
-            <div className="pt-6 border-t border-brand-borderLight/80 flex flex-wrap gap-4 text-xs font-heading font-medium text-brand-muted">
-              <span className="flex items-center gap-1.5 text-brand-charcoal">
-                <CheckCircle2 className="w-4 h-4 text-brand-fresh" /> FSSAI Registration & Licensing
+            <div className="pt-6 border-t border-brand-border/80 flex flex-wrap gap-4 text-xs font-heading font-medium text-brand-textMuted">
+              <span className="flex items-center gap-1.5 text-brand-black">
+                <CheckCircle2 className="w-4 h-4 text-brand-primary" /> FSSAI Registration & Licensing
               </span>
-              <span className="flex items-center gap-1.5 text-brand-charcoal">
-                <CheckCircle2 className="w-4 h-4 text-brand-fresh" /> HACCP & ISO Audits
+              <span className="flex items-center gap-1.5 text-brand-black">
+                <CheckCircle2 className="w-4 h-4 text-brand-primary" /> HACCP & ISO Audits
               </span>
-              <span className="flex items-center gap-1.5 text-brand-charcoal">
-                <CheckCircle2 className="w-4 h-4 text-brand-fresh" /> Lab Quality Testing
+              <span className="flex items-center gap-1.5 text-brand-black">
+                <CheckCircle2 className="w-4 h-4 text-brand-primary" /> Lab Quality Testing
               </span>
             </div>
           </motion.div>
@@ -88,7 +88,7 @@ export default function Hero() {
               />
               
               {/* Soft Gradient Overlay at bottom */}
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-emerald/40 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-black/50 via-transparent to-transparent pointer-events-none" />
             </div>
 
             {/* Floating Card 1: Top Left */}
@@ -96,14 +96,14 @@ export default function Hero() {
               initial={{ y: -10 }}
               animate={{ y: [0, -8, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -top-6 -left-6 sm:-left-8 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-card-hover border border-brand-borderLight hidden sm:flex items-center gap-3"
+              className="absolute -top-6 -left-6 sm:-left-8 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-card-hover border border-brand-border hidden sm:flex items-center gap-3"
             >
-              <div className="w-10 h-10 rounded-xl bg-brand-lightGreen flex items-center justify-center text-brand-fresh">
-                <ShieldCheck className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-xl bg-brand-primaryLight flex items-center justify-center text-brand-primary">
+                <ShieldCheck className="w-5 h-5 text-brand-primaryDark" />
               </div>
               <div>
-                <p className="font-heading font-bold text-sm text-brand-charcoal">FSSAI Compliance</p>
-                <p className="text-xs text-brand-muted">100% Regulatory Alignment</p>
+                <p className="font-heading font-bold text-sm text-brand-black">FSSAI Compliance</p>
+                <p className="text-xs text-brand-textMuted">100% Regulatory Alignment</p>
               </div>
             </motion.div>
 
@@ -112,14 +112,14 @@ export default function Hero() {
               initial={{ y: 10 }}
               animate={{ y: [0, 8, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-              className="absolute top-12 -right-4 sm:-right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-card-hover border border-brand-borderLight hidden sm:flex items-center gap-3"
+              className="absolute top-12 -right-4 sm:-right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-card-hover border border-brand-border hidden sm:flex items-center gap-3"
             >
-              <div className="w-10 h-10 rounded-xl bg-brand-lightGold flex items-center justify-center text-brand-gold">
-                <Award className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-xl bg-brand-backgroundSoft flex items-center justify-center text-brand-primary">
+                <Award className="w-5 h-5 text-brand-primary" />
               </div>
               <div>
-                <p className="font-heading font-bold text-sm text-brand-charcoal">Quality Testing</p>
-                <p className="text-xs text-brand-muted">Lab Analysis & Safety</p>
+                <p className="font-heading font-bold text-sm text-brand-black">Quality Testing</p>
+                <p className="text-xs text-brand-textMuted">Lab Analysis & Safety</p>
               </div>
             </motion.div>
 
@@ -128,14 +128,14 @@ export default function Hero() {
               initial={{ y: 10 }}
               animate={{ y: [0, 6, 0] }}
               transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-              className="absolute -bottom-6 left-6 bg-white/95 backdrop-blur-md px-5 py-3.5 rounded-2xl shadow-card-hover border border-brand-borderLight flex items-center gap-3"
+              className="absolute -bottom-6 left-6 bg-white/95 backdrop-blur-md px-5 py-3.5 rounded-2xl shadow-card-hover border border-brand-border flex items-center gap-3"
             >
-              <div className="w-10 h-10 rounded-xl bg-brand-emerald flex items-center justify-center text-white">
-                <TrendingUp className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-xl bg-brand-black flex items-center justify-center text-white">
+                <TrendingUp className="w-5 h-5 text-brand-primary" />
               </div>
               <div>
-                <p className="font-heading font-bold text-sm text-brand-charcoal">Business Growth</p>
-                <p className="text-xs text-brand-muted">Turnkey Food Consultancy</p>
+                <p className="font-heading font-bold text-sm text-brand-black">Business Growth</p>
+                <p className="text-xs text-brand-textMuted">Turnkey Food Consultancy</p>
               </div>
             </motion.div>
 

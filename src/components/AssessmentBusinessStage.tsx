@@ -16,12 +16,12 @@ export default function AssessmentBusinessStage({
   onBack
 }: AssessmentBusinessStageProps) {
   return (
-    <div className="max-w-4xl mx-auto bg-white rounded-3xl border border-brand-borderLight shadow-card-hover p-8 sm:p-12 space-y-8">
+    <div className="max-w-4xl mx-auto bg-white rounded-3xl border border-brand-border shadow-card-hover p-8 sm:p-12 space-y-8">
       <div className="space-y-2">
-        <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-brand-charcoal tracking-tight">
+        <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-brand-black tracking-tight">
           Where are you currently in your business journey?
         </h2>
-        <p className="text-brand-slate text-sm sm:text-base">
+        <p className="text-brand-textSecondary text-sm sm:text-base">
           This helps calibrate the next steps and recommended services for your operational timeline.
         </p>
       </div>
@@ -40,27 +40,27 @@ export default function AssessmentBusinessStage({
                   onChange(stage.id);
                 }
               }}
-              className={`flex items-start justify-between text-left p-5 rounded-2xl border transition-all outline-none focus-visible:ring-2 focus-visible:ring-brand-emerald focus-visible:ring-offset-2 ${
+              className={`flex items-start justify-between text-left p-5 rounded-2xl border transition-all outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 ${
                 isSelected
-                  ? 'border-brand-emerald bg-brand-lightGreen/40 shadow-sm ring-1 ring-brand-emerald'
-                  : 'border-brand-borderLight hover:border-brand-emerald/40 hover:bg-brand-bgLight/40'
+                  ? 'border-brand-primary bg-brand-primaryLight/40 shadow-sm ring-1 ring-brand-primary'
+                  : 'border-brand-border hover:border-brand-primary/40 hover:bg-brand-backgroundSoft/45'
               }`}
               aria-checked={isSelected}
               role="radio"
             >
               <div className="space-y-1 pr-4">
-                <h3 className="font-heading font-bold text-sm sm:text-base text-brand-charcoal">
+                <h3 className="font-heading font-bold text-sm sm:text-base text-brand-black">
                   {stage.label}
                 </h3>
-                <p className="text-xs text-brand-muted leading-relaxed">
+                <p className="text-xs text-brand-textMuted leading-relaxed">
                   {stage.description}
                 </p>
               </div>
 
               {/* Indicator Circle */}
-              <div className="w-5 h-5 rounded-full border border-brand-borderLight flex items-center justify-center shrink-0 mt-0.5">
+              <div className="w-5 h-5 rounded-full border border-brand-border flex items-center justify-center shrink-0 mt-0.5">
                 {isSelected && (
-                  <div className="w-3 h-3 rounded-full bg-brand-emerald" />
+                  <div className="w-3 h-3 rounded-full bg-brand-primary" />
                 )}
               </div>
             </button>
@@ -69,17 +69,17 @@ export default function AssessmentBusinessStage({
       </div>
 
       {/* Navigation Buttons */}
-      <div className="flex items-center justify-between pt-6 border-t border-brand-borderSubtle">
+      <div className="flex items-center justify-between pt-6 border-t border-brand-border">
         <button
           onClick={onBack}
-          className="px-6 py-3 rounded-xl border border-brand-borderLight text-brand-charcoal font-heading font-semibold text-sm hover:bg-brand-bgLight transition-colors"
+          className="px-6 py-3 rounded-xl border border-brand-border text-brand-black font-heading font-semibold text-sm hover:bg-brand-backgroundSoft transition-colors"
         >
           Back
         </button>
         <button
           onClick={onNext}
           disabled={!selectedId}
-          className="px-8 py-3.5 rounded-xl bg-brand-emerald hover:bg-brand-emeraldHover disabled:opacity-50 text-white font-heading font-semibold text-sm shadow-sm transition-colors"
+          className="px-8 py-3.5 rounded-xl bg-brand-primary hover:bg-brand-primaryDark disabled:opacity-50 text-brand-black font-heading font-semibold text-sm shadow-gold transition-colors"
         >
           Continue
         </button>

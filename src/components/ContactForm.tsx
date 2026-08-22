@@ -93,33 +93,33 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="bg-white p-8 sm:p-10 rounded-3xl border border-brand-borderLight shadow-card-hover">
+    <div className="bg-white p-8 sm:p-10 rounded-3xl border border-brand-border shadow-card-hover">
       
       {status === 'success' ? (
         <div className="text-center py-12 space-y-4">
-          <div className="w-16 h-16 bg-brand-lightGreen rounded-full flex items-center justify-center mx-auto text-brand-fresh">
+          <div className="w-16 h-16 bg-brand-primaryLight rounded-full flex items-center justify-center mx-auto text-brand-primaryDark">
             <CheckCircle2 className="w-10 h-10" />
           </div>
-          <h3 className="font-heading font-extrabold text-2xl text-brand-charcoal">
+          <h3 className="font-heading font-extrabold text-2xl text-brand-black">
             Enquiry Sent Successfully!
           </h3>
-          <p className="text-brand-slate max-w-md mx-auto text-base">
+          <p className="text-brand-textSecondary max-w-md mx-auto text-base">
             Thank you for contacting Zenix Food Worx. Our team of experts will review your details and get back to you within 24 hours.
           </p>
           <button
             onClick={() => setStatus('idle')}
-            className="mt-4 px-6 py-2.5 rounded-xl bg-brand-emerald text-white font-heading font-semibold text-sm hover:bg-brand-emeraldHover transition-colors"
+            className="mt-4 px-6 py-2.5 rounded-xl bg-brand-primary text-brand-black font-heading font-semibold text-sm hover:bg-brand-primaryDark transition-colors"
           >
             Send Another Enquiry
           </button>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="border-b border-brand-borderSubtle pb-4 mb-6">
-            <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-brand-charcoal">
+          <div className="border-b border-brand-border pb-4 mb-6">
+            <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-brand-black">
               Send Us an Enquiry
             </h3>
-            <p className="text-xs sm:text-sm text-brand-muted mt-1">
+            <p className="text-xs sm:text-sm text-brand-textMuted mt-1">
               Fill out the form below and our consultancy team will reach out promptly.
             </p>
           </div>
@@ -134,7 +134,7 @@ export default function ContactForm() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Full Name */}
             <div>
-              <label htmlFor="fullName" className="block text-xs font-heading font-bold text-brand-charcoal uppercase tracking-wider mb-2">
+              <label htmlFor="fullName" className="block text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-2">
                 Full Name <span className="text-red-500">*</span>
               </label>
               <input
@@ -145,13 +145,13 @@ export default function ContactForm() {
                 onChange={handleChange}
                 required
                 placeholder="e.g., Rajesh Sharma"
-                className="w-full px-4 py-3 rounded-xl border border-brand-borderLight focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20 text-brand-charcoal text-sm outline-none transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none transition-all"
               />
             </div>
 
             {/* Company Name */}
             <div>
-              <label htmlFor="companyName" className="block text-xs font-heading font-bold text-brand-charcoal uppercase tracking-wider mb-2">
+              <label htmlFor="companyName" className="block text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-2">
                 Company / Brand Name
               </label>
               <input
@@ -161,7 +161,7 @@ export default function ContactForm() {
                 value={formData.companyName}
                 onChange={handleChange}
                 placeholder="e.g., Apex Foods Pvt Ltd"
-                className="w-full px-4 py-3 rounded-xl border border-brand-borderLight focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20 text-brand-charcoal text-sm outline-none transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none transition-all"
               />
             </div>
           </div>
@@ -169,7 +169,7 @@ export default function ContactForm() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Phone */}
             <div>
-              <label htmlFor="phone" className="block text-xs font-heading font-bold text-brand-charcoal uppercase tracking-wider mb-2">
+              <label htmlFor="phone" className="block text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-2">
                 Phone Number <span className="text-red-500">*</span>
               </label>
               <input
@@ -180,13 +180,13 @@ export default function ContactForm() {
                 onChange={handleChange}
                 required
                 placeholder="+91 98765 43210"
-                className="w-full px-4 py-3 rounded-xl border border-brand-borderLight focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20 text-brand-charcoal text-sm outline-none transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none transition-all"
               />
             </div>
 
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-xs font-heading font-bold text-brand-charcoal uppercase tracking-wider mb-2">
+              <label htmlFor="email" className="block text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-2">
                 Email Address <span className="text-red-500">*</span>
               </label>
               <input
@@ -197,7 +197,7 @@ export default function ContactForm() {
                 onChange={handleChange}
                 required
                 placeholder="name@company.com"
-                className="w-full px-4 py-3 rounded-xl border border-brand-borderLight focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20 text-brand-charcoal text-sm outline-none transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none transition-all"
               />
             </div>
           </div>
@@ -205,7 +205,7 @@ export default function ContactForm() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Business Type */}
             <div>
-              <label htmlFor="businessType" className="block text-xs font-heading font-bold text-brand-charcoal uppercase tracking-wider mb-2">
+              <label htmlFor="businessType" className="block text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-2">
                 Business Type
               </label>
               <select
@@ -213,7 +213,7 @@ export default function ContactForm() {
                 name="businessType"
                 value={formData.businessType}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl border border-brand-borderLight focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20 text-brand-charcoal text-sm outline-none bg-white transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none bg-white transition-all"
               >
                 {businessTypes.map((type) => (
                   <option key={type} value={type}>
@@ -225,7 +225,7 @@ export default function ContactForm() {
 
             {/* Service Required */}
             <div>
-              <label htmlFor="serviceRequired" className="block text-xs font-heading font-bold text-brand-charcoal uppercase tracking-wider mb-2">
+              <label htmlFor="serviceRequired" className="block text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-2">
                 Service Required
               </label>
               <select
@@ -233,7 +233,7 @@ export default function ContactForm() {
                 name="serviceRequired"
                 value={formData.serviceRequired}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl border border-brand-borderLight focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20 text-brand-charcoal text-sm outline-none bg-white transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none bg-white transition-all"
               >
                 <option value="General Consultancy">General Consultancy Inquiry</option>
                 {servicesData.map((service) => (
@@ -247,7 +247,7 @@ export default function ContactForm() {
 
           {/* Message */}
           <div>
-            <label htmlFor="message" className="block text-xs font-heading font-bold text-brand-charcoal uppercase tracking-wider mb-2">
+            <label htmlFor="message" className="block text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-2">
               How Can We Help You? <span className="text-red-500">*</span>
             </label>
             <textarea
@@ -258,7 +258,7 @@ export default function ContactForm() {
               onChange={handleChange}
               required
               placeholder="Describe your requirement, facility status, or specific compliance questions..."
-              className="w-full px-4 py-3 rounded-xl border border-brand-borderLight focus:border-brand-emerald focus:ring-2 focus:ring-brand-emerald/20 text-brand-charcoal text-sm outline-none transition-all resize-none"
+              className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none transition-all resize-none"
             ></textarea>
           </div>
 
@@ -266,17 +266,17 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={status === 'loading'}
-            className="w-full py-4 rounded-xl bg-brand-emerald hover:bg-brand-emeraldHover text-white font-heading font-semibold text-base shadow-md hover:shadow-card-hover transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-75"
+            className="w-full py-4 rounded-xl bg-brand-primary hover:bg-brand-primaryDark text-brand-black font-heading font-semibold text-base shadow-gold hover:shadow-card-hover transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-75"
           >
             {status === 'loading' ? (
               <>
-                <Loader2 className="w-5 h-5 animate-spin" />
+                <Loader2 className="w-5 h-5 animate-spin text-brand-black" />
                 <span>Sending Request...</span>
               </>
             ) : (
               <>
                 <span>Send Enquiry</span>
-                <Send className="w-4 h-4" />
+                <Send className="w-4 h-4 text-brand-black" />
               </>
             )}
           </button>

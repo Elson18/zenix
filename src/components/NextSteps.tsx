@@ -10,11 +10,11 @@ interface NextStepsProps {
 export default function NextSteps({ nextSteps, onTalkToExpert }: NextStepsProps) {
   return (
     <div className="space-y-6">
-      <div className="border-b border-brand-borderSubtle pb-3">
-        <h3 className="font-heading font-extrabold text-lg sm:text-xl text-brand-charcoal">
+      <div className="border-b border-brand-border pb-3">
+        <h3 className="font-heading font-extrabold text-lg sm:text-xl text-brand-black">
           Suggested Next Steps
         </h3>
-        <p className="text-xs text-brand-muted">
+        <p className="text-xs text-brand-textMuted">
           Your path forward compiled based on the compliance gaps identified.
         </p>
       </div>
@@ -29,15 +29,15 @@ export default function NextSteps({ nextSteps, onTalkToExpert }: NextStepsProps)
               key={step.id}
               className={`p-6 rounded-2xl border flex flex-col justify-between space-y-4 transition-all duration-300 relative ${
                 isLast
-                  ? 'border-brand-gold bg-brand-lightGold/60 hover:shadow-subtle'
-                  : 'border-brand-borderLight bg-white hover:shadow-subtle'
+                  ? 'border-brand-primary bg-brand-primaryLight/60 hover:shadow-subtle'
+                  : 'border-brand-border bg-white hover:shadow-subtle'
               }`}
             >
               <div className="space-y-3">
-                <span className="font-heading font-extrabold text-2xl text-brand-gold font-mono block leading-none">
+                <span className="font-heading font-extrabold text-2xl text-brand-primary font-mono block leading-none">
                   {stepNumber}
                 </span>
-                <p className="text-xs sm:text-sm font-heading font-semibold text-brand-charcoal leading-relaxed">
+                <p className="text-xs sm:text-sm font-heading font-semibold text-brand-black leading-relaxed">
                   {step.text}
                 </p>
               </div>
@@ -46,7 +46,7 @@ export default function NextSteps({ nextSteps, onTalkToExpert }: NextStepsProps)
                 <div className="pt-2">
                   <button
                     onClick={onTalkToExpert}
-                    className="inline-flex items-center gap-1.5 font-heading font-bold text-xs text-brand-emerald hover:text-brand-emeraldHover transition-all group"
+                    className="inline-flex items-center gap-1.5 font-heading font-bold text-xs text-brand-black hover:text-brand-primary transition-all group"
                   >
                     <span>Talk to an Expert</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />

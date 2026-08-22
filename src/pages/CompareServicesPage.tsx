@@ -214,18 +214,18 @@ export default function CompareServicesPage() {
   };
 
   return (
-    <div className="pt-24 min-h-screen bg-brand-bgLight">
+    <div className="pt-24 min-h-screen bg-white">
       
       {/* Page Header */}
-      <section className="py-16 bg-gradient-to-b from-brand-bgWarm via-white to-brand-bgLight border-b border-brand-borderLight">
+      <section className="py-16 bg-gradient-to-b from-brand-backgroundSoft via-white to-brand-section border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-gold px-4 py-1.5 rounded-full gold-badge inline-block bg-white shadow-sm border border-brand-borderLight">
+          <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-primary px-4 py-1.5 rounded-full gold-badge inline-block bg-white shadow-sm border border-brand-border">
             SERVICE DETAILS
           </span>
-          <h1 className="font-heading font-extrabold text-4xl sm:text-5xl text-brand-charcoal tracking-tight max-w-3xl mx-auto">
+          <h1 className="font-heading font-extrabold text-4xl sm:text-5xl text-brand-black tracking-tight max-w-3xl mx-auto">
             Compare Our Services
           </h1>
-          <p className="text-brand-slate text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-brand-textSecondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Understand which Zenix Food Worx service best fits your business requirements and operational phase.
           </p>
         </div>
@@ -234,10 +234,10 @@ export default function CompareServicesPage() {
       <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* FILTERS TOOLBAR */}
-        <div className="p-6 rounded-3xl bg-white border border-brand-borderLight shadow-subtle flex flex-col md:flex-row gap-4 items-center justify-between">
+        <div className="p-6 rounded-3xl bg-white border border-brand-border shadow-subtle flex flex-col md:flex-row gap-4 items-center justify-between">
           <div className="flex flex-wrap gap-4 items-center w-full md:w-auto">
-            <span className="text-xs font-heading font-bold text-brand-slate uppercase tracking-wider flex items-center gap-1.5 shrink-0">
-              <Info className="w-4 h-4 text-brand-gold" />
+            <span className="text-xs font-heading font-bold text-brand-textSecondary uppercase tracking-wider flex items-center gap-1.5 shrink-0">
+              <Info className="w-4 h-4 text-brand-primary" />
               <span>Filters</span>
             </span>
             
@@ -246,7 +246,7 @@ export default function CompareServicesPage() {
               <select
                 value={filterType}
                 onChange={(e) => setFilterType(e.target.value)}
-                className="px-3.5 py-2.5 rounded-xl border border-brand-borderLight text-xs font-heading font-bold bg-white text-brand-charcoal outline-none focus:border-brand-emerald focus:ring-1 focus:ring-brand-emerald/10 cursor-pointer"
+                className="px-3.5 py-2.5 rounded-xl border border-brand-border text-xs font-heading font-bold bg-white text-brand-black outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/10 cursor-pointer"
               >
                 <option value="all">All Business Types</option>
                 <option value="food-manufacturer">Manufacturer</option>
@@ -263,7 +263,7 @@ export default function CompareServicesPage() {
               <select
                 value={filterStage}
                 onChange={(e) => setFilterStage(e.target.value)}
-                className="px-3.5 py-2.5 rounded-xl border border-brand-borderLight text-xs font-heading font-bold bg-white text-brand-charcoal outline-none focus:border-brand-emerald focus:ring-1 focus:ring-brand-emerald/10 cursor-pointer"
+                className="px-3.5 py-2.5 rounded-xl border border-brand-border text-xs font-heading font-bold bg-white text-brand-black outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/10 cursor-pointer"
               >
                 <option value="all">All Business Stages</option>
                 <option value="new-idea">Idea / Planning</option>
@@ -281,7 +281,7 @@ export default function CompareServicesPage() {
               <select
                 value={filterReq}
                 onChange={(e) => setFilterReq(e.target.value)}
-                className="px-3.5 py-2.5 rounded-xl border border-brand-borderLight text-xs font-heading font-bold bg-white text-brand-charcoal outline-none focus:border-brand-emerald focus:ring-1 focus:ring-brand-emerald/10 cursor-pointer"
+                className="px-3.5 py-2.5 rounded-xl border border-brand-border text-xs font-heading font-bold bg-white text-brand-black outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/10 cursor-pointer"
               >
                 <option value="all">All Needs</option>
                 <option value="licensing">Licensing / FSSAI</option>
@@ -315,12 +315,12 @@ export default function CompareServicesPage() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 15 }}
-              className="p-6 rounded-3xl bg-brand-emerald text-white border border-brand-emerald/20 shadow-xl space-y-6"
+              className="p-6 rounded-3xl bg-brand-black text-white border border-brand-primary/30 shadow-xl space-y-6"
             >
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <div className="space-y-1">
                   <h3 className="font-heading font-extrabold text-lg sm:text-xl flex items-center gap-2">
-                    <Sparkles className="w-5 h-5 text-brand-gold fill-current" />
+                    <Sparkles className="w-5 h-5 text-brand-primary fill-current" />
                     <span>Side-by-Side Comparison Matrix</span>
                   </h3>
                   <p className="text-xs text-white/70">
@@ -374,7 +374,7 @@ export default function CompareServicesPage() {
                           </div>
                           <div>
                             <p className="text-[10px] text-white/50 uppercase font-heading font-bold">Delivery Deliverable</p>
-                            <p className="text-brand-gold font-bold mt-0.5">{matrix.outcome}</p>
+                            <p className="text-brand-primary font-bold mt-0.5">{matrix.outcome}</p>
                           </div>
                         </div>
                       </div>
@@ -382,15 +382,15 @@ export default function CompareServicesPage() {
                       <div className="pt-4 border-t border-white/10 flex gap-2">
                         <NavLink
                           to={`/services/${srv.slug}`}
-                          className="flex-1 text-center py-2 rounded-xl bg-white text-brand-emerald hover:bg-brand-lightGreen font-heading font-bold text-xs shadow-sm transition-all"
+                          className="flex-1 text-center py-2 rounded-xl bg-white text-brand-black hover:bg-brand-primary font-heading font-bold text-xs shadow-sm transition-all"
                         >
                           Explore
                         </NavLink>
                         <button
                           onClick={() => handleTalkToExpert(srv.title)}
-                          className="flex-1 text-center py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white border border-white/10 font-heading font-bold text-xs transition-colors flex items-center justify-center gap-1"
+                          className="flex-1 text-center py-2 rounded-xl bg-brand-primary hover:bg-brand-primaryDark text-brand-black border border-brand-primary/20 font-heading font-bold text-xs transition-colors flex items-center justify-center gap-1"
                         >
-                          <MessageCircle className="w-3.5 h-3.5" />
+                          <MessageCircle className="w-3.5 h-3.5 text-brand-black" />
                           <span>Consult</span>
                         </button>
                       </div>
@@ -411,18 +411,18 @@ export default function CompareServicesPage() {
         </AnimatePresence>
 
         {/* COMPARISON MAIN DIRECTORY TABLE (DESKTOP) */}
-        <div className="hidden lg:block bg-white rounded-3xl border border-brand-borderLight shadow-subtle overflow-hidden">
+        <div className="hidden lg:block bg-white rounded-3xl border border-brand-border shadow-subtle overflow-hidden">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-brand-bgWarm border-b border-brand-borderLight">
-                <th className="p-5 font-heading font-extrabold text-xs uppercase text-brand-charcoal w-[5%] text-center">Compare</th>
-                <th className="p-5 font-heading font-extrabold text-xs uppercase text-brand-charcoal w-[25%]">Service Name</th>
-                <th className="p-5 font-heading font-extrabold text-xs uppercase text-brand-charcoal w-[25%]">Best For</th>
-                <th className="p-5 font-heading font-extrabold text-xs uppercase text-brand-charcoal w-[25%]">Includes</th>
-                <th className="p-5 font-heading font-extrabold text-xs uppercase text-brand-charcoal w-[20%]">Outcome</th>
+              <tr className="bg-brand-backgroundSoft border-b border-brand-border">
+                <th className="p-5 font-heading font-extrabold text-xs uppercase text-brand-black w-[5%] text-center">Compare</th>
+                <th className="p-5 font-heading font-extrabold text-xs uppercase text-brand-black w-[25%]">Service Name</th>
+                <th className="p-5 font-heading font-extrabold text-xs uppercase text-brand-black w-[25%]">Best For</th>
+                <th className="p-5 font-heading font-extrabold text-xs uppercase text-brand-black w-[25%]">Includes</th>
+                <th className="p-5 font-heading font-extrabold text-xs uppercase text-brand-black w-[20%]">Outcome</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-brand-borderSubtle">
+            <tbody className="divide-y divide-brand-border">
               {filteredServices.map(srv => {
                 const matrix = comparisonMatrix[srv.id];
                 if (!matrix) return null;
@@ -431,15 +431,15 @@ export default function CompareServicesPage() {
                 return (
                   <tr 
                     key={srv.id}
-                    className={`transition-all hover:bg-brand-lightGreen/20 ${isSelected ? 'bg-brand-softGreen/30' : ''}`}
+                    className={`transition-all hover:bg-brand-primaryLight/20 ${isSelected ? 'bg-brand-primaryLight/40' : ''}`}
                   >
                     <td className="p-5 text-center">
                       <button
                         onClick={() => handleSelectService(srv.id)}
                         className={`w-5 h-5 mx-auto rounded-md border flex items-center justify-center transition-all ${
                           isSelected
-                            ? 'bg-brand-emerald border-brand-emerald text-white'
-                            : 'border-brand-borderLight bg-white hover:border-brand-emerald'
+                            ? 'bg-brand-primary border-brand-primary text-brand-black'
+                            : 'border-brand-border bg-white hover:border-brand-primary'
                         }`}
                         aria-label={`Select ${srv.title} for comparison`}
                       >
@@ -449,15 +449,15 @@ export default function CompareServicesPage() {
                     <td className="p-5">
                       <NavLink
                         to={`/services/${srv.slug}`}
-                        className="font-heading font-bold text-sm text-brand-charcoal hover:text-brand-emerald transition-colors"
+                        className="font-heading font-bold text-sm text-brand-black hover:text-brand-primary transition-colors"
                       >
                         {srv.title}
                       </NavLink>
                     </td>
-                    <td className="p-5 text-xs text-brand-slate leading-relaxed">{matrix.bestFor}</td>
-                    <td className="p-5 text-xs text-brand-slate leading-relaxed">{matrix.includes}</td>
+                    <td className="p-5 text-xs text-brand-textSecondary leading-relaxed">{matrix.bestFor}</td>
+                    <td className="p-5 text-xs text-brand-textSecondary leading-relaxed">{matrix.includes}</td>
                     <td className="p-5">
-                      <span className="text-xs font-bold text-brand-emerald px-2.5 py-1 rounded-full bg-brand-lightGreen/60">
+                      <span className="text-xs font-bold text-brand-primaryDark px-2.5 py-1 rounded-full bg-brand-primaryLight">
                         {matrix.outcome}
                       </span>
                     </td>
@@ -467,7 +467,7 @@ export default function CompareServicesPage() {
               
               {filteredServices.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="p-12 text-center text-brand-muted text-sm border-none">
+                  <td colSpan={5} className="p-12 text-center text-brand-textMuted text-sm border-none">
                     No services match the selected filters. Please adjust filters or clear selections.
                   </td>
                 </tr>
@@ -489,8 +489,8 @@ export default function CompareServicesPage() {
                 key={srv.id}
                 className={`p-5 rounded-2xl border transition-all ${
                   isSelected 
-                    ? 'bg-brand-softGreen/30 border-brand-emerald' 
-                    : 'bg-white border-brand-borderLight'
+                    ? 'bg-brand-primaryLight/40 border-brand-primary' 
+                    : 'bg-white border-brand-border'
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -499,15 +499,15 @@ export default function CompareServicesPage() {
                       onClick={() => handleSelectService(srv.id)}
                       className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all ${
                         isSelected
-                          ? 'bg-brand-emerald border-brand-emerald text-white'
-                          : 'border-brand-borderLight bg-white'
+                          ? 'bg-brand-primary border-brand-primary text-brand-black'
+                          : 'border-brand-border bg-white'
                       }`}
                     >
                       {isSelected && <Check className="w-3.5 h-3.5 stroke-[3]" />}
                     </button>
                     <NavLink
                       to={`/services/${srv.slug}`}
-                      className="font-heading font-bold text-sm text-brand-charcoal"
+                      className="font-heading font-bold text-sm text-brand-black"
                     >
                       {srv.title}
                     </NavLink>
@@ -515,17 +515,17 @@ export default function CompareServicesPage() {
 
                   <button
                     onClick={() => setExpandedMobileRow(isExpanded ? null : srv.id)}
-                    className="p-1 text-brand-slate hover:text-brand-emerald transition-colors"
+                    className="p-1 text-brand-textSecondary hover:text-brand-primary transition-colors"
                   >
                     {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   </button>
                 </div>
 
                 <div className="mt-3 flex flex-wrap gap-2">
-                  <span className="text-[10px] font-bold text-brand-emerald px-2 py-0.5 rounded bg-brand-lightGreen">
+                  <span className="text-[10px] font-bold text-brand-primaryDark px-2 py-0.5 rounded bg-brand-primaryLight">
                     {matrix.outcome}
                   </span>
-                  <span className="text-[10px] text-brand-muted font-heading font-semibold">
+                  <span className="text-[10px] text-brand-textMuted font-heading font-semibold">
                     Best For: {matrix.bestFor.split(' ')[0]}
                   </span>
                 </div>
@@ -537,35 +537,35 @@ export default function CompareServicesPage() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden mt-4 pt-4 border-t border-brand-borderSubtle text-xs space-y-3 text-brand-slate"
+                      className="overflow-hidden mt-4 pt-4 border-t border-brand-border text-xs space-y-3 text-brand-textSecondary"
                     >
                       <div>
-                        <p className="text-[9px] uppercase tracking-wider font-bold text-brand-muted">Best For</p>
+                        <p className="text-[9px] uppercase tracking-wider font-bold text-brand-textMuted">Best For</p>
                         <p className="mt-0.5">{matrix.bestFor}</p>
                       </div>
                       <div>
-                        <p className="text-[9px] uppercase tracking-wider font-bold text-brand-muted">Includes</p>
+                        <p className="text-[9px] uppercase tracking-wider font-bold text-brand-textMuted">Includes</p>
                         <p className="mt-0.5">{matrix.includes}</p>
                       </div>
                       <div>
-                        <p className="text-[9px] uppercase tracking-wider font-bold text-brand-muted">Purpose</p>
+                        <p className="text-[9px] uppercase tracking-wider font-bold text-brand-textMuted">Purpose</p>
                         <p className="mt-0.5 leading-relaxed">{matrix.purpose}</p>
                       </div>
                       <div>
-                        <p className="text-[9px] uppercase tracking-wider font-bold text-brand-muted">Scope details</p>
+                        <p className="text-[9px] uppercase tracking-wider font-bold text-brand-textMuted">Scope details</p>
                         <p className="mt-0.5 leading-relaxed">{matrix.scope}</p>
                       </div>
 
                       <div className="pt-2 flex gap-2">
                         <NavLink
                           to={`/services/${srv.slug}`}
-                          className="flex-1 text-center py-2 rounded-lg bg-brand-bgWarm font-heading font-bold text-[11px] border border-brand-borderLight text-brand-charcoal"
+                          className="flex-1 text-center py-2 rounded-lg bg-brand-backgroundSoft font-heading font-bold text-[11px] border border-brand-border text-brand-black"
                         >
                           View Service Page
                         </NavLink>
                         <button
                           onClick={() => handleTalkToExpert(srv.title)}
-                          className="flex-1 py-2 rounded-lg bg-brand-emerald text-white font-heading font-bold text-[11px]"
+                          className="flex-1 py-2 rounded-lg bg-brand-primary text-brand-black font-heading font-bold text-[11px]"
                         >
                           Talk to Expert
                         </button>
@@ -578,7 +578,7 @@ export default function CompareServicesPage() {
           })}
           
           {filteredServices.length === 0 && (
-            <div className="p-8 text-center rounded-2xl border border-brand-borderLight text-brand-muted text-sm bg-white">
+            <div className="p-8 text-center rounded-2xl border border-brand-border text-brand-textMuted text-sm bg-white">
               No services match the selected filters.
             </div>
           )}

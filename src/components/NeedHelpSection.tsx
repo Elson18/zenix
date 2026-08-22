@@ -106,21 +106,21 @@ export default function NeedHelpSection() {
   };
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden border-t border-brand-borderLight">
+    <section className="py-20 bg-white relative overflow-hidden border-t border-brand-border">
       {/* Background blurs */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-brand-lightGreen/40 rounded-full blur-3xl pointer-events-none z-0" />
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-brand-primaryLight/15 rounded-full blur-3xl pointer-events-none z-0" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-gold px-3.5 py-1.5 rounded-full gold-badge inline-block bg-brand-lightGold border border-brand-goldBorder/40">
+          <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-primary px-3.5 py-1.5 rounded-full gold-badge inline-block bg-brand-backgroundSoft border border-brand-border">
             TAILORED SUPPORT
           </span>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-brand-charcoal tracking-tight">
+          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-brand-black tracking-tight">
             What Do You Need Help With?
           </h2>
-          <p className="text-brand-slate text-base sm:text-lg leading-relaxed">
+          <p className="text-brand-textSecondary text-base sm:text-lg leading-relaxed">
             Tell us what you're working on. We'll help you find the right solution.
           </p>
         </div>
@@ -138,7 +138,7 @@ export default function NeedHelpSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.05 }}
                 onClick={() => handleCardClick(card)}
-                className="group relative bg-white p-6 rounded-2xl border border-brand-borderLight hover:border-brand-emerald/30 shadow-subtle hover:shadow-card-hover cursor-pointer transition-all duration-300 flex flex-col justify-between min-h-[250px] outline-none focus-within:ring-2 focus-within:ring-brand-emerald focus-within:ring-offset-2"
+                className="group relative bg-white p-6 rounded-2xl border border-brand-border hover:border-brand-primary/50 shadow-subtle hover:shadow-card-hover cursor-pointer transition-all duration-300 flex flex-col justify-between min-h-[250px] outline-none focus-within:ring-2 focus-within:ring-brand-primary focus-within:ring-offset-2"
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
@@ -151,32 +151,32 @@ export default function NeedHelpSection() {
                 {/* Upper Content */}
                 <div>
                   <div className="flex justify-between items-start mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-brand-lightGreen flex items-center justify-center text-brand-emerald group-hover:bg-brand-emerald group-hover:text-white transition-colors duration-300 shadow-sm">
+                    <div className="w-12 h-12 rounded-xl bg-brand-primaryLight flex items-center justify-center text-brand-primaryDark group-hover:bg-brand-primary group-hover:text-brand-black transition-colors duration-300 shadow-sm">
                       <Icon className="w-6 h-6" />
                     </div>
 
                     {/* Badge */}
                     {card.badge && (
-                      <span className={`text-[10px] font-heading font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ${
+                      <span className={`text-[10px] font-heading font-bold px-2 py-0.5 rounded-full uppercase tracking-wider border ${
                         card.badge === 'Popular' 
-                          ? 'bg-amber-100 text-amber-800' 
-                          : 'bg-emerald-100 text-emerald-800'
+                          ? 'bg-brand-primaryLight text-brand-black border-brand-primary/20' 
+                          : 'bg-brand-backgroundSoft text-brand-charcoal border-brand-border'
                       }`}>
                         {card.badge}
                       </span>
                     )}
                   </div>
 
-                  <h3 className="font-heading font-bold text-lg text-brand-charcoal mb-2 group-hover:text-brand-emerald transition-colors">
+                  <h3 className="font-heading font-bold text-lg text-brand-black mb-2 group-hover:text-brand-primary transition-colors">
                     {card.title}
                   </h3>
-                  <p className="text-sm text-brand-slate leading-relaxed">
+                  <p className="text-sm text-brand-textSecondary leading-relaxed">
                     {card.description}
                   </p>
                 </div>
 
                 {/* CTA Line */}
-                <div className="mt-6 flex items-center gap-1.5 text-xs font-heading font-bold text-brand-emerald uppercase tracking-wider group-hover:text-brand-accent transition-colors">
+                <div className="mt-6 flex items-center gap-1.5 text-xs font-heading font-bold text-brand-black uppercase tracking-wider group-hover:text-brand-primary transition-colors">
                   <span>{card.cta}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>

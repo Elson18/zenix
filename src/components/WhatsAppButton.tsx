@@ -26,10 +26,10 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contact Zenix Food Worx on WhatsApp"
-      className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 px-4 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-heading font-semibold text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 group border border-white/20"
+      className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 px-4 py-3 rounded-full bg-brand-black hover:bg-brand-charcoal text-brand-primary font-heading font-semibold text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 group border border-brand-primary/30"
     >
-      <MessageCircle className="w-6 h-6 fill-current text-white group-hover:rotate-12 transition-transform" />
-      <span className="hidden sm:inline">WhatsApp Expert</span>
+      <MessageCircle className="w-6 h-6 fill-current text-brand-primary group-hover:rotate-12 transition-transform" />
+      <span className="hidden sm:inline text-white">WhatsApp Expert</span>
     </a>
   );
 }

@@ -45,16 +45,18 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           >
             {/* Header */}
             <div>
-              <div className="flex items-center justify-between p-6 border-b border-brand-borderSubtle">
+              <div className="flex items-center justify-between p-6 border-b border-brand-border">
                 <NavLink to="/" onClick={onClose} className="flex items-center gap-2">
-                  <div className="w-9 h-9 rounded-lg bg-brand-emerald flex items-center justify-center text-brand-gold font-heading font-bold text-lg shadow-sm">
-                    Z
-                  </div>
+                  <img
+                    src="/zenixfoodwork.jpg"
+                    alt="Zenix Food Worx"
+                    className="w-9 h-9 rounded-lg object-cover shadow-sm border border-brand-border"
+                  />
                   <div>
-                    <span className="font-heading font-extrabold text-lg text-brand-emerald tracking-tight block leading-tight">
+                    <span className="font-heading font-extrabold text-lg text-brand-black tracking-tight block leading-tight">
                       ZENIX
                     </span>
-                    <span className="text-[10px] font-semibold tracking-widest text-brand-gold uppercase block leading-none">
+                    <span className="text-[10px] font-semibold tracking-widest text-brand-primary uppercase block leading-none">
                       FOOD WORX
                     </span>
                   </div>
@@ -62,7 +64,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
                 <button
                   onClick={onClose}
-                  className="p-2 rounded-full text-brand-slate hover:text-brand-emerald hover:bg-brand-bgLight transition-colors"
+                  className="p-2 rounded-full text-brand-charcoal hover:text-brand-primary hover:bg-brand-backgroundSoft transition-colors"
                   aria-label="Close menu"
                 >
                   <X className="w-6 h-6" />
@@ -79,8 +81,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     className={({ isActive }) =>
                       `flex items-center justify-between px-4 py-3.5 rounded-xl font-heading font-medium text-base transition-all ${
                         isActive
-                          ? 'bg-brand-lightGreen text-brand-emerald font-semibold'
-                          : 'text-brand-charcoal hover:bg-brand-bgLight hover:text-brand-emerald'
+                          ? 'bg-brand-primaryLight text-brand-black font-semibold'
+                          : 'text-brand-charcoal hover:bg-brand-backgroundSoft hover:text-brand-primary'
                       }`
                     }
                   >
@@ -92,23 +94,23 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </div>
 
             {/* Bottom Actions */}
-            <div className="p-6 border-t border-brand-borderSubtle bg-brand-bgWarm space-y-4">
+            <div className="p-6 border-t border-brand-border bg-brand-backgroundSoft space-y-4">
               <NavLink
                 to="/contact"
                 onClick={onClose}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-brand-emerald hover:bg-brand-emeraldHover text-white font-heading font-semibold shadow-md transition-all active:scale-[0.98]"
+                className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-brand-primary hover:bg-brand-primaryDark text-brand-black font-heading font-semibold shadow-md transition-all active:scale-[0.98]"
               >
                 <span>Get a Consultation</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 text-brand-black" />
               </NavLink>
 
-              <div className="pt-3 border-t border-brand-borderLight text-xs text-brand-muted space-y-2">
+              <div className="pt-3 border-t border-brand-border text-xs text-brand-textMuted space-y-2">
                 <div className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-brand-emerald" />
+                  <Phone className="w-3.5 h-3.5 text-brand-primary" />
                   <span>{companyData.contact.phone}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Mail className="w-3.5 h-3.5 text-brand-emerald" />
+                  <Mail className="w-3.5 h-3.5 text-brand-primary" />
                   <span>{companyData.contact.email}</span>
                 </div>
               </div>

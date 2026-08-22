@@ -91,18 +91,18 @@ export default function HomePage() {
                   alt="Zenix Food Consultancy Team working in modern food processing facility"
                   className="w-full h-[420px] sm:h-[480px] object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-emerald/30 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/20 via-transparent to-transparent pointer-events-none" />
               </div>
 
               {/* Floating Badge */}
               <div className="absolute -bottom-6 -right-4 sm:right-6 bg-white p-5 rounded-2xl shadow-card-hover border border-brand-borderLight hidden sm:block max-w-xs">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-brand-lightGreen flex items-center justify-center text-brand-emerald shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-brand-primaryLight flex items-center justify-center text-brand-primaryDark shrink-0">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <div>
-                    <p className="font-heading font-bold text-sm text-brand-charcoal">Practical Solutions</p>
-                    <p className="text-xs text-brand-muted">Compliant & Growth-Focused</p>
+                    <p className="font-heading font-bold text-sm text-brand-black">Practical Solutions</p>
+                    <p className="text-xs text-brand-textMuted">Compliant & Growth-Focused</p>
                   </div>
                 </div>
               </div>
@@ -135,10 +135,10 @@ export default function HomePage() {
               <div className="pt-2">
                 <NavLink
                   to="/about"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-emerald hover:bg-brand-emeraldHover text-white font-heading font-semibold text-sm shadow-md transition-all group"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-primary hover:bg-brand-primaryDark text-brand-black font-heading font-semibold text-sm shadow-gold transition-all group"
                 >
                   <span>Discover Our Approach</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-brand-black" />
                 </NavLink>
               </div>
             </motion.div>
@@ -155,19 +155,19 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-br from-brand-bgWarm via-white to-brand-lightGold/30 rounded-3xl border border-brand-borderLight shadow-card-hover p-8 sm:p-12 md:flex md:items-center md:justify-between gap-8 relative overflow-hidden">
             {/* Background elements */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-brand-lightGreen/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-brand-primary/5 rounded-full blur-3xl pointer-events-none" />
 
             <div className="space-y-6 max-w-2xl relative z-10">
-              <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-gold px-3.5 py-1.5 rounded-full gold-badge inline-block bg-white shadow-sm border border-brand-borderLight">
+              <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-primary px-3.5 py-1.5 rounded-full gold-badge inline-block bg-white shadow-sm border border-brand-borderLight">
                 COMPLIANCE HEALTH CHECK
               </span>
-              <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-brand-charcoal tracking-tight leading-tight">
+              <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-brand-black tracking-tight leading-tight">
                 Check Your Food Business Readiness
               </h2>
-              <p className="text-brand-slate text-sm sm:text-base leading-relaxed">
+              <p className="text-brand-textSecondary text-sm sm:text-base leading-relaxed">
                 Take our quick 2-minute interactive assessment to identify attention areas in your FSSAI registration, safety audits, product tests, and food labelling formats.
               </p>
-              <div className="flex flex-wrap gap-4 text-xs font-heading font-semibold text-brand-slate">
+              <div className="flex flex-wrap gap-4 text-xs font-heading font-semibold text-brand-textSecondary">
                 <span className="flex items-center gap-1.5">✓ No Account Required</span>
                 <span className="flex items-center gap-1.5">✓ 100% Client-Side</span>
                 <span className="flex items-center gap-1.5">✓ Personal Recommendations</span>
@@ -177,10 +177,10 @@ export default function HomePage() {
             <div className="mt-8 md:mt-0 shrink-0 relative z-10">
               <NavLink
                 to="/readiness-assessment"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-brand-emerald hover:bg-brand-emeraldHover text-white font-heading font-semibold text-base shadow-md hover:shadow-card-hover hover:scale-[1.01] transition-all duration-300"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-brand-primary hover:bg-brand-primaryDark text-brand-black font-heading font-semibold text-base shadow-gold hover:shadow-card-hover hover:scale-[1.01] transition-all duration-300"
               >
                 <span>Start Assessment</span>
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 text-brand-black" />
               </NavLink>
             </div>
           </div>

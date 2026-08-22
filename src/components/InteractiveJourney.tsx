@@ -202,18 +202,18 @@ export default function InteractiveJourney() {
   };
 
   return (
-    <section className="py-20 bg-brand-bgWarm/30 relative overflow-hidden border-t border-brand-borderLight">
+    <section className="py-20 bg-brand-backgroundSoft relative overflow-hidden border-t border-brand-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-gold px-3.5 py-1.5 rounded-full gold-badge inline-block bg-white shadow-sm border border-brand-borderLight">
+          <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-primary px-3.5 py-1.5 rounded-full gold-badge inline-block bg-white shadow-sm border border-brand-border">
             FOOD BUSINESS LIFECYCLE
           </span>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-brand-charcoal tracking-tight">
+          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-brand-black tracking-tight">
             From Idea to Market
           </h2>
-          <p className="text-brand-slate text-base sm:text-lg leading-relaxed">
+          <p className="text-brand-textSecondary text-base sm:text-lg leading-relaxed">
             Wherever you are in your food business journey, Zenix Food Worx helps you move forward with confidence.
           </p>
         </div>
@@ -227,13 +227,13 @@ export default function InteractiveJourney() {
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1020 220" fill="none">
               <path
                 d={generatePathD()}
-                stroke="#E5E7EB"
+                stroke="#E7E0D2"
                 strokeWidth="4"
                 strokeLinecap="round"
               />
               <motion.path
                 d={generatePathD()}
-                stroke="#0B3C2D"
+                stroke="#F0B000"
                 strokeWidth="4"
                 strokeLinecap="round"
                 initial={{ pathLength: 0 }}
@@ -264,10 +264,10 @@ export default function InteractiveJourney() {
                     <div
                       className={`w-12 h-12 rounded-2xl flex items-center justify-center shadow-subtle border-2 transition-all duration-300 ${
                         isActive
-                          ? 'bg-brand-emerald text-white border-brand-emerald scale-110 ring-4 ring-brand-lightGreen'
+                          ? 'bg-brand-primary text-brand-black border-brand-primary scale-110 ring-4 ring-brand-primaryLight'
                           : isPassed
-                          ? 'bg-brand-fresh text-white border-brand-fresh'
-                          : 'bg-white text-brand-slate border-brand-borderLight hover:border-brand-emerald'
+                          ? 'bg-brand-black text-white border-brand-black'
+                          : 'bg-white text-brand-charcoal border-brand-border hover:border-brand-primary'
                       }`}
                     >
                       <span className="text-[10px] font-heading font-bold">{stage.number}</span>
@@ -277,8 +277,8 @@ export default function InteractiveJourney() {
                     <span
                       className={`mt-2 font-heading text-xs font-semibold whitespace-nowrap px-2 py-0.5 rounded-full transition-all ${
                         isActive 
-                          ? 'text-brand-emerald bg-brand-lightGreen font-bold' 
-                          : 'text-brand-slate hover:text-brand-emerald bg-white/50'
+                          ? 'text-brand-primary bg-brand-primaryLight font-bold' 
+                          : 'text-brand-charcoal hover:text-brand-primary bg-white/50'
                       }`}
                     >
                       {stage.title}
@@ -289,7 +289,7 @@ export default function InteractiveJourney() {
 
               {/* Package Fallback traveler */}
               <motion.div
-                className="absolute w-8 h-8 rounded-full bg-brand-gold text-white flex items-center justify-center shadow-gold border border-brand-goldBorder pointer-events-none z-20"
+                className="absolute w-8 h-8 rounded-full bg-brand-primary text-brand-black flex items-center justify-center shadow-gold border border-brand-primary/20 pointer-events-none z-20"
                 animate={{
                   left: `${(activeStage.cx / 1000) * 100}%`,
                   top: `${(activeStage.cy / 200) * 100}%`
@@ -298,17 +298,17 @@ export default function InteractiveJourney() {
                 style={{ transform: 'translate(-50%, -50%) margin-top: -10px' }}
                 title="Moving food package tracking your stage"
               >
-                <Package className="w-4 h-4 animate-bounce" />
+                <Package className="w-4 h-4 text-brand-black animate-bounce" />
               </motion.div>
             </div>
           </div>
 
           {/* MOBILE VERTICAL TIMELINE (Visible on mobile/tablet) */}
-          <div className="lg:hidden relative border-l-2 border-brand-borderLight ml-4 pl-8 space-y-8 py-2">
+          <div className="lg:hidden relative border-l-2 border-brand-border ml-4 pl-8 space-y-8 py-2">
             
-            <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-brand-borderLight -translate-x-1/2">
+            <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-brand-border -translate-x-1/2">
               <motion.div 
-                className="absolute top-0 w-3 h-3 bg-brand-emerald rounded-full -translate-x-[5px]"
+                className="absolute top-0 w-3 h-3 bg-brand-primary rounded-full -translate-x-[5px]"
                 animate={{
                   top: `${(activeStageIdx / (stages.length - 1)) * 100}%`
                 }}
@@ -326,28 +326,28 @@ export default function InteractiveJourney() {
                   onClick={() => handleStageClick(idx, stage.title)}
                   className={`relative p-5 rounded-2xl border transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-white border-brand-emerald shadow-card-hover'
-                      : 'bg-brand-bgWarm/40 border-brand-borderLight/80 hover:bg-white hover:border-brand-emerald/40'
+                      ? 'bg-white border-brand-primary shadow-card-hover'
+                      : 'bg-brand-backgroundSoft/40 border-brand-border hover:bg-white hover:border-brand-primary/40'
                   }`}
                 >
                   <span className={`absolute -left-[45px] top-6 w-7 h-7 rounded-lg font-heading font-extrabold text-xs flex items-center justify-center border ${
                     isActive
-                      ? 'bg-brand-emerald text-white border-brand-emerald ring-2 ring-brand-lightGreen'
-                      : 'bg-white text-brand-slate border-brand-borderLight'
+                      ? 'bg-brand-primary text-brand-black border-brand-primary ring-2 ring-brand-primaryLight'
+                      : 'bg-white text-brand-charcoal border-brand-border'
                   }`}>
                     {stage.number}
                   </span>
 
                   <div className="flex items-center gap-3 mb-2">
-                    <div className={`p-1.5 rounded-lg ${isActive ? 'bg-brand-lightGreen text-brand-emerald' : 'bg-brand-borderSubtle text-brand-slate'}`}>
+                    <div className={`p-1.5 rounded-lg ${isActive ? 'bg-brand-primaryLight text-brand-primaryDark' : 'bg-brand-backgroundSoft text-brand-charcoal'}`}>
                       <StageIcon className="w-4 h-4" />
                     </div>
-                    <h4 className="font-heading font-extrabold text-base text-brand-charcoal">
+                    <h4 className="font-heading font-extrabold text-base text-brand-black">
                       {stage.title}
                     </h4>
                   </div>
 
-                  <p className="text-sm text-brand-slate leading-relaxed">
+                  <p className="text-sm text-brand-textSecondary leading-relaxed">
                     {stage.description}
                   </p>
                 </div>
@@ -364,36 +364,36 @@ export default function InteractiveJourney() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.3 }}
-                className="p-8 sm:p-10 rounded-3xl bg-white border border-brand-borderLight shadow-subtle flex flex-col sm:flex-row items-start sm:items-center gap-6"
+                className="p-8 sm:p-10 rounded-3xl bg-white border border-brand-border shadow-subtle flex flex-col sm:flex-row items-start sm:items-center gap-6"
               >
-                <div className="w-16 h-16 rounded-2xl bg-brand-lightGreen border border-brand-borderLight flex items-center justify-center shrink-0 shadow-sm text-brand-emerald">
+                <div className="w-16 h-16 rounded-2xl bg-brand-primaryLight border border-brand-border flex items-center justify-center shrink-0 shadow-sm text-brand-primaryDark">
                   <ActiveIcon className="w-6 h-6" />
                 </div>
 
                 <div className="space-y-2 flex-grow">
                   <div className="flex items-center gap-3">
-                    <span className="text-xs font-heading font-bold uppercase tracking-wider text-brand-gold bg-brand-lightGold px-2.5 py-0.5 rounded-full border border-brand-goldBorder/40">
+                    <span className="text-xs font-heading font-bold uppercase tracking-wider text-brand-primary bg-brand-primaryLight px-2.5 py-0.5 rounded-full border border-brand-border">
                       Stage {activeStage.number}
                     </span>
                   </div>
 
-                  <h3 className="font-heading font-extrabold text-2xl text-brand-charcoal">
+                  <h3 className="font-heading font-extrabold text-2xl text-brand-black">
                     {activeStage.title}
                   </h3>
 
-                  <p className="text-brand-slate text-base leading-relaxed">
+                  <p className="text-brand-textSecondary text-base leading-relaxed">
                     {activeStage.whatHappens}
                   </p>
 
-                  <div className="pt-4 border-t border-brand-borderLight flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-4">
+                  <div className="pt-4 border-t border-brand-border flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-4">
                     <div className="space-y-1">
-                      <p className="text-[10px] text-brand-muted uppercase font-heading font-bold">Recommended Zenix Services</p>
+                      <p className="text-[10px] text-brand-textMuted uppercase font-heading font-bold">Recommended Zenix Services</p>
                       <div className="flex flex-wrap gap-2 pt-1">
                         {activeStage.services.map((srv) => (
                           <NavLink
                             key={srv.slug}
                             to={`/services/${srv.slug}`}
-                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-brand-bgWarm border border-brand-borderLight text-xs font-heading font-semibold text-brand-charcoal hover:border-brand-emerald hover:text-brand-emerald transition-all"
+                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-brand-backgroundSoft border border-brand-border text-xs font-heading font-semibold text-brand-charcoal hover:border-brand-primary hover:text-brand-primary transition-all"
                           >
                             <span>{srv.title}</span>
                             <ChevronRight className="w-3.5 h-3.5" />
