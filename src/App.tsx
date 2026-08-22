@@ -18,6 +18,7 @@ import IndustriesPage from './pages/IndustriesPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsConditionsPage from './pages/TermsConditionsPage';
+import ReadinessAssessmentPage from './pages/ReadinessAssessmentPage';
 
 export default function App() {
   return (
@@ -40,6 +41,7 @@ export default function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />
+            <Route path="/readiness-assessment" element={<ReadinessAssessmentPage />} />
             {/* Catch-all redirect to Home */}
             <Route path="*" element={<HomePage />} />
           </Routes>

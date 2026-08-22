@@ -25,6 +25,7 @@ export default function Navbar() {
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
     { name: 'Service Finder', path: '/service-finder' },
+    { name: 'Readiness Tool', path: '/readiness-assessment' },
     { name: 'Compare', path: '/compare-services' },
     { name: 'How We Work', path: '/how-we-work' },
     { name: 'About', path: '/about' },

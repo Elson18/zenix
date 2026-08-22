@@ -150,6 +150,43 @@ export default function HomePage() {
       {/* 6. Interactive Lifecycle Journey (Feature 2) */}
       <InteractiveJourney />
 
+      {/* 6b. Food Business Readiness Assessment Banner Section */}
+      <section className="py-20 bg-white border-t border-b border-brand-borderLight relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-br from-brand-bgWarm via-white to-brand-lightGold/30 rounded-3xl border border-brand-borderLight shadow-card-hover p-8 sm:p-12 md:flex md:items-center md:justify-between gap-8 relative overflow-hidden">
+            {/* Background elements */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-brand-lightGreen/10 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="space-y-6 max-w-2xl relative z-10">
+              <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-gold px-3.5 py-1.5 rounded-full gold-badge inline-block bg-white shadow-sm border border-brand-borderLight">
+                COMPLIANCE HEALTH CHECK
+              </span>
+              <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-brand-charcoal tracking-tight leading-tight">
+                Check Your Food Business Readiness
+              </h2>
+              <p className="text-brand-slate text-sm sm:text-base leading-relaxed">
+                Take our quick 2-minute interactive assessment to identify attention areas in your FSSAI registration, safety audits, product tests, and food labelling formats.
+              </p>
+              <div className="flex flex-wrap gap-4 text-xs font-heading font-semibold text-brand-slate">
+                <span className="flex items-center gap-1.5">✓ No Account Required</span>
+                <span className="flex items-center gap-1.5">✓ 100% Client-Side</span>
+                <span className="flex items-center gap-1.5">✓ Personal Recommendations</span>
+              </div>
+            </div>
+
+            <div className="mt-8 md:mt-0 shrink-0 relative z-10">
+              <NavLink
+                to="/readiness-assessment"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-brand-emerald hover:bg-brand-emeraldHover text-white font-heading font-semibold text-base shadow-md hover:shadow-card-hover hover:scale-[1.01] transition-all duration-300"
+              >
+                <span>Start Assessment</span>
+                <ArrowRight className="w-5 h-5" />
+              </NavLink>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 7. Target Industries Overview */}
       <section className="py-20 bg-brand-bgWarm/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

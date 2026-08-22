@@ -14,6 +14,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
     { name: 'Service Finder', path: '/service-finder' },
+    { name: 'Readiness Tool', path: '/readiness-assessment' },
     { name: 'Compare Services', path: '/compare-services' },
     { name: 'How We Work', path: '/how-we-work' },
     { name: 'Industries', path: '/industries' },

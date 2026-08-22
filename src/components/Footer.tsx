@@ -65,6 +65,11 @@ export default function Footer() {
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/readiness-assessment" className="hover:text-brand-gold transition-colors">
+                  Readiness Assessment
+                </NavLink>
+              </li>
+              <li>
                 <NavLink to="/industries" className="hover:text-brand-gold transition-colors">
                   Industries We Serve
                 </NavLink>
