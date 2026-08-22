@@ -7,10 +7,7 @@
     font-family: 'Inter', sans-serif;
     color: #374151;
     background-color: #FAFAFA;
-<<<<<<< HEAD
     scroll-behavior: smooth;
-=======
->>>>>>> 00bf16a30f474be74c18c2eb942eed8a448a50df
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -45,7 +42,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-<<<<<<< HEAD
 /* 3D and Layout Utilities */
 .pb-safe-bottom {
   padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
@@ -64,8 +60,6 @@
   }
 }
 
-=======
->>>>>>> 00bf16a30f474be74c18c2eb942eed8a448a50df
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

@@ -1,33 +1,18 @@
 import React from 'react';
-<<<<<<< HEAD
 import InteractiveJourney from '../components/InteractiveJourney';
 import CTASection from '../components/CTASection';
 import { companyData } from '../data/companyData';
 import { CheckCircle2 } from 'lucide-react';
-=======
-import ProcessTimeline from '../components/ProcessTimeline';
-import CTASection from '../components/CTASection';
-import { companyData } from '../data/companyData';
-import { CheckCircle2, ArrowRight } from 'lucide-react';
->>>>>>> 00bf16a30f474be74c18c2eb942eed8a448a50df
 import { motion } from 'framer-motion';
 
 export default function HowWeWorkPage() {
   return (
-<<<<<<< HEAD
     <div className="pt-24 space-y-0 bg-brand-bgLight">
-=======
-    <div className="pt-24 space-y-0">
->>>>>>> 00bf16a30f474be74c18c2eb942eed8a448a50df
       
       {/* Hero Header */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-brand-bgWarm via-white to-brand-bgLight border-b border-brand-borderLight">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-<<<<<<< HEAD
           <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-gold px-4 py-1.5 rounded-full gold-badge inline-block bg-white shadow-sm border border-brand-borderLight">
-=======
-          <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-gold px-4 py-1.5 rounded-full gold-badge inline-block">
->>>>>>> 00bf16a30f474be74c18c2eb942eed8a448a50df
             OUR WORKING METHODOLOGY
           </span>
 
@@ -36,37 +21,21 @@ export default function HowWeWorkPage() {
           </h1>
 
           <p className="text-brand-slate text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-<<<<<<< HEAD
             We simplify complex regulatory frameworks into a structured, transparent lifecycle journey tailored for your food business.
-=======
-            We simplify complex regulatory frameworks into a structured, transparent 5-stage advisory journey tailored for your food business.
->>>>>>> 00bf16a30f474be74c18c2eb942eed8a448a50df
           </p>
         </div>
       </section>
 
-<<<<<<< HEAD
       {/* Interactive Business Lifecycle Journey Timeline (Feature 2) */}
       <InteractiveJourney />
 
       {/* Deep-Dive Stage Advisory Breakdown */}
       <section className="py-20 bg-brand-bgWarm/40 border-t border-brand-borderLight">
-=======
-      {/* Interactive Process Timeline */}
-      <ProcessTimeline />
-
-      {/* Deep-Dive Stage Breakdown */}
-      <section className="py-20 bg-brand-bgWarm/60 border-t border-brand-borderLight">
->>>>>>> 00bf16a30f474be74c18c2eb942eed8a448a50df
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           
           <div className="text-center max-w-3xl mx-auto space-y-4">
             <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-brand-charcoal">
-<<<<<<< HEAD
               Detailed Breakdown of Our Advisory Method
-=======
-              Detailed Breakdown of Our 5-Stage Journey
->>>>>>> 00bf16a30f474be74c18c2eb942eed8a448a50df
             </h2>
             <p className="text-brand-slate text-base sm:text-lg">
               Here is what happens at every step of your engagement with Zenix Food Worx.

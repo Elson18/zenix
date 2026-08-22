@@ -23,19 +23,11 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-<<<<<<< HEAD
     { name: 'Services', path: '/services' },
     { name: 'Service Finder', path: '/service-finder' },
     { name: 'Compare', path: '/compare-services' },
     { name: 'How We Work', path: '/how-we-work' },
-    { name: 'Industries', path: '/industries' },
     { name: 'About', path: '/about' },
-=======
-    { name: 'About Us', path: '/about' },
-    { name: 'Services', path: '/services' },
-    { name: 'How We Work', path: '/how-we-work' },
-    { name: 'Industries', path: '/industries' },
->>>>>>> 00bf16a30f474be74c18c2eb942eed8a448a50df
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -65,21 +57,13 @@ export default function Navbar() {
           </NavLink>
 
           {/* Desktop Navigation Links */}
-<<<<<<< HEAD
           <nav className="hidden lg:flex items-center gap-0.5 bg-brand-bgWarm/80 px-2 py-1.5 rounded-full border border-brand-borderLight/80">
-=======
-          <nav className="hidden lg:flex items-center gap-1 bg-brand-bgWarm/80 px-4 py-1.5 rounded-full border border-brand-borderLight/80">
->>>>>>> 00bf16a30f474be74c18c2eb942eed8a448a50df
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
                 className={({ isActive }) =>
-<<<<<<< HEAD
                   `px-2.5 py-1.5 xl:px-4 xl:py-2 rounded-full font-heading text-xs xl:text-sm font-medium transition-all duration-200 ${
-=======
-                  `px-4 py-2 rounded-full font-heading text-sm font-medium transition-all duration-200 ${
->>>>>>> 00bf16a30f474be74c18c2eb942eed8a448a50df
                     isActive
                       ? 'bg-brand-emerald text-white shadow-sm font-semibold'
                       : 'text-brand-slate hover:text-brand-emerald hover:bg-white/60'
@@ -95,11 +79,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-4">
             <NavLink
               to="/contact"
-<<<<<<< HEAD
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-emerald hover:bg-brand-emeraldHover text-white font-heading text-xs xl:text-sm font-semibold shadow-subtle hover:shadow-card-hover transition-all duration-300 group"
-=======
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-emerald hover:bg-brand-emeraldHover text-white font-heading text-sm font-semibold shadow-subtle hover:shadow-card-hover transition-all duration-300 group"
->>>>>>> 00bf16a30f474be74c18c2eb942eed8a448a50df
             >
               <span>Get a Consultation</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

@@ -23,11 +23,7 @@ export default function Hero() {
             className="lg:col-span-7 space-y-6 text-left"
           >
             {/* Trust Pill */}
-<<<<<<< HEAD
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full gold-badge text-xs sm:text-sm font-heading font-semibold shadow-sm bg-white border border-brand-borderLight">
-=======
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full gold-badge text-xs sm:text-sm font-heading font-semibold shadow-sm">
->>>>>>> 00bf16a30f474be74c18c2eb942eed8a448a50df
               <ShieldCheck className="w-4 h-4 text-brand-gold" />
               <span>Food Safety • Compliance • Quality • Growth</span>
             </div>

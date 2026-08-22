@@ -12,19 +12,12 @@ interface MobileMenuProps {
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const navLinks = [
     { name: 'Home', path: '/' },
-<<<<<<< HEAD
     { name: 'Services', path: '/services' },
     { name: 'Service Finder', path: '/service-finder' },
     { name: 'Compare Services', path: '/compare-services' },
     { name: 'How We Work', path: '/how-we-work' },
     { name: 'Industries', path: '/industries' },
     { name: 'About Us', path: '/about' },
-=======
-    { name: 'About Us', path: '/about' },
-    { name: 'Services', path: '/services' },
-    { name: 'How We Work', path: '/how-we-work' },
-    { name: 'Industries', path: '/industries' },
->>>>>>> 00bf16a30f474be74c18c2eb942eed8a448a50df
     { name: 'Contact', path: '/contact' },
   ];
 
