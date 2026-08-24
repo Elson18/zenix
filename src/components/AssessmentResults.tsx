@@ -52,6 +52,22 @@ export default function AssessmentResults({
     .map(c => `- ${c.categoryName}: ${c.score !== null ? `${Math.round(c.score)}%` : 'N/A'}`)
     .join('\n');
 
+  // Pre-formatted assessment variables for EmailJS central utility
+  const categoryScoresFormatted = categoryScores
+    .map(c => `${c.categoryName} — ${c.score !== null ? `${Math.round(c.score)}%` : 'N/A'}`)
+    .join('\n');
+
+  const attentionAreas = recommendations
+    .filter(r => r.priority === 'High Priority' || r.priority === 'Recommended')
+    .map(r => `- ${r.serviceTitle}`)
+    .join('\n');
+
+  const recommendedServices = recommendations
+    .slice(0, 3)
+    .map(r => `- ${r.serviceTitle}`)
+    .join('\n');
+
+
   // Define score interpretation styling
   let scoreColorClass = 'text-brand-textSecondary';
   let scoreBadgeBg = 'bg-brand-backgroundSoft';
@@ -257,6 +273,9 @@ export default function AssessmentResults({
           overallScore={overallScore}
           categoryScoresText={categoryScoresText}
           focusSummaryText={focusSummary}
+          categoryScoresFormatted={categoryScoresFormatted}
+          attentionAreas={attentionAreas}
+          recommendedServices={recommendedServices}
         />
       </div>
 

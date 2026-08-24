@@ -76,3 +76,46 @@ To preview the production build locally:
 ```bash
 npm run preview
 ```
+
+---
+
+## 📧 EmailJS Integration Setup Guide
+
+Follow these steps to connect and configure EmailJS for Zenix Food Worx enquiries:
+
+1. **Create an EmailJS Account**: Sign up at [emailjs.com](https://www.emailjs.com/).
+2. **Create an Email Service**: Link an email service (e.g., Gmail, Outlook, or a custom domain SMTP) in the EmailJS dashboard.
+3. **Create an Email Template**: Setup a new email template matching the requirements.
+4. **Configure Template Variables**: Ensure the template content contains the following variables matching the frontend payload exactly:
+   - `{{name}}`: The user's full name
+   - `{{email}}`: The user's email address (for the Reply-To field)
+   - `{{phone}}`: The user's phone / WhatsApp contact
+   - `{{business_type}}`: Type of food business
+   - `{{requirement}}`: The service required or selected checklist
+   - `{{message}}`: The main message or detailed audit summary
+   - **Optional readiness variables** (when summary is enabled):
+     - `{{assessment_score}}`: Overall illustrative readiness percentage
+     - `{{category_scores}}`: Breakdown scores by regulatory vector
+     - `{{attention_areas}}`: Areas marked as High Priority or Review
+     - `{{recommended_services}}`: High relevance recommended services
+5. **Set Template Parameters**:
+   - **TO EMAIL**: Zenix business email address (e.g., `info@zenixfoodworx.com` or your admin inbox). Do *NOT* use `{{email}}` here.
+   - **FROM NAME**: `Zenix Food Worx Website`
+   - **FROM EMAIL**: Use Default Email Address
+   - **REPLY TO**: `{{email}}`
+   - **BCC / CC**: Leave empty
+   - **REPLY TO CLIENT button**: In HTML view, link the CTA button to `mailto:{{email}}`
+6. **Copy Credentials**:
+   - Copy the **Service ID** from the email services tab.
+   - Copy the **Template ID** from the email templates tab.
+   - Copy the **Public Key** (API Key) from the account/API keys tab.
+7. **Add to Environment Configuration**:
+   - Open or create `.env.local` in the project root directory.
+   - Add your copied IDs to the respective keys:
+     ```env
+     VITE_EMAILJS_SERVICE_ID=your_service_id
+     VITE_EMAILJS_TEMPLATE_ID=your_template_id
+     VITE_EMAILJS_PUBLIC_KEY=your_public_key
+     ```
+8. **Restart Development Server**: Stop and start the local environment again using `npm run dev` to load the new `.env.local` keys.
+9. **Test the Forms**: Submit the main contact form or the readiness assessment lead form and check your inbox.

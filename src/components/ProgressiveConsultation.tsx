@@ -7,9 +7,7 @@ import {
   Loader2, 
   CheckCircle2, 
   AlertCircle,
-  MessageCircle,
-  Mail,
-  Phone
+  MessageCircle
 } from 'lucide-react';
 import { businessTypes } from '../data/businessTypes';
 import { businessStages } from '../data/businessStages';
@@ -17,14 +15,15 @@ import { requirements } from '../data/requirements';
 import { getRecommendedServices, RecommendedService } from '../data/serviceRecommendations';
 import { companyData } from '../data/companyData';
 import { trackEvent } from '../utils/analytics';
-import emailjs from '@emailjs/browser';
+import { sendContactEmail } from '../services/emailjs';
 
 export default function ProgressiveConsultation() {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [isSubmissionError, setIsSubmissionError] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+  const [website, setWebsite] = useState(''); // Honeypot field
 
   // Form State
   const [businessType, setBusinessType] = useState('food-manufacturer');
@@ -59,8 +58,9 @@ export default function ProgressiveConsultation() {
           setStep(customEvent.detail.step);
         }
       }
-      setSuccess(false);
-      setError('');
+      setStatus('idle');
+      setIsSubmissionError(false);
+      setValidationErrors({});
       setIsOpen(true);
     };
 
@@ -101,59 +101,92 @@ export default function ProgressiveConsultation() {
     }
   };
 
+  const handleContactChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setContactInfo((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+
+    if (validationErrors[name]) {
+      setValidationErrors((prev) => {
+        const next = { ...prev };
+        delete next[name];
+        return next;
+      });
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setError('');
 
-    // Validations
-    if (!contactInfo.fullName.trim() || !contactInfo.phone.trim() || !contactInfo.email.trim()) {
-      setError('Please fill in Name, Phone, and Email.');
-      setLoading(false);
+    if (status === 'loading') return;
+
+    setStatus('loading');
+    setIsSubmissionError(false);
+    setValidationErrors({});
+
+    // Honeypot spam check
+    if (website) {
+      console.log('[Spam Protection] Honeypot triggered in ProgressiveConsultation. Simulating success.');
+      await new Promise((resolve) => setTimeout(resolve, 800));
+      setStatus('success');
+      setWebsite('');
       return;
     }
 
+    // Validations
+    const errors: Record<string, string> = {};
+    if (!contactInfo.fullName.trim()) {
+      errors.fullName = 'Please enter your name.';
+    }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(contactInfo.email)) {
-      setError('Please enter a valid email address.');
-      setLoading(false);
+    if (!contactInfo.email.trim()) {
+      errors.email = 'Please enter a valid email address.';
+    } else if (!emailRegex.test(contactInfo.email)) {
+      errors.email = 'Please enter a valid email address.';
+    }
+
+    if (!contactInfo.phone.trim()) {
+      errors.phone = 'Please enter your phone number.';
+    } else {
+      const phoneRegex = /^[0-9+\s\-()]{7,15}$/;
+      if (!phoneRegex.test(contactInfo.phone)) {
+        errors.phone = 'Please enter a valid phone number.';
+      }
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors);
+      setStatus('idle');
       return;
     }
 
     const payload = {
-      ...contactInfo,
-      businessType: businessTypes.find(t => t.id === businessType)?.label || businessType,
-      businessStage: businessStages.find(s => s.id === businessStage)?.label || businessStage,
-      requirements: selectedReqs.map(id => requirements.find(r => r.id === id)?.label).join(', '),
-      recommendedServices: recommended.map(r => r.service.title).join(', '),
-      message: message || 'No additional message provided.'
+      name: contactInfo.fullName,
+      email: contactInfo.email,
+      phone: contactInfo.phone,
+      business_type: businessTypes.find(t => t.id === businessType)?.label || businessType,
+      requirement: selectedReqs.map(id => requirements.find(r => r.id === id)?.label).join(', ') || 'General Consultation',
+      message: `Stage: ${businessStages.find(s => s.id === businessStage)?.label || businessStage}\nRecommended Services: ${recommended.map(r => r.service.title).join(', ')}\n\nMessage: ${message || 'No additional message provided.'}`
     };
 
     try {
       trackEvent('service_finder_completed', {
-        businessType: payload.businessType,
-        businessStage: payload.businessStage,
-        requirement: payload.requirements,
+        businessType: payload.business_type,
+        businessStage: businessStage,
+        requirement: payload.requirement,
         recommendationsCount: recommended.length,
         page: 'progressive_consultation'
       });
 
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'default_service';
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'default_template';
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'dummy_key';
-
-      if (import.meta.env.VITE_EMAILJS_PUBLIC_KEY) {
-        await emailjs.send(serviceId, templateId, payload, publicKey);
-      } else {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-      }
-      setSuccess(true);
+      await sendContactEmail(payload);
+      setStatus('success');
     } catch (err) {
-      console.error(err);
-      // Fallback success for local development
-      setSuccess(true);
-    } finally {
-      setLoading(false);
+      console.error('Progressive submission error:', err);
+      setIsSubmissionError(true);
+      setStatus('error');
     }
   };
 
@@ -165,6 +198,9 @@ export default function ProgressiveConsultation() {
       setMessage('');
       setContactInfo({ fullName: '', companyName: '', phone: '', email: '' });
       setSelectedReqs([]);
+      setStatus('idle');
+      setIsSubmissionError(false);
+      setValidationErrors({});
     }, 300);
   };
 
@@ -230,16 +266,16 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
             {/* Scrollable Form Content */}
             <div className="p-6 overflow-y-auto flex-grow">
               
-              {success ? (
-                <div className="text-center py-12 space-y-4">
-                  <div className="w-16 h-16 bg-brand-primaryLight rounded-full flex items-center justify-center mx-auto text-brand-primaryDark">
-                    <CheckCircle2 className="w-10 h-10" />
+              {status === 'success' ? (
+                <div className="text-center py-12 space-y-6 animate-fadeIn" aria-live="polite">
+                  <div className="w-20 h-20 bg-brand-primaryLight rounded-full flex items-center justify-center mx-auto text-brand-primaryDark border border-brand-primary/20">
+                    <CheckCircle2 className="w-12 h-12" style={{ color: '#F0B000' }} />
                   </div>
-                  <h4 className="font-heading font-extrabold text-xl text-brand-black">
-                    Consultation Request Sent!
+                  <h4 className="font-heading font-extrabold text-2xl text-brand-black">
+                    Thank You!
                   </h4>
                   <p className="text-sm text-brand-textSecondary max-w-md mx-auto leading-relaxed">
-                    Thank you. We have received your business profile and compliance requirements. One of our senior consultants will contact you within 24 hours.
+                    Your consultation request has been received successfully. Our team will review your requirement and get back to you soon.
                   </p>
                   <div className="flex flex-col sm:flex-row justify-center gap-3 pt-4">
                     <a
@@ -255,19 +291,42 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                       onClick={handleClose}
                       className="px-5 py-2.5 rounded-xl border border-brand-border hover:border-brand-primary hover:text-brand-primary text-brand-black font-heading font-semibold text-sm transition-all"
                     >
-                      Close Window
+                      Back to Website
                     </button>
+                  </div>
+                </div>
+              ) : status === 'error' && isSubmissionError ? (
+                <div className="text-center py-12 space-y-6 animate-fadeIn" aria-live="polite">
+                  <div className="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto text-red-600 border border-red-150">
+                    <AlertCircle className="w-12 h-12 text-red-500" />
+                  </div>
+                  <h4 className="font-heading font-extrabold text-2xl text-brand-black">
+                    Something went wrong
+                  </h4>
+                  <p className="text-sm text-brand-textSecondary max-w-md mx-auto leading-relaxed">
+                    We couldn't send your request right now. Please try again or contact us directly.
+                  </p>
+                  <div className="flex flex-col sm:flex-row justify-center gap-3 pt-4">
+                    <button
+                      onClick={() => {
+                        setStatus('idle');
+                        setIsSubmissionError(false);
+                      }}
+                      className="px-6 py-2.5 rounded-xl bg-brand-primary text-brand-black font-heading font-bold text-sm hover:bg-brand-primaryDark transition-all duration-300 shadow-gold"
+                      style={{ backgroundColor: '#F0B000' }}
+                    >
+                      Try Again
+                    </button>
+                    <a
+                      href="mailto:info@zenixfoodworx.com"
+                      className="px-6 py-2.5 rounded-xl border border-brand-border hover:bg-brand-backgroundSoft text-brand-black font-heading font-bold text-sm transition-all duration-300 flex items-center justify-center"
+                    >
+                      Contact Us
+                    </a>
                   </div>
                 </div>
               ) : (
                 <div>
-                  {error && (
-                    <div className="mb-4 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-center gap-2">
-                      <AlertCircle className="w-4 h-4 shrink-0" />
-                      <span>{error}</span>
-                    </div>
-                  )}
-
                   {/* STEP 1: Business Context */}
                   {step === 1 && (
                     <div className="space-y-6">
@@ -317,24 +376,25 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[220px] overflow-y-auto pr-1">
                           {requirements.map(req => (
                             <label
-                              key={req.id}
-                              className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer select-none transition-all ${
-                                selectedReqs.includes(req.id)
-                                  ? 'bg-brand-primaryLight border-brand-primary/40 text-brand-black'
-                                  : 'bg-white border-brand-border hover:bg-brand-backgroundSoft text-brand-textSecondary'
-                              }`}
-                            >
-                              <input
-                                type="checkbox"
-                                checked={selectedReqs.includes(req.id)}
-                                onChange={() => handleCheckboxChange(req.id)}
-                                className="mt-1 rounded border-brand-border text-brand-primary focus:ring-brand-primary"
-                              />
-                              <div className="text-xs">
-                                <p className="font-heading font-bold">{req.label}</p>
-                                <p className="text-[10px] text-brand-textMuted mt-0.5 leading-tight">{req.description}</p>
-                              </div>
-                            </label>
+                                key={req.id}
+                                className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer select-none transition-all ${
+                                  selectedReqs.includes(req.id)
+                                    ? 'bg-brand-primaryLight border-brand-primary/40 text-brand-black'
+                                    : 'bg-white border-brand-border hover:bg-brand-backgroundSoft text-brand-textSecondary'
+                                }`}
+                              >
+                                <input
+                                  type="checkbox"
+                                  checked={selectedReqs.includes(req.id)}
+                                  onChange={() => handleCheckboxChange(req.id)}
+                                  className="mt-1 rounded border-brand-border text-brand-primary focus:ring-brand-primary"
+                                  style={{ accentColor: '#F0B000' }}
+                                />
+                                <div className="text-xs">
+                                  <p className="font-heading font-bold">{req.label}</p>
+                                  <p className="text-[10px] text-brand-textMuted mt-0.5 leading-tight">{req.description}</p>
+                                </div>
+                              </label>
                           ))}
                         </div>
                       </div>
@@ -405,6 +465,20 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                   {/* STEP 4: Contact details to submit */}
                   {step === 4 && (
                     <form onSubmit={handleSubmit} className="space-y-4">
+                      {/* Spam Protection Honeypot Field */}
+                      <div className="hidden" aria-hidden="true">
+                        <label htmlFor="website">Website</label>
+                        <input
+                          type="text"
+                          id="website"
+                          name="website"
+                          value={website}
+                          onChange={(e) => setWebsite(e.target.value)}
+                          tabIndex={-1}
+                          autoComplete="off"
+                        />
+                      </div>
+
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-xs font-heading font-bold text-brand-black uppercase tracking-wider mb-1.5">
@@ -412,12 +486,17 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                           </label>
                           <input
                             type="text"
-                            required
+                            name="fullName"
                             placeholder="e.g. Anil Kumar"
                             value={contactInfo.fullName}
-                            onChange={(e) => setContactInfo({ ...contactInfo, fullName: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none transition-all"
+                            onChange={handleContactChange}
+                            className={`w-full px-4 py-3 rounded-xl border ${
+                              validationErrors.fullName ? 'border-red-500 focus:ring-red-200' : 'border-brand-border focus:border-brand-primary focus:ring-brand-primary/20'
+                            } focus:ring-2 text-brand-black text-sm outline-none transition-all`}
                           />
+                          {validationErrors.fullName && (
+                            <p className="text-red-500 text-xs mt-1" aria-live="assertive">{validationErrors.fullName}</p>
+                          )}
                         </div>
 
                         <div>
@@ -441,12 +520,17 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                           </label>
                           <input
                             type="tel"
-                            required
+                            name="phone"
                             placeholder="e.g. +91 98765 43210"
                             value={contactInfo.phone}
-                            onChange={(e) => setContactInfo({ ...contactInfo, phone: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none transition-all"
+                            onChange={handleContactChange}
+                            className={`w-full px-4 py-3 rounded-xl border ${
+                              validationErrors.phone ? 'border-red-500 focus:ring-red-200' : 'border-brand-border focus:border-brand-primary focus:ring-brand-primary/20'
+                            } focus:ring-2 text-brand-black text-sm outline-none transition-all`}
                           />
+                          {validationErrors.phone && (
+                            <p className="text-red-500 text-xs mt-1" aria-live="assertive">{validationErrors.phone}</p>
+                          )}
                         </div>
 
                         <div>
@@ -455,12 +539,17 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                           </label>
                           <input
                             type="email"
-                            required
+                            name="email"
                             placeholder="name@company.com"
                             value={contactInfo.email}
-                            onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl border border-brand-border focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 text-brand-black text-sm outline-none transition-all"
+                            onChange={handleContactChange}
+                            className={`w-full px-4 py-3 rounded-xl border ${
+                              validationErrors.email ? 'border-red-500 focus:ring-red-200' : 'border-brand-border focus:border-brand-primary focus:ring-brand-primary/20'
+                            } focus:ring-2 text-brand-black text-sm outline-none transition-all`}
                           />
+                          {validationErrors.email && (
+                            <p className="text-red-500 text-xs mt-1" aria-live="assertive">{validationErrors.email}</p>
+                          )}
                         </div>
                       </div>
 
@@ -475,7 +564,7 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
             </div>
 
             {/* Footer Buttons */}
-            {!success && (
+            {status !== 'success' && !(status === 'error' && isSubmissionError) && (
               <div className="p-6 border-t border-brand-border bg-brand-backgroundSoft flex items-center justify-between">
                 <div>
                   {step > 1 ? (
@@ -501,25 +590,31 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                     <button
                       onClick={handleNext}
                       className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-brand-primary hover:bg-brand-primaryDark text-brand-black font-heading font-semibold text-sm shadow-sm transition-all"
+                      style={{ backgroundColor: '#F0B000' }}
                     >
                       <span>Continue</span>
-                      <ChevronRight className="w-4 h-4" />
+                      <ChevronRight className="w-4 h-4 text-brand-black" />
                     </button>
                   ) : (
                     <button
                       onClick={handleSubmit}
-                      disabled={loading}
+                      disabled={status === 'loading'}
                       className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-xl bg-brand-primary hover:bg-brand-primaryDark text-brand-black font-heading font-semibold text-sm shadow-md disabled:opacity-75 transition-all"
+                      style={{ backgroundColor: '#F0B000' }}
+                      aria-live="polite"
                     >
-                      {loading ? (
+                      {status === 'loading' ? (
                         <>
-                          <Loader2 className="w-4 h-4 animate-spin" />
-                          <span>Submitting...</span>
+                          <Loader2 className="w-4 h-4 animate-spin text-brand-black" />
+                          <span>Sending Request...</span>
+                        </>
+                      ) : status === 'error' ? (
+                        <>
+                          <span>Try Again</span>
                         </>
                       ) : (
                         <>
-                          <span>Submit Request</span>
-                          <CheckCircle2 className="w-4 h-4 text-brand-black" />
+                          <span>Get a Consultation →</span>
                         </>
                       )}
                     </button>
@@ -534,3 +629,4 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
     </AnimatePresence>
   );
 }
+
