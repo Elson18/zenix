@@ -6,9 +6,9 @@ export const companyData = {
   contact: {
     phone: "+91 91595 90321",
     phoneClean: "9159590321",
-    email: "info@zenixfoodworx.com",
+    email: "support@zenixfoodworx.com",
     address: "PLOT NO 202, SECRETARIAT COLONY MAIN ROAD, METTU KUPPAM, THORAIPAKKAM",
-    workingHours: "Monday – Saturday: 9:00 AM – 6:30 PM (IST)",
+    workingHours: "Monday – Saturday: 9:30 AM – 5:30 PM (IST)",
     whatsapp: "+91 91595 90321"
   },
   whyChooseUs: [
