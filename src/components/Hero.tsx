@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { ArrowRight, ShieldCheck, CheckCircle2, Award, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { pageImages } from '../data/imageConfig';
 
 export default function Hero() {
   return (
@@ -82,8 +83,8 @@ export default function Hero() {
             {/* Main Rounded Image Container */}
             <div className="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
               <img
-                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1000"
-                alt="Food Quality Laboratory Specialist inspecting food sample"
+                src={pageImages.homeHero.url}
+                alt={pageImages.homeHero.alt}
                 className="w-full h-[460px] sm:h-[520px] object-cover object-center transform hover:scale-105 transition-transform duration-700"
               />
               

@@ -4,6 +4,7 @@ import { ShieldCheck, Target, Award, Users, CheckCircle2, ArrowRight } from 'luc
 import { motion } from 'framer-motion';
 import CTASection from '../components/CTASection';
 import ExpertiseGrid from '../components/ExpertiseGrid';
+import { pageImages } from '../data/imageConfig';
 
 export default function AboutPage() {
   return (
@@ -78,8 +79,8 @@ export default function AboutPage() {
             >
               <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                 <img
-                  src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1000"
-                  alt="Zenix Food Safety Specialist conducting laboratory evaluation"
+                  src={pageImages.aboutPhilosophy.url}
+                  alt={pageImages.aboutPhilosophy.alt}
                   className="w-full h-[450px] object-cover"
                 />
               </div>

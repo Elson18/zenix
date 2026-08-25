@@ -1,3 +1,5 @@
+import { serviceImages } from './imageConfig';
+
 export interface ServiceProcess {
   step: string;
   title: string;
@@ -36,7 +38,7 @@ export const servicesData: ServiceItem[] = [
     shortDescription: "Comprehensive testing for quality, safety, nutritional values, contaminants and shelf-life.",
     fullDescription: "Ensure your food products meet stringent quality standards and regulatory compliance with robust, analytical testing support. From raw material inspection to finished batch verification and shelf-life determination, Zenix Food Worx facilitates comprehensive testing workflows tailored for food brands and manufacturers.",
     iconName: "FlaskConical",
-    heroImage: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1200",
+    heroImage: serviceImages.foodTesting.url,
     whatWeOffer: [
       "Nutritional panel & proximate analysis testing",
       "Microbiological screening (pathogens, yeast & mold, total plate counts)",
@@ -109,7 +111,7 @@ export const servicesData: ServiceItem[] = [
     shortDescription: "FSSAI applications, renewals, queries, reversions and mandatory testing report support.",
     fullDescription: "Navigating state and central food safety regulations can be complex. Zenix Food Worx provides end-to-end guidance for FSSAI licensing, registration, scope expansion, annual returns, and handling regulatory queries efficiently.",
     iconName: "FileCheck2",
-    heroImage: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&q=80&w=1200",
+    heroImage: serviceImages.regulatoryLicensing.url,
     whatWeOffer: [
       "New FSSAI License & Registration applications (State & Central)",
       "License modification, scope expansion, and address updates",
@@ -182,7 +184,7 @@ export const servicesData: ServiceItem[] = [
     shortDescription: "Ensure food labels meet FSSAI and legal metrology requirements.",
     fullDescription: "A single labeling mistake can lead to product recalls, heavy fines, or seizure of goods. Zenix Food Worx scrutinizes packaged food labels against mandatory FSSAI Packaging & Labelling regulations and Legal Metrology rules to ensure market readiness.",
     iconName: "Tag",
-    heroImage: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200",
+    heroImage: serviceImages.labelValidation.url,
     whatWeOffer: [
       "Comprehensive review of front-of-pack and back-of-pack artworks",
       "Verification of mandatory FSSAI declarations, logos, and font sizes",
@@ -255,7 +257,7 @@ export const servicesData: ServiceItem[] = [
     shortDescription: "Accurate nutrition calculations and label-ready nutritional information.",
     fullDescription: "Providing accurate nutritional panels on food packaging is mandatory. Zenix Food Worx calculates nutritional values using standard food composition databases and laboratory test data to deliver complete, label-ready Nutritional Facts tables complying with FSSAI standards.",
     iconName: "Calculator",
-    heroImage: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&q=80&w=1200",
+    heroImage: serviceImages.nutritionalFacts.url,
     whatWeOffer: [
       "Formulation-based nutritional calculations via standardized reference databases",
       "Lab-backed nutritional panel verification",
@@ -327,7 +329,7 @@ export const servicesData: ServiceItem[] = [
     shortDescription: "From recipe formulation and taste trials to nutritional evaluation and shelf-life testing.",
     fullDescription: "Turn innovative food concepts into commercially viable, market-ready products. Zenix Food Worx assists food brands through recipe standardization, bench-top formulation, sensory testing, ingredient sourcing, cost optimization, and scale-up trial supervision.",
     iconName: "Lightbulb",
-    heroImage: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=1200",
+    heroImage: serviceImages.productDevelopment.url,
     whatWeOffer: [
       "Recipe formulation & culinary standardization",
       "Bench-top trials & sensory organoleptic evaluations",
@@ -399,7 +401,7 @@ export const servicesData: ServiceItem[] = [
     shortDescription: "HACCP and ISO support including gap analysis, documentation, training and audit preparation.",
     fullDescription: "Gain a competitive edge and build institutional trust with international food safety management certifications. Zenix Food Worx provides end-to-end consulting for HACCP, ISO 22000, FSSC 22000, and GMP standards—guiding you through gap analysis, documentation creation, staff training, and pre-audit readiness.",
     iconName: "Award",
-    heroImage: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200",
+    heroImage: serviceImages.certification.url,
     whatWeOffer: [
       "HACCP (Hazard Analysis Critical Control Point) system design & implementation",
       "ISO 22000 & FSSC 22000 FSMS documentation & process mapping",
@@ -471,7 +473,7 @@ export const servicesData: ServiceItem[] = [
     shortDescription: "Menu costing, platform onboarding, equipment sourcing and operational improvements.",
     fullDescription: "Elevate your restaurant, hotel, or food service operation into a profitable, high-performing business. Zenix Food Worx delivers strategic hospitality consulting covering kitchen workflow optimization, menu engineering & costing, food aggregator onboarding, vendor sourcing, and service excellence.",
     iconName: "Utensils",
-    heroImage: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=1200",
+    heroImage: serviceImages.hospitality.url,
     whatWeOffer: [
       "Menu engineering, dish recipe costing & margin optimization",
       "Swiggy & Zomato platform onboarding, menu structuring & compliance",
@@ -543,7 +545,7 @@ export const servicesData: ServiceItem[] = [
     shortDescription: "Internal audits, mock inspections and gap assessments to identify risks before regulators do.",
     fullDescription: "Protect your food business from unexpected regulatory enforcement, fines, or brand damage. Zenix Food Worx conducts rigorous internal food safety audits, hygiene ratings assessments, and mock FSSAI inspections to catch vulnerabilities before official inspectors visit.",
     iconName: "ShieldCheck",
-    heroImage: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80&w=1200",
+    heroImage: serviceImages.foodSafety.url,
     whatWeOffer: [
       "Comprehensive on-site food safety & hygiene audits",
       "Mock FSSAI inspection simulations with detailed scoring",
@@ -615,7 +617,7 @@ export const servicesData: ServiceItem[] = [
     shortDescription: "Layout planning, machinery selection, utilities, licensing and pre-operational compliance.",
     fullDescription: "Building or expanding a food manufacturing facility requires specialized engineering and regulatory foresight. Zenix Food Worx provides end-to-end consultancy for greenfield and brownfield food factories—ensuring layout compliance, efficient material flow, equipment selection, utility setup, and pre-operational licensing.",
     iconName: "Factory",
-    heroImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200",
+    heroImage: serviceImages.factorySetup.url,
     whatWeOffer: [
       "FSSAI & HACCP aligned factory layout & architectural floor planning",
       "Unidirectional material, personnel & waste movement workflow design",
@@ -687,7 +689,7 @@ export const servicesData: ServiceItem[] = [
     shortDescription: "Kitchen planning, equipment procurement, vendor coordination, staffing and compliance setup.",
     fullDescription: "Launching a successful restaurant requires balancing culinary vision with operational efficiency and legal compliance. Zenix Food Worx supports restaurant concepts from initial kitchen space planning, commercial equipment procurement, and vendor tie-ups to FSSAI licensing, staff hiring structures, and hygiene SOPs.",
     iconName: "Store",
-    heroImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1200",
+    heroImage: serviceImages.restaurantSetup.url,
     whatWeOffer: [
       "Ergonomic commercial kitchen layout planning & workflow optimization",
       "Commercial kitchen equipment procurement & vendor negotiation",
@@ -759,7 +761,7 @@ export const servicesData: ServiceItem[] = [
     shortDescription: "Find suitable manufacturers, verify compliance, coordinate trials and support documentation.",
     fullDescription: "Scale your food brand rapidly without heavy capital expenditure on manufacturing assets. Zenix Food Worx helps food brands connect with reliable contract manufacturers (co-packers), perform technical and compliance audits, coordinate formulation transfers, and establish robust co-manufacturing agreements.",
     iconName: "Handshake",
-    heroImage: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&q=80&w=1200",
+    heroImage: serviceImages.contractManufacturing.url,
     whatWeOffer: [
       "Verified contract manufacturer & co-packer identification",
       "Technical, hygiene, and FSSAI compliance auditing of potential co-packers",

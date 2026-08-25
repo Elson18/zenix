@@ -187,18 +187,12 @@ export default function InteractiveJourney() {
   const activeStage = stages[activeStageIdx];
   const ActiveIcon = activeStage.icon;
 
-  const generatePathD = () => {
-    let d = `M ${stages[0].cx} ${stages[0].cy}`;
-    for (let i = 1; i < stages.length; i++) {
-      const p = stages[i];
-      const prev = stages[i - 1];
-      const cp1x = prev.cx + (p.cx - prev.cx) / 2;
-      const cp1y = prev.cy;
-      const cp2x = prev.cx + (p.cx - prev.cx) / 2;
-      const cp2y = p.cy;
-      d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p.cx} ${p.cy}`;
-    }
-    return d;
+  const getSegmentD = (prev: JourneyStage, p: JourneyStage) => {
+    const cp1x = prev.cx + (p.cx - prev.cx) / 2;
+    const cp1y = prev.cy;
+    const cp2x = prev.cx + (p.cx - prev.cx) / 2;
+    const cp2y = p.cy;
+    return `M ${prev.cx} ${prev.cy} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p.cx} ${p.cy}`;
   };
 
   return (
@@ -223,23 +217,37 @@ export default function InteractiveJourney() {
           
           {/* DESKTOP CURVED JOURNEY */}
           <div className="hidden lg:block relative h-[250px] w-full px-4 select-none">
-            {/* SVG Curved Path Background */}
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1020 220" fill="none">
-              <path
-                d={generatePathD()}
-                stroke="#E7E0D2"
-                strokeWidth="4"
-                strokeLinecap="round"
-              />
-              <motion.path
-                d={generatePathD()}
-                stroke="#F0B000"
-                strokeWidth="4"
-                strokeLinecap="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: activeStageIdx / (stages.length - 1) }}
-                transition={{ duration: 0.5, ease: 'easeInOut' }}
-              />
+            {/* SVG Curved Path Background with preserveAspectRatio none to match percentage absolute buttons */}
+            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1020 220" fill="none" preserveAspectRatio="none">
+              {stages.slice(1).map((stage, idx) => {
+                const prev = stages[idx];
+                const segmentD = getSegmentD(prev, stage);
+                const isSegmentActive = activeStageIdx > idx;
+
+                return (
+                  <g key={`segment-${stage.id}`}>
+                    {/* Base Grey Path Segment */}
+                    <path
+                      d={segmentD}
+                      stroke="#D9D0C0"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                    />
+                    {/* Active Gold Path Segment */}
+                    {isSegmentActive && (
+                      <motion.path
+                        d={segmentD}
+                        stroke="#F0B000"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 0.3, ease: 'easeOut' }}
+                      />
+                    )}
+                  </g>
+                );
+              })}
             </svg>
 
             {/* Stage Interactive Dots on Path */}
@@ -254,8 +262,8 @@ export default function InteractiveJourney() {
                     onClick={() => handleStageClick(idx, stage.title)}
                     className="absolute group focus:outline-none flex flex-col items-center"
                     style={{ 
-                      left: `${(stage.cx / 1000) * 100}%`, 
-                      top: `${(stage.cy / 200) * 100}%`,
+                      left: `${(stage.cx / 1020) * 100}%`, 
+                      top: `${(stage.cy / 220) * 100}%`,
                       transform: 'translate(-50%, -50%)'
                     }}
                     aria-label={`Stage ${stage.number}: ${stage.title}. ${stage.description}`}
@@ -291,8 +299,8 @@ export default function InteractiveJourney() {
               <motion.div
                 className="absolute w-8 h-8 rounded-full bg-brand-primary text-brand-black flex items-center justify-center shadow-gold border border-brand-primary/20 pointer-events-none z-20"
                 animate={{
-                  left: `${(activeStage.cx / 1000) * 100}%`,
-                  top: `${(activeStage.cy / 200) * 100}%`
+                  left: `${(activeStage.cx / 1020) * 100}%`,
+                  top: `${(activeStage.cy / 220) * 100}%`
                 }}
                 transition={{ type: 'spring', damping: 20, stiffness: 100 }}
                 style={{ transform: 'translate(-50%, -50%) margin-top: -10px' }}

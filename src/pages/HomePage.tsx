@@ -13,6 +13,7 @@ import { companyData } from '../data/companyData';
 import { industriesData } from '../data/industriesData';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { pageImages } from '../data/imageConfig';
 
 export default function HomePage() {
   return (
@@ -87,8 +88,8 @@ export default function HomePage() {
             >
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                 <img
-                  src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=1000"
-                  alt="Zenix Food Consultancy Team working in modern food processing facility"
+                  src={pageImages.homePhilosophy.url}
+                  alt={pageImages.homePhilosophy.alt}
                   className="w-full h-[420px] sm:h-[480px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/20 via-transparent to-transparent pointer-events-none" />

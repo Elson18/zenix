@@ -19,6 +19,7 @@ import ContactPage from './pages/ContactPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsConditionsPage from './pages/TermsConditionsPage';
 import ReadinessAssessmentPage from './pages/ReadinessAssessmentPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
   return (
@@ -42,8 +43,8 @@ export default function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />
             <Route path="/readiness-assessment" element={<ReadinessAssessmentPage />} />
-            {/* Catch-all redirect to Home */}
-            <Route path="*" element={<HomePage />} />
+            {/* Catch-all 404 Page */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
 
