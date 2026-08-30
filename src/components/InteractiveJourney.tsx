@@ -196,7 +196,7 @@ export default function InteractiveJourney() {
   };
 
   return (
-    <section className="py-20 bg-brand-backgroundSoft relative overflow-hidden border-t border-brand-border">
+    <section className="py-20 bg-white relative overflow-hidden border-t border-brand-border/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -372,7 +372,7 @@ export default function InteractiveJourney() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.3 }}
-                className="p-8 sm:p-10 rounded-3xl bg-white border border-brand-border shadow-subtle flex flex-col sm:flex-row items-start sm:items-center gap-6"
+                className="p-8 sm:p-10 rounded-3xl bg-brand-bgWarm border border-brand-border/60 shadow-subtle flex flex-col sm:flex-row items-start sm:items-center gap-6"
               >
                 <div className="w-16 h-16 rounded-2xl bg-brand-primaryLight border border-brand-border flex items-center justify-center shrink-0 shadow-sm text-brand-primaryDark">
                   <ActiveIcon className="w-6 h-6" />

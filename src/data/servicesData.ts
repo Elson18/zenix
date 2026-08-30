@@ -36,7 +36,7 @@ export const servicesData: ServiceItem[] = [
     title: "Food Testing Services",
     slug: "food-testing",
     shortDescription: "Comprehensive testing for quality, safety, nutritional values, contaminants and shelf-life.",
-    fullDescription: "Ensure your food products meet stringent quality standards and regulatory compliance with robust, analytical testing support. From raw material inspection to finished batch verification and shelf-life determination, Zenix Food Worx facilitates comprehensive testing workflows tailored for food brands and manufacturers.",
+    fullDescription: "Comprehensive lab testing for food products to ensure quality, safety, and compliance with regulatory standards. We help you identify nutritional values, contaminants, shelf-life, and more — so your products meet every requirement before they reach the market.",
     iconName: "FlaskConical",
     heroImage: serviceImages.foodTesting.url,
     whatWeOffer: [
@@ -50,19 +50,27 @@ export const servicesData: ServiceItem[] = [
     keyAreas: [
       {
         title: "Nutritional Testing",
-        description: "Accurate breakdown of energy, macro-nutrients, vitamins, and minerals required for regulatory compliant nutrition declaration."
+        description: "Nutritional values and composition assessment."
+      },
+      {
+        title: "Contaminant Testing",
+        description: "Testing support for relevant contaminants."
+      },
+      {
+        title: "Heavy Metals & Toxins Testing",
+        description: "Testing support for relevant heavy metals, toxins and other contaminants to help assess food safety and product quality."
       },
       {
         title: "Microbiological Testing",
-        description: "Detection of foodborne pathogens, spoilage organisms, and total bacterial counts to ensure hygiene standards."
+        description: "Relevant microbiological quality and safety testing."
       },
       {
-        title: "Contaminant & Residue Testing",
-        description: "Screening for heavy metals, pesticide residues, adulterants, and mycotoxins."
+        title: "Shelf-Life Testing",
+        description: "Support for determining product shelf-life and stability."
       },
       {
-        title: "Shelf-Life Assessment",
-        description: "Evaluation of product stability over time under varying environmental parameters."
+        title: "Packing Materials – Migration Testing",
+        description: "Migration testing support for food-contact packing materials to help assess whether substances may migrate into food and whether the packaging is suitable for its intended use."
       }
     ],
     whoNeedsThis: [
@@ -475,6 +483,7 @@ export const servicesData: ServiceItem[] = [
     iconName: "Utensils",
     heroImage: serviceImages.hospitality.url,
     whatWeOffer: [
+      "Menu costing, SOP development & operational process support",
       "Menu engineering, dish recipe costing & margin optimization",
       "Swiggy & Zomato platform onboarding, menu structuring & compliance",
       "Commercial kitchen equipment sourcing & layout workflow design",
@@ -484,20 +493,24 @@ export const servicesData: ServiceItem[] = [
     ],
     keyAreas: [
       {
-        title: "Menu Costing & Engineering",
-        description: "Determining dish contribution margins, food cost percentages, and strategic pricing."
+        title: "Menu Costing & SOP Development",
+        description: "Menu costing, SOP development and operational process support."
       },
       {
-        title: "Aggregator Onboarding",
-        description: "Compliance setup, licensing, and optimization for Swiggy, Zomato, and delivery platforms."
+        title: "Menu & Pricing Support",
+        description: "Support for appropriate menu pricing and profitability."
       },
       {
-        title: "Commercial Kitchen Setup",
-        description: "Ergonomic equipment placement, ventilation design, and workflow optimization."
+        title: "Platform Onboarding",
+        description: "Guidance for onboarding onto platforms such as Swiggy and Zomato."
       },
       {
-        title: "Food Waste & Inventory Control",
-        description: "Implementing inventory tracking systems, yield checks, and portion control SOPs."
+        title: "Kitchen Equipment & Machinery",
+        description: "Support for selecting appropriate kitchen equipment and machinery."
+      },
+      {
+        title: "Sourcing & Operations",
+        description: "Guidance on sourcing and overall operational improvements."
       }
     ],
     whoNeedsThis: [

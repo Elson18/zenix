@@ -36,7 +36,7 @@ export default function Footer() {
             </NavLink>
 
             <p className="text-gray-300 text-sm leading-relaxed">
-              Trusted Experts for Every Stage of Your Food Business. Comprehensive B2B consultancy for food safety, FSSAI compliance, lab testing, NPD, certification and factory setup.
+              Trusted Experts for Every Stage of Your Food Business.
             </p>
 
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-heading text-brand-primary">

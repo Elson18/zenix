@@ -6,11 +6,11 @@ import { pageImages } from '../data/imageConfig';
 
 export default function Hero() {
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-b from-brand-backgroundSoft via-white to-brand-section overflow-hidden">
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-b from-brand-bgWarm via-white to-white overflow-hidden">
       {/* Background Subtle Geometric Accents */}
-      <div className="absolute inset-0 pointer-events-none opacity-40">
-        <div className="absolute top-1/4 left-10 w-96 h-96 bg-brand-primaryLight/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-brand-softGold/20 rounded-full blur-3xl" />
+      <div className="absolute inset-0 pointer-events-none opacity-20">
+        <div className="absolute top-1/4 left-10 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-brand-primaryLight/35 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -24,7 +24,7 @@ export default function Hero() {
             className="lg:col-span-7 space-y-6 text-left"
           >
             {/* Trust Pill */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full gold-badge text-xs sm:text-sm font-heading font-semibold shadow-sm bg-white border border-brand-border">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full gold-badge text-xs sm:text-sm font-heading font-semibold shadow-sm border border-brand-primary/30">
               <ShieldCheck className="w-4 h-4 text-brand-primary" />
               <span>Food Safety • Compliance • Quality • Growth</span>
             </div>

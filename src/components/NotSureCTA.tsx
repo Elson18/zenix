@@ -17,7 +17,7 @@ export default function NotSureCTA() {
   };
 
   return (
-    <section className="py-16 md:py-20 bg-brand-backgroundSoft border-t border-brand-border relative overflow-hidden">
+    <section className="py-16 md:py-20 bg-white border-t border-brand-border/60 relative overflow-hidden">
       {/* Subtle details */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-brand-primaryLight/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-softGold/15 rounded-full blur-3xl pointer-events-none" />

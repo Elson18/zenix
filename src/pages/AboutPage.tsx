@@ -1,9 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { ShieldCheck, Target, Award, Users, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Target, Award, CheckCircle2, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CTASection from '../components/CTASection';
-import ExpertiseGrid from '../components/ExpertiseGrid';
 import { pageImages } from '../data/imageConfig';
 
 export default function AboutPage() {
@@ -91,7 +90,7 @@ export default function AboutPage() {
       </section>
 
       {/* Strategic Pillars / Mission & Vision */}
-      <section className="py-20 bg-brand-backgroundSoft/60 border-y border-brand-border">
+      <section className="py-20 bg-brand-bgWarm border-t border-b border-brand-border/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
@@ -103,43 +102,36 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 rounded-3xl bg-white border border-brand-border shadow-subtle space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-brand-primaryLight flex items-center justify-center text-brand-primaryDark">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Our Vision Card */}
+            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-brand-border/60 shadow-subtle hover:border-brand-primary hover:-translate-y-1 transition-all duration-300 space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-brand-bgWarm flex items-center justify-center text-brand-primary">
                 <Target className="w-6 h-6" />
               </div>
-              <h3 className="font-heading font-bold text-xl text-brand-black">Our Mission</h3>
-              <p className="text-brand-textSecondary text-sm leading-relaxed">
-                To deliver seamless, end-to-end food consultancy that empowers businesses to meet global safety standards, maintain consumer trust, and achieve sustainable growth.
+              <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-brand-black uppercase tracking-wider">
+                Our Vision
+              </h3>
+              <p className="text-brand-textSecondary text-base sm:text-lg leading-relaxed font-normal italic">
+                "A world where every food business operates safely, confidently, and compliantly."
               </p>
             </div>
 
-            <div className="p-8 rounded-3xl bg-white border border-brand-border shadow-subtle space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-brand-primaryLight flex items-center justify-center text-brand-primaryDark">
+            {/* Our Mission Card */}
+            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-brand-border/60 shadow-subtle hover:border-brand-primary hover:-translate-y-1 transition-all duration-300 space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-brand-bgWarm flex items-center justify-center text-brand-primary">
                 <Award className="w-6 h-6" />
               </div>
-              <h3 className="font-heading font-bold text-xl text-brand-black">Our Vision</h3>
-              <p className="text-brand-textSecondary text-sm leading-relaxed">
-                To be the premier, most trusted B2B food safety and business setup consultancy across the food manufacturing and hospitality ecosystem.
-              </p>
-            </div>
-
-            <div className="p-8 rounded-3xl bg-white border border-brand-border shadow-subtle space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-brand-primaryLight flex items-center justify-center text-brand-primaryDark">
-                <Users className="w-6 h-6" />
-              </div>
-              <h3 className="font-heading font-bold text-xl text-brand-black">Client Partnership</h3>
-              <p className="text-brand-textSecondary text-sm leading-relaxed">
-                We operate as an extended arm of your team—providing continuous support for renewals, lab testing, inspections, and new product launches.
+              <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-brand-black uppercase tracking-wider">
+                Our Mission
+              </h3>
+              <p className="text-brand-textSecondary text-base sm:text-lg leading-relaxed font-normal">
+                "To help food businesses navigate regulations, ensure quality, and grow sustainably — through expert guidance at every step of the journey."
               </p>
             </div>
           </div>
 
         </div>
       </section>
-
-      {/* Core Capabilities */}
-      <ExpertiseGrid />
 
       {/* CTA */}
       <CTASection />

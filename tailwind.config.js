@@ -26,6 +26,10 @@ export default {
           warningLight: '#FEF3C7',
           error: '#DC2626',
           errorLight: '#FEE2E2',
+          bgLight: '#FFFFFF',
+          bgWarm: '#FFFBF2',
+          lightGold: '#FFF3CC',
+          borderLight: '#E7E0D2',
         }
       },
       fontFamily: {

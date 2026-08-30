@@ -6,8 +6,8 @@
 export const serviceImages = {
   // 01 — Food Laboratory, technician, sample testing
   foodTesting: {
-    url: "https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=1200",
-    alt: "Food safety technician analyzing food samples in a sterile laboratory environment"
+    url: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&q=80&w=1200",
+    alt: "Food safety technician analyzing food samples with laboratory equipment in a sterile laboratory environment"
   },
   // 02 — Regulatory documentation, compliance paperwork review
   regulatoryLicensing: {

@@ -28,11 +28,11 @@ export default function ExpertiseGrid() {
   };
 
   return (
-    <section className="py-16 bg-white border-y border-brand-border">
+    <section className="py-16 bg-brand-bgWarm border-y border-brand-border/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-primary px-3.5 py-1.5 rounded-full gold-badge inline-block">
+          <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-primary px-3.5 py-1.5 rounded-full gold-badge inline-block bg-white">
             CORE CAPABILITIES
           </span>
           <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-brand-black tracking-tight">
@@ -48,12 +48,12 @@ export default function ExpertiseGrid() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: idx * 0.05 }}
-              className="p-6 rounded-2xl bg-brand-backgroundSoft border border-brand-border hover:border-brand-primary/40 hover:bg-brand-primaryLight/30 transition-all duration-300 flex flex-col items-center text-center space-y-3 group"
+              className="p-6 rounded-2xl bg-white border border-brand-border/60 hover:border-brand-primary/40 hover:bg-brand-primaryLight/30 transition-all duration-300 flex flex-col items-center text-center space-y-3 group shadow-sm hover:shadow-card-hover"
             >
-              <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 rounded-xl bg-brand-bgWarm flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
                 {getIcon(item.icon)}
               </div>
-              <span className="font-heading font-bold text-sm sm:text-base text-brand-black group-hover:text-brand-primary transition-colors">
+              <span className="font-heading font-bold text-sm sm:text-base text-brand-black group-hover:text-brand-primaryDark transition-colors">
                 {item.name}
               </span>
             </motion.div>

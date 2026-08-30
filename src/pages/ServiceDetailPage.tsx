@@ -227,88 +227,27 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      {/* 4. Who Needs This? & Benefits */}
+      {/* 4. Why Choose Zenix? (Benefits) */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            
-            {/* Target Audience */}
-            <div className="lg:col-span-6 space-y-6 p-8 rounded-3xl bg-brand-backgroundSoft border border-brand-border">
-              <div className="inline-flex items-center gap-2 text-xs font-heading font-bold text-brand-primary uppercase tracking-wider">
-                <Sparkles className="w-4 h-4 text-brand-primary" />
-                <span>WHO NEEDS THIS SERVICE?</span>
-              </div>
-              
-              <h3 className="font-heading font-extrabold text-2xl text-brand-black">
-                Designed for Key Food Business Verticals
-              </h3>
-
-              <ul className="space-y-3">
-                {service.whoNeedsThis.map((aud, i) => (
-                  <li key={i} className="flex items-center gap-3 text-brand-textSecondary text-sm sm:text-base">
-                    <span className="w-2 h-2 rounded-full bg-brand-primary shrink-0" />
-                    <span>{aud}</span>
-                  </li>
-                ))}
-              </ul>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-6 p-8 sm:p-10 rounded-3xl bg-white border border-brand-border shadow-subtle">
+            <div className="inline-flex items-center gap-2 text-xs font-heading font-bold text-brand-primaryDark uppercase tracking-wider">
+              <ShieldCheck className="w-4 h-4 text-brand-primaryDark" />
+              <span>WHY CHOOSE ZENIX?</span>
             </div>
 
-            {/* Why Choose Zenix Benefits */}
-            <div className="lg:col-span-6 space-y-6 p-8 rounded-3xl bg-white border border-brand-border shadow-subtle">
-              <div className="inline-flex items-center gap-2 text-xs font-heading font-bold text-brand-primaryDark uppercase tracking-wider">
-                <ShieldCheck className="w-4 h-4 text-brand-primaryDark" />
-                <span>WHY CHOOSE ZENIX?</span>
-              </div>
+            <h3 className="font-heading font-extrabold text-2xl sm:text-3xl text-brand-black">
+              Measurable Business Benefits
+            </h3>
 
-              <h3 className="font-heading font-extrabold text-2xl text-brand-black">
-                Measurable Business Benefits
-              </h3>
-
-              <ul className="space-y-3">
-                {service.benefits.map((ben, i) => (
-                  <li key={i} className="flex items-start gap-3 text-brand-textSecondary text-sm sm:text-base">
-                    <CheckCircle2 className="w-5 h-5 text-brand-primaryDark shrink-0 mt-0.5" />
-                    <span>{ben}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Our Approach Steps */}
-      <section className="py-20 bg-brand-backgroundSoft/40 border-t border-brand-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-primary px-3.5 py-1.5 rounded-full gold-badge bg-white shadow-sm border border-brand-border">
-              OUR PROCESS
-            </span>
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-brand-black">
-              Step-by-Step Implementation Approach
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {service.process.map((pStep, idx) => (
-              <div
-                key={pStep.step}
-                className="p-6 rounded-2xl bg-white border border-brand-border shadow-subtle space-y-3 relative"
-              >
-                <span className="w-10 h-10 rounded-xl bg-brand-primary text-brand-black font-heading font-bold text-sm flex items-center justify-center">
-                  {pStep.step}
-                </span>
-
-                <h4 className="font-heading font-bold text-lg text-brand-black">
-                  {pStep.title}
-                </h4>
-
-                <p className="text-brand-textSecondary text-xs sm:text-sm leading-relaxed">
-                  {pStep.description}
-                </p>
-              </div>
-            ))}
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {service.benefits.map((ben, i) => (
+                <li key={i} className="flex items-start gap-3 text-brand-textSecondary text-sm sm:text-base">
+                  <CheckCircle2 className="w-5 h-5 text-brand-primaryDark shrink-0 mt-0.5" />
+                  <span>{ben}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>

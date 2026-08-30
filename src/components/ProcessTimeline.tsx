@@ -18,7 +18,7 @@ export default function ProcessTimeline() {
   };
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
+    <section className="py-20 bg-white border-t border-brand-border/60 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -81,7 +81,7 @@ export default function ProcessTimeline() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="p-8 sm:p-10 rounded-3xl bg-brand-backgroundSoft border border-brand-border shadow-subtle flex flex-col sm:flex-row items-start sm:items-center gap-6"
+            className="p-8 sm:p-10 rounded-3xl bg-brand-bgWarm border border-brand-border/60 shadow-subtle flex flex-col sm:flex-row items-start sm:items-center gap-6"
           >
             <div className="w-16 h-16 rounded-2xl bg-white border border-brand-border flex items-center justify-center shrink-0 shadow-sm">
               {getStageIcon(activeStage)}
@@ -117,7 +117,7 @@ export default function ProcessTimeline() {
               className={`p-6 rounded-2xl border transition-all cursor-pointer ${
                 activeStage === idx
                   ? 'bg-white border-brand-primary shadow-gold'
-                  : 'bg-brand-backgroundSoft border-brand-border'
+                  : 'bg-brand-bgWarm/60 border-brand-border/60 hover:bg-white'
               }`}
             >
               <div className="flex items-center gap-4 mb-3">
