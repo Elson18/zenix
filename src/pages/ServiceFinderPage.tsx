@@ -226,25 +226,23 @@ Recommended Service: ${results[0]?.service?.title || 'None'}`;
                         <button
                           key={type.id}
                           onClick={() => handleTypeSelect(type.id)}
-                          className={`p-5 rounded-2xl border text-left flex flex-col justify-between h-[155px] transition-all group focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-1 ${
+                          className={`p-6 rounded-2xl border text-left flex flex-col justify-start h-full min-h-[180px] transition-all group focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-1 ${
                             isSelected
                               ? 'bg-brand-black text-white border-brand-primary shadow-card-hover scale-[1.02]'
                               : 'bg-white border-brand-border hover:border-brand-primary/45 hover:bg-brand-backgroundSoft/30 text-brand-textSecondary shadow-sm'
                           }`}
                         >
-                          <div className={`p-2 rounded-xl w-10 h-10 flex items-center justify-center transition-colors ${
+                          <div className={`p-2 rounded-xl w-10 h-10 flex items-center justify-center mb-4 transition-colors ${
                             isSelected ? 'bg-white/20 text-white' : 'bg-brand-primaryLight text-brand-primaryDark group-hover:bg-brand-primary group-hover:text-brand-black'
                           }`}>
                             <TypeIcon className="w-5 h-5" />
                           </div>
-                          <div>
-                            <p className={`font-heading font-bold text-sm ${isSelected ? 'text-white' : 'text-brand-black'}`}>
-                              {type.label}
-                            </p>
-                            <p className={`text-[10px] mt-1 leading-tight ${isSelected ? 'text-white/80' : 'text-brand-textMuted'}`}>
-                              {type.description}
-                            </p>
-                          </div>
+                          <p className={`font-heading font-bold text-sm mb-1.5 ${isSelected ? 'text-white' : 'text-brand-black'}`}>
+                            {type.label}
+                          </p>
+                          <p className={`text-[10px] leading-relaxed ${isSelected ? 'text-white/80' : 'text-brand-textMuted'}`}>
+                            {type.description}
+                          </p>
                         </button>
                       );
                     })}
@@ -278,25 +276,23 @@ Recommended Service: ${results[0]?.service?.title || 'None'}`;
                         <button
                           key={stage.id}
                           onClick={() => handleStageSelect(stage.id)}
-                          className={`p-5 rounded-2xl border text-left flex flex-col justify-between h-[155px] transition-all group focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-1 ${
+                          className={`p-6 rounded-2xl border text-left flex flex-col justify-start h-full min-h-[180px] transition-all group focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-1 ${
                             isSelected
                               ? 'bg-brand-black text-white border-brand-primary shadow-card-hover scale-[1.02]'
                               : 'bg-white border-brand-border hover:border-brand-primary/45 hover:bg-brand-backgroundSoft/30 text-brand-textSecondary shadow-sm'
                           }`}
                         >
-                          <span className={`text-[10px] font-heading font-bold uppercase tracking-wider ${
+                          <span className={`text-[10px] font-heading font-bold uppercase tracking-wider mb-3.5 ${
                             isSelected ? 'text-white/85' : 'text-brand-primary'
                           }`}>
                             Phase
                           </span>
-                          <div>
-                            <p className={`font-heading font-bold text-sm ${isSelected ? 'text-white' : 'text-brand-black'}`}>
-                              {stage.label}
-                            </p>
-                            <p className={`text-[10px] mt-1 leading-tight ${isSelected ? 'text-white/80' : 'text-brand-textMuted'}`}>
-                              {stage.description}
-                            </p>
-                          </div>
+                          <p className={`font-heading font-bold text-sm mb-2 min-h-[40px] flex items-center ${isSelected ? 'text-white' : 'text-brand-black'}`}>
+                            {stage.label}
+                          </p>
+                          <p className={`text-[10px] leading-relaxed ${isSelected ? 'text-white/80' : 'text-brand-textMuted'}`}>
+                            {stage.description}
+                          </p>
                         </button>
                       );
                     })}
@@ -419,25 +415,23 @@ Recommended Service: ${results[0]?.service?.title || 'None'}`;
                         <button
                           key={priorityOption.id}
                           onClick={() => handlePrioritySelect(priorityOption.id)}
-                          className={`p-5 rounded-2xl border text-left flex flex-col justify-between h-[155px] transition-all group focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-1 ${
+                          className={`p-6 rounded-2xl border text-left flex flex-col justify-start h-full min-h-[180px] transition-all group focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-1 ${
                             isSelected
                               ? 'bg-brand-black text-white border-brand-primary shadow-card-hover scale-[1.02]'
                               : 'bg-white border-brand-border hover:border-brand-primary/45 hover:bg-brand-backgroundSoft/30 text-brand-textSecondary shadow-sm'
                           }`}
                         >
-                          <span className={`text-[10px] font-heading font-bold uppercase tracking-wider ${
+                          <span className={`text-[10px] font-heading font-bold uppercase tracking-wider mb-3.5 ${
                             isSelected ? 'text-white/85' : 'text-brand-primary'
                           }`}>
                             Priority
                           </span>
-                          <div>
-                            <p className={`font-heading font-bold text-sm ${isSelected ? 'text-white' : 'text-brand-black'}`}>
-                              {priorityOption.label}
-                            </p>
-                            <p className={`text-[10px] mt-1 leading-tight ${isSelected ? 'text-white/80' : 'text-brand-textMuted'}`}>
-                              {priorityOption.description}
-                            </p>
-                          </div>
+                          <p className={`font-heading font-bold text-sm mb-2 min-h-[40px] flex items-center ${isSelected ? 'text-white' : 'text-brand-black'}`}>
+                            {priorityOption.label}
+                          </p>
+                          <p className={`text-[10px] leading-relaxed ${isSelected ? 'text-white/80' : 'text-brand-textMuted'}`}>
+                            {priorityOption.description}
+                          </p>
                         </button>
                       );
                     })}

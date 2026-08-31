@@ -12,13 +12,10 @@ import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import ServiceFinderPage from './pages/ServiceFinderPage';
-import CompareServicesPage from './pages/CompareServicesPage';
 import HowWeWorkPage from './pages/HowWeWorkPage';
-import IndustriesPage from './pages/IndustriesPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsConditionsPage from './pages/TermsConditionsPage';
-import ReadinessAssessmentPage from './pages/ReadinessAssessmentPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
@@ -36,13 +33,11 @@ export default function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/services/:slug" element={<ServiceDetailPage />} />
             <Route path="/service-finder" element={<ServiceFinderPage />} />
-            <Route path="/compare-services" element={<CompareServicesPage />} />
             <Route path="/how-we-work" element={<HowWeWorkPage />} />
-            <Route path="/industries" element={<IndustriesPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms-and-conditions" element={<TermsConditionsPage />} />
-            <Route path="/readiness-assessment" element={<ReadinessAssessmentPage />} />
+
             {/* Catch-all 404 Page */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

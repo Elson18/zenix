@@ -14,33 +14,33 @@ export const companyData = {
   whyChooseUs: [
     {
       number: "01",
-      title: "One Team. Every Solution.",
-      description: "From testing and licensing to certification, hospitality and factory setup.",
+      title: "One Team, Every Solution",
+      description: "From testing and licensing to certification, hospitality, and factory setup.",
       icon: "Layers"
     },
     {
       number: "02",
       title: "Deep Regulatory Expertise",
-      description: "Strong expertise across FSSAI, HACCP and ISO standards.",
+      description: "Deep regulatory expertise across FSSAI, HACCP, and ISO standards.",
       icon: "ShieldCheck"
     },
     {
       number: "03",
       title: "Quick & Hassle-Free Support",
-      description: "We simplify complex licensing and compliance processes.",
+      description: "Quick and hassle-free licensing and compliance turnaround.",
       icon: "Zap"
     },
     {
       number: "04",
-      title: "Tailored Business Solutions",
-      description: "Support designed for startups, growing businesses and established food brands.",
+      title: "Tailored Support",
+      description: "Tailored support for both growing startups and established food brands.",
       icon: "Sliders"
     },
     {
       number: "05",
-      title: "Built Around Real-World Results",
-      description: "Practical solutions that help businesses stay compliant and grow confidently.",
-      icon: "CheckCircle2"
+      title: "A Trusted Industry Name",
+      description: "A trusted name among food manufacturers and restaurants.",
+      icon: "Handshake"
     }
   ],
   howWeWork: [

@@ -11,7 +11,7 @@ export const serviceImages = {
   },
   // 02 — Regulatory documentation, compliance paperwork review
   regulatoryLicensing: {
-    url: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200",
+    url: "/images/Regulatory & Licensing Services image.png",
     alt: "Zenix food safety compliance consultant reviewing FSSAI license paperwork and checklists"
   },
   // 03 — Packaged product, nutrition labels, packaging inspection
@@ -41,7 +41,7 @@ export const serviceImages = {
   },
   // 08 — Sanitation checks, hand hygiene, kitchen safety audits
   foodSafety: {
-    url: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80&w=1200",
+    url: "/images/Food Safety & Hygiene Inspections image.png",
     alt: "Staff following strict hand washing and sanitation protocols during a food safety inspection"
   },
   // 09 — Industrial manufacturing lines, processing machinery, plant layout

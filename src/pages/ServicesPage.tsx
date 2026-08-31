@@ -33,7 +33,7 @@ const whyChoosePoints = [
   {
     icon: ShieldCheck,
     title: "Deep Regulatory Expertise",
-    description: "Strong expertise across FSSAI, HACCP, and ISO standards."
+    description: "Deep regulatory expertise across FSSAI, HACCP, and ISO standards."
   },
   {
     icon: Zap,
@@ -43,11 +43,11 @@ const whyChoosePoints = [
   {
     icon: Sliders,
     title: "Tailored Support",
-    description: "Customized support for both growing startups and established food brands."
+    description: "Tailored support for both growing startups and established food brands."
   },
   {
     icon: Handshake,
-    title: "Trusted Food Industry Partner",
+    title: "A Trusted Industry Name",
     description: "A trusted name among food manufacturers and restaurants."
   }
 ];
@@ -179,9 +179,9 @@ export default function ServicesPage() {
                         {service.keyAreas.map((area, areaIdx) => (
                           <div 
                             key={areaIdx} 
-                            className="p-4 rounded-xl bg-white border border-brand-border/60 shadow-sm flex flex-col justify-between hover:border-brand-primary/40 transition-colors"
+                            className="p-5 rounded-xl bg-white border border-brand-border/60 shadow-sm flex flex-col justify-start gap-1.5 hover:border-brand-primary/45 transition-colors"
                           >
-                            <h4 className="font-heading font-bold text-sm text-brand-black mb-1 flex items-center gap-1.5">
+                            <h4 className="font-heading font-bold text-sm text-brand-black flex items-center gap-1.5">
                               <span className="w-1.5 h-1.5 rounded-full bg-brand-primary shrink-0" />
                               {area.title}
                             </h4>

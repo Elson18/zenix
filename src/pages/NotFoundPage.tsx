@@ -94,9 +94,7 @@ export default function NotFoundPage() {
             <Link to="/services" className="text-brand-charcoal hover:text-brand-primary font-medium transition-colors">
               • Our Services
             </Link>
-            <Link to="/readiness-assessment" className="text-brand-charcoal hover:text-brand-primary font-medium transition-colors">
-              • Readiness Tool
-            </Link>
+
             <Link to="/service-finder" className="text-brand-charcoal hover:text-brand-primary font-medium transition-colors">
               • Service Finder
             </Link>
