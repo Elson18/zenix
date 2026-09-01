@@ -111,7 +111,7 @@ export default function AboutPage() {
               <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-brand-black uppercase tracking-wider">
                 Our Vision
               </h3>
-              <p className="text-brand-textSecondary text-base sm:text-lg leading-relaxed font-normal italic">
+              <p className="text-brand-textSecondary text-base sm:text-lg leading-relaxed font-normal">
                 "A world where every food business operates safely, confidently, and compliantly."
               </p>
             </div>
