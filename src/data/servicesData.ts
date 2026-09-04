@@ -27,6 +27,8 @@ export interface ServiceItem {
   benefits: string[];
   ctaText: string;
   whatsappMessage: string;
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
 export const servicesData: ServiceItem[] = [
@@ -837,5 +839,179 @@ export const servicesData: ServiceItem[] = [
     ],
     ctaText: "Find Contract Manufacturing Support →",
     whatsappMessage: "Hi Zenix Food Worx, I would like to inquire about Contract Manufacturing Support."
+  },
+  {
+    id: "nutraceutical-licensing",
+    number: "12",
+    title: "Nutraceutical Licensing & Compliance",
+    slug: "nutraceutical-licensing",
+    shortDescription: "Complete regulatory support for nutraceutical manufacturers, including licensing, classification, formulation and label compliance.",
+    fullDescription: "We provide complete regulatory support for nutraceutical manufacturers, including licensing, reversion handling, classification, formulation compliance, SOI documentation, and label compliance under FSSAI norms.",
+    iconName: "Pill",
+    heroImage: serviceImages.nutraceuticalLicensing.url,
+    seoTitle: "Nutraceutical Licensing & Compliance | Zenix Food Worx",
+    seoDescription: "Complete regulatory support for nutraceutical manufacturers, including licensing, classification, formulation compliance, documentation and label compliance.",
+    whatWeOffer: [
+      "End-to-end nutraceutical manufacturing license application assistance",
+      "Expert guidance for handling query responses and application reversions",
+      "License modification support for product addition and category changes",
+      "Timely tracking and processing of license renewals to avoid disruption",
+      "Product classification under nutraceuticals & health supplements per FSSAI norms",
+      "Formulation compliance checks ensuring permissible ingredient limits & dosage",
+      "Statement of Ingredients (SOI) drafting & regulatory submission",
+      "Preparation and technical review of all submission documents",
+      "Nutraceutical label compliance verification for claims and declarations"
+    ],
+    keyAreas: [
+      {
+        title: "License Application",
+        description: "End-to-end assistance in applying for the required nutraceutical manufacturing license"
+      },
+      {
+        title: "Reversion Handling",
+        description: "Expert guidance on how to properly respond if any reversion, query, or clarification is raised by the licensing authority"
+      },
+      {
+        title: "License Modification",
+        description: "Support for updating your existing license, including product addition or category changes"
+      },
+      {
+        title: "Renewal Support",
+        description: "Timely tracking and processing of license renewals to avoid business disruption"
+      },
+      {
+        title: "Product Classification Guidance",
+        description: "Helping you correctly classify your product under nutraceuticals/health supplements as per FSSAI norms"
+      },
+      {
+        title: "Formulation Compliance Check",
+        description: "Ensuring your ingredient composition and dosage align with permissible limits under regulations"
+      },
+      {
+        title: "SOI (Statement of Ingredients) Preparation",
+        description: "Drafting and submitting the SOI document as required for product approval"
+      },
+      {
+        title: "Documentation Support",
+        description: "Preparation and review of all required technical and regulatory documents for submission"
+      },
+      {
+        title: "Label Compliance",
+        description: "Verifying your product labels meet nutraceutical-specific declaration and claim requirements"
+      }
+    ],
+    whoNeedsThis: [
+      "Nutraceutical & dietary supplement manufacturers",
+      "Health supplement brand owners & importers",
+      "Ayurvedic & herbal product manufacturers expanding into nutraceuticals",
+      "Contract manufacturers producing health supplements",
+      "E-commerce brands launching wellness & nutraceutical lines"
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Classification & Formulation Check",
+        description: "Review ingredient dosage, composition, and FSSAI classification category."
+      },
+      {
+        step: "02",
+        title: "SOI & Document Drafting",
+        description: "Prepare Statement of Ingredients (SOI), technical dossiers, and label declarations."
+      },
+      {
+        step: "03",
+        title: "Application Submission",
+        description: "Submit license applications, modifications, or renewals on the FoSCoS portal."
+      },
+      {
+        step: "04",
+        title: "Query Resolution & Approval",
+        description: "Address authority reversions or queries promptly until license issuance."
+      }
+    ],
+    benefits: [
+      "Ensure 100% compliance with FSSAI nutraceutical and supplement regulations",
+      "Eliminate application delays and query reversions with expert dossier preparation",
+      "Accurately classify ingredients and permissible RDA dosages before market launch",
+      "Protect brand reputation with compliant packaging labels and claim verification"
+    ],
+    ctaText: "Discuss This Service",
+    whatsappMessage: "Hi Zenix Food Worx, I would like to inquire about Nutraceutical Licensing & Compliance."
+  },
+  {
+    id: "training-programs",
+    number: "13",
+    title: "Training Programs",
+    slug: "training-programs",
+    shortDescription: "Professional food safety training programs including FoSTaC, Internal Auditor, Lead Auditor and HACCP Level 1 to Level 4 training.",
+    fullDescription: "We conduct professional training programs to build food safety competency within your team, covering FSSAI FoSTaC certification, Internal & Lead Auditor courses, and complete HACCP Level 1 to 4 training.",
+    iconName: "GraduationCap",
+    heroImage: serviceImages.trainingPrograms.url,
+    seoTitle: "Food Safety Training Programs | Zenix Food Worx",
+    seoDescription: "Professional food safety training programs including FoSTaC, Internal Auditor, Lead Auditor and HACCP Level 1 to Level 4 training.",
+    whatWeOffer: [
+      "FSSAI-mandated FoSTaC Food Safety Supervisor certification training",
+      "Internal Auditor training for effective internal food safety audits",
+      "Lead Auditor training for HACCP & ISO certification audit leadership",
+      "HACCP Level 1 Foundational Awareness training for staff and food handlers",
+      "HACCP Level 2 & Level 3 Implementation & Supervisory training",
+      "HACCP Level 4 Advanced Management & Auditing training"
+    ],
+    keyAreas: [
+      {
+        title: "FoSTaC Training",
+        description: "FSSAI-mandated Food Safety Supervisor certification training for your food handlers and staff"
+      },
+      {
+        title: "Internal Auditor Training",
+        description: "Equip your team with the skills to conduct effective internal food safety audits within your organization"
+      },
+      {
+        title: "Lead Auditor Training",
+        description: "Advanced, in-depth training for professionals responsible for leading HACCP & ISO certification audits"
+      },
+      {
+        title: "HACCP Level 1 to Level 4 Training",
+        description: "Complete range of HACCP certification training, from foundational awareness (Level 1) to advanced implementation and management levels (Level 2, 3 & 4), based on your team's role and expertise needed"
+      }
+    ],
+    whoNeedsThis: [
+      "Food manufacturing units & processing plants",
+      "Restaurants, cloud kitchens & hotel chains",
+      "Quality Assurance (QA) & Quality Control (QC) teams",
+      "Food safety supervisors & hygiene managers",
+      "Caterers & institutional food service providers"
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Training Needs Assessment",
+        description: "Identify team skill gaps, regulatory mandates (FoSTaC), and required HACCP/Auditor levels."
+      },
+      {
+        step: "02",
+        title: "Custom Curriculum & Scheduling",
+        description: "Structure interactive course modules tailored to your facility operations and roles."
+      },
+      {
+        step: "03",
+        title: "Interactive Workshop Delivery",
+        description: "Conduct classroom or site training with practical case studies and audit simulations."
+      },
+      {
+        step: "04",
+        title: "Assessment & Certification",
+        description: "Evaluate trainee competence and issue official certification & completion reports."
+      }
+    ],
+    benefits: [
+      "Meet mandatory FSSAI FoSTaC supervisor requirements for your facility",
+      "Build a strong internal audit culture to maintain continuous inspection readiness",
+      "Empower QA/QC personnel with internationally recognized HACCP & Lead Auditor skills",
+      "Reduce food safety risks and non-conformances through trained food handlers"
+    ],
+    ctaText: "Discuss This Service",
+    whatsappMessage: "Hi Zenix Food Worx, I would like to inquire about your Training Programs."
   }
 ];
+

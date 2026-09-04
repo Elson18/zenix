@@ -121,6 +121,34 @@ export const serviceFAQs: Record<string, FAQItem[]> = {
       question: 'Do you draft the quality agreements?',
       answer: 'We guide the drafting of Quality Service Level Agreements (SLAs) to set clear expectations on moisture levels, microbiological limits, and batch release protocols.'
     }
+  ],
+  'nutraceutical-licensing': [
+    {
+      question: 'What is required for a nutraceutical manufacturing license in India?',
+      answer: 'Nutraceutical manufacturing requires Central FSSAI licensing under specific product categories (Nutraceuticals, Health Supplements, Foods for Special Dietary Use, etc.), along with detailed Statement of Ingredients (SOI), formulation safety data, label claim substantiation, and manufacturing facility layout approvals.'
+    },
+    {
+      question: 'How do you assist with licensing authority queries or application reversions?',
+      answer: 'We analyze the exact clarification or query raised by FSSAI officers, draft technical compliance responses, verify ingredient RDA limits, and resubmit corrected dossiers to ensure swift application approval.'
+    },
+    {
+      question: 'Can you help verify if our formulation meets FSSAI permissible limits?',
+      answer: 'Yes, we perform thorough formulation compliance checks against FSSAI Schedule VI/RDA limits for vitamins, minerals, botanical extracts, amino acids, and enzymes before you apply for licensing or launch production.'
+    }
+  ],
+  'training-programs': [
+    {
+      question: 'What is FoSTaC training and is it mandatory?',
+      answer: 'FoSTaC (Food Safety Training & Certification) is an FSSAI-mandated training program requiring every licensed food business to have at least one trained and certified Food Safety Supervisor for every 25 food handlers on premises.'
+    },
+    {
+      question: 'What is the difference between Internal Auditor and Lead Auditor training?',
+      answer: 'Internal Auditor training equips your team members to audit your own facility against FSMS and HACCP standards. Lead Auditor training is an advanced certification that qualifies professionals to lead formal second-party (supplier) and third-party (certification body) audits.'
+    },
+    {
+      question: 'Which HACCP training level (Level 1 to Level 4) does my team need?',
+      answer: 'Level 1 is ideal for general food handlers and staff awareness; Level 2 & 3 are designed for supervisors, line managers, and QA teams implementing HACCP; Level 4 is for food safety heads, auditors, and technical managers responsible for complete system design and management.'
+    }
   ]
 };
 

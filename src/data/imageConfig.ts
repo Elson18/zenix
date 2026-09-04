@@ -58,6 +58,16 @@ export const serviceImages = {
   contractManufacturing: {
     url: "/images/Contract Manufacturing Support image.png",
     alt: "Packaged goods and boxes ready for shipment from a contract manufacturing facility"
+  },
+  // 12 — Nutraceutical supplement packaging & regulatory documentation
+  nutraceuticalLicensing: {
+    url: "/images/Nutraceutical Licensing & Compliance image.png",
+    alt: "Nutraceutical health supplement bottles and regulatory licensing compliance documents"
+  },
+  // 13 — Professional food safety classroom training & auditor workshop
+  trainingPrograms: {
+    url: "/images/Training Programs image.png",
+    alt: "Food safety expert presenting a supervisor training program in a modern workshop classroom"
   }
 };
 

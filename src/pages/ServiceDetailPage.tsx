@@ -22,6 +22,16 @@ export default function ServiceDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const service = servicesData.find((s) => s.slug === slug);
 
+  React.useEffect(() => {
+    if (service) {
+      document.title = service.seoTitle || `${service.title} | Zenix Food Worx`;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', service.seoDescription || service.shortDescription);
+      }
+    }
+  }, [service]);
+
   if (!service) {
     return <Navigate to="/services" replace />;
   }
@@ -50,6 +60,8 @@ export default function ServiceDetailPage() {
       case 'factory-setup': return 'Plan My Factory';
       case 'restaurant-setup': return 'Plan My Restaurant';
       case 'contract-manufacturing': return 'Find Manufacturing Support';
+      case 'nutraceutical-licensing': return 'Discuss Nutraceutical Compliance';
+      case 'training-programs': return 'Explore Training Programs';
       default: return 'Talk to an Expert';
     }
   };
@@ -110,7 +122,7 @@ export default function ServiceDetailPage() {
             >
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full gold-badge text-xs font-heading font-bold bg-white border border-brand-border shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-brand-primary animate-pulse" />
-                <span>Service 0{service.number}</span>
+                <span>Service {service.number}</span>
               </div>
 
               <h1 className="font-heading font-extrabold text-4xl sm:text-5xl text-brand-black tracking-tight leading-tight">
@@ -341,7 +353,7 @@ export default function ServiceDetailPage() {
                 >
                   <div>
                     <span className="text-[10px] font-heading font-bold text-brand-primary uppercase tracking-wider bg-brand-primaryLight border border-brand-primary/10 px-2.5 py-0.5 rounded-full">
-                      Service 0{rsrv.number}
+                      Service {rsrv.number}
                     </span>
                     <h3 className="font-heading font-bold text-base text-brand-black mt-3">
                       {rsrv.title}

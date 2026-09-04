@@ -23,6 +23,8 @@ import {
   Utensils,
   ShieldCheck,
   Handshake,
+  Pill,
+  GraduationCap,
   CheckCircle2
 } from 'lucide-react';
 import { businessTypes } from '../data/businessTypes';
@@ -51,7 +53,9 @@ const IconMap: Record<string, React.ComponentType<any>> = {
   'Lightbulb': Rocket, // Fallback to Rocket or custom
   'Utensils': Utensils,
   'ShieldCheck': ShieldCheck,
-  'Handshake': Handshake
+  'Handshake': Handshake,
+  'Pill': Pill,
+  'GraduationCap': GraduationCap
 };
 
 export default function ServiceFinderPage() {

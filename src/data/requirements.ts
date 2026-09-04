@@ -22,6 +22,8 @@ export const requirements: RequirementOption[] = [
   { id: 'factory-setup', label: 'Factory Setup', description: 'Compliant architecture layout plans and utility design.' },
   { id: 'manufacturing', label: 'Contract Manufacturing', description: 'Co-packer audit screening, Quality SLAs, and tech transfers.' },
   { id: 'hospitality', label: 'Hospitality Consulting', description: 'Menu costing, platform onboarding, and operational audits.' },
+  { id: 'nutraceutical', label: 'Nutraceutical Compliance', description: 'License applications, formulation checks, SOI drafting & label compliance for health supplements.' },
+  { id: 'training', label: 'Training Programs', description: 'FoSTaC certification, Internal & Lead Auditor courses, and HACCP Level 1 to 4 training.' },
   { id: 'not-sure', label: 'Not Sure', description: 'Unsure which path is right; seeking general consultancy guidance.' }
 ];
 

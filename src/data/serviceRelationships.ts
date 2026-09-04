@@ -58,6 +58,16 @@ export const serviceRelationships: Record<string, string[]> = {
     'factory-setup',
     'food-testing',
     'certification-documentation'
+  ],
+  'nutraceutical-licensing': [
+    'regulatory-licensing',
+    'label-validation',
+    'food-testing'
+  ],
+  'training-programs': [
+    'certification-documentation',
+    'food-safety-inspections',
+    'regulatory-licensing'
   ]
 };
 export function getRelatedServices(serviceId: string): string[] {

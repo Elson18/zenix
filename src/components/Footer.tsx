@@ -110,6 +110,16 @@ export default function Footer() {
                   Hospitality Consulting
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/services/nutraceutical-licensing" className="hover:text-brand-primary transition-colors">
+                  Nutraceutical Licensing & Compliance
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/services/training-programs" className="hover:text-brand-primary transition-colors">
+                  Food Safety Training Programs
+                </NavLink>
+              </li>
             </ul>
           </div>
 

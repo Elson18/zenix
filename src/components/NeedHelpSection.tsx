@@ -10,6 +10,8 @@ import {
   Factory, 
   Award, 
   Handshake, 
+  Pill,
+  GraduationCap,
   ArrowRight 
 } from 'lucide-react';
 import { trackEvent } from '../utils/analytics';
@@ -45,6 +47,23 @@ export default function NeedHelpSection() {
       slug: 'food-testing',
       icon: FlaskConical,
       badge: 'Recommended'
+    },
+    {
+      id: 'nutraceutical',
+      title: 'I Need Nutraceutical Compliance',
+      description: 'Regulatory support, ingredient classification, SOI preparation and label compliance.',
+      cta: 'Explore Nutraceutical Support',
+      slug: 'nutraceutical-licensing',
+      icon: Pill,
+      badge: 'Recommended'
+    },
+    {
+      id: 'training',
+      title: 'I Need Staff Training',
+      description: 'FoSTaC certification, Internal & Lead Auditor courses, and HACCP Level 1 to 4 training.',
+      cta: 'Explore Training Programs',
+      slug: 'training-programs',
+      icon: GraduationCap
     },
     {
       id: 'label',

@@ -111,6 +111,20 @@ export function getRecommendedServices(answers: UserProfileAnswers): Recommended
           'Hospitality Consulting is selected to engineer menus and onboard platforms.'
         );
         break;
+      case 'nutraceutical':
+        addRecommendation(
+          'nutraceutical-licensing',
+          100,
+          'Nutraceutical Licensing & Compliance is selected for health supplement regulatory support.'
+        );
+        break;
+      case 'training':
+        addRecommendation(
+          'training-programs',
+          100,
+          'Training Programs is chosen to build food safety, FoSTaC, and audit competency for your team.'
+        );
+        break;
     }
   });
 

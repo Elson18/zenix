@@ -12,6 +12,8 @@ import {
   Factory, 
   Store, 
   Handshake, 
+  Pill,
+  GraduationCap,
   ArrowRight 
 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -36,6 +38,8 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
       case 'Factory': return <Factory className="w-6 h-6 text-brand-primaryDark" />;
       case 'Store': return <Store className="w-6 h-6 text-brand-primaryDark" />;
       case 'Handshake': return <Handshake className="w-6 h-6 text-brand-primaryDark" />;
+      case 'Pill': return <Pill className="w-6 h-6 text-brand-primaryDark" />;
+      case 'GraduationCap': return <GraduationCap className="w-6 h-6 text-brand-primaryDark" />;
       default: return <FlaskConical className="w-6 h-6 text-brand-primaryDark" />;
     }
   };

@@ -19,7 +19,9 @@ import {
   Award,
   Utensils,
   Factory,
-  Store
+  Store,
+  Pill,
+  GraduationCap
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { trackEvent } from '../utils/analytics';
@@ -105,6 +107,8 @@ export default function ServicesPage() {
       case 'Factory': return <Factory className="w-5 h-5 text-brand-primary" />;
       case 'Store': return <Store className="w-5 h-5 text-brand-primary" />;
       case 'Handshake': return <Handshake className="w-5 h-5 text-brand-primary" />;
+      case 'Pill': return <Pill className="w-5 h-5 text-brand-primary" />;
+      case 'GraduationCap': return <GraduationCap className="w-5 h-5 text-brand-primary" />;
       default: return <FlaskConical className="w-5 h-5 text-brand-primary" />;
     }
   };
@@ -159,7 +163,7 @@ export default function ServicesPage() {
                   <div className={`lg:col-span-7 space-y-6 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
                     <div className="space-y-3">
                       <span className="text-xs font-heading font-extrabold text-brand-primary bg-white px-2.5 py-1 rounded-full border border-brand-border/80 inline-block shadow-sm">
-                        Service 0{service.number}
+                        Service {service.number}
                       </span>
                       <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-brand-black tracking-tight leading-snug">
                         {service.title}
