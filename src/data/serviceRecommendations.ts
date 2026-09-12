@@ -11,7 +11,47 @@ export interface UserProfileAnswers {
   businessType: string; // id from businessTypes.ts
   businessStage: string; // id from businessStages.ts
   requirements: string[]; // ids from requirements.ts
-  priority: string; // id from priorities.ts
+  priority?: string; // id from priorities.ts (optional)
+}
+
+export function getBusinessArchetype(businessType: string, _businessStage?: string): { title: string; subtitle: string } {
+  switch (businessType) {
+    case 'food-manufacturers':
+      return {
+        title: "Scaling Food Manufacturer",
+        subtitle: "Focusing on industrial facility standards, batch quality, and statutory compliance."
+      };
+    case 'hospitality-horeca':
+      return {
+        title: "Hospitality & Foodservice Brand",
+        subtitle: "Focusing on kitchen hygiene, menu cost engineering, and multi-outlet compliance."
+      };
+    case 'food-import-export':
+      return {
+        title: "Global Food Importer / Exporter",
+        subtitle: "Focusing on Central FSSAI licensing, customs clearance, and global trade packaging."
+      };
+    case 'food-startups':
+      return {
+        title: "Innovative Food Startup",
+        subtitle: "Focusing on recipe formulation, shelf-life verification, and co-packer sourcing."
+      };
+    case 'retail-ecommerce':
+      return {
+        title: "Retail & E-commerce Food Merchant",
+        subtitle: "Focusing on packaging claim validation, nutritional declarations, and platform compliance."
+      };
+    case 'corporates-educational-institutions':
+      return {
+        title: "Institutional Dining Operator",
+        subtitle: "Focusing on bulk kitchen food safety, staff FoSTaC training, and sanitation rating."
+      };
+    default:
+      return {
+        title: "Emerging Food Enterprise",
+        subtitle: "Tailoring regulatory licensing and operational quality management."
+      };
+  }
 }
 
 export function getRecommendedServices(answers: UserProfileAnswers): RecommendedService[] {
@@ -20,7 +60,8 @@ export function getRecommendedServices(answers: UserProfileAnswers): Recommended
   const addRecommendation = (serviceId: string, score: number, reason: string) => {
     const existing = recommendationsMap.get(serviceId);
     if (existing) {
-      existing.score = Math.max(existing.score, score);
+      // De-duplicate & boost confidence score when multiple signals align
+      existing.score = Math.min(100, Math.max(existing.score, score) + (existing.score >= 85 ? 5 : 10));
       if (!existing.reasons.includes(reason)) {
         existing.reasons.push(reason);
       }
@@ -31,188 +72,128 @@ export function getRecommendedServices(answers: UserProfileAnswers): Recommended
 
   const { businessType, businessStage, requirements, priority } = answers;
 
-  // --- 1. DIRECT REQUIREMENT MATCHES (Highest Priority, Score 95-100) ---
+  // --- 1. DIRECT REQUIREMENT MATCHES (Highest Weight, Score 95-100) ---
   requirements.forEach((req) => {
     switch (req) {
       case 'licensing':
         addRecommendation(
           'regulatory-licensing',
           100,
-          'You selected FSSAI Licensing as an immediate requirement for your business.'
+          'Selected FSSAI Licensing as an immediate operational requirement.'
         );
         break;
       case 'testing':
         addRecommendation(
           'food-testing',
           100,
-          'Food Testing is chosen to analyze quality parameters, contaminants, or shelf-life.'
+          'Selected Food Testing for quality parameters, contaminants, or shelf-life verification.'
         );
         break;
       case 'label':
         addRecommendation(
           'label-validation',
           100,
-          'Label Validation is required to ensure packaging compliance with FSSAI regulations.'
+          'Selected Label Validation to ensure FSSAI packaging & claim compliance.'
         );
         break;
       case 'nutrition':
         addRecommendation(
           'nutritional-calculation',
           100,
-          'Nutritional Facts calculation is selected for declaring nutrients on food labels.'
+          'Selected Nutritional Facts calculation for mandatory nutrition table declarations.'
         );
         break;
       case 'product-dev':
         addRecommendation(
           'product-development',
           100,
-          'Product Development is requested to support recipe formulation and trials.'
+          'Selected Product Development for recipe formulation, trials, and scale-up.'
         );
         break;
       case 'haccp-iso':
         addRecommendation(
           'certification-documentation',
           100,
-          'HACCP / ISO consultancy is selected to establish international food safety standards.'
+          'Selected HACCP / ISO consultancy for global food safety accreditation.'
         );
         break;
       case 'safety-hygiene':
         addRecommendation(
           'food-safety-inspections',
           100,
-          'Food Safety & Hygiene Inspections is requested to review sanitation levels.'
+          'Selected Food Safety & Hygiene Inspections for site sanitation audits.'
         );
         break;
       case 'restaurant-setup':
         addRecommendation(
           'restaurant-setup',
           100,
-          'Restaurant Setup is selected to help with layout design, equipment procurement, and launches.'
+          'Selected Restaurant Setup for commercial kitchen layout and equipment sourcing.'
         );
         break;
       case 'factory-setup':
         addRecommendation(
           'factory-setup',
           100,
-          'Factory Setup Consultancy is chosen to coordinate industrial layout and machinery plans.'
+          'Selected Factory Setup Consultancy for plant layout and utility design.'
         );
         break;
       case 'manufacturing':
         addRecommendation(
           'contract-manufacturing',
           100,
-          'Contract Manufacturing support is selected to screen suitable co-packers.'
+          'Selected Contract Manufacturing support for screening co-packers and SLAs.'
         );
         break;
       case 'hospitality':
         addRecommendation(
           'hospitality-consulting',
           100,
-          'Hospitality Consulting is selected to engineer menus and onboard platforms.'
+          'Selected Hospitality Consulting for menu engineering and aggregator onboarding.'
         );
         break;
       case 'nutraceutical':
         addRecommendation(
           'nutraceutical-licensing',
           100,
-          'Nutraceutical Licensing & Compliance is selected for health supplement regulatory support.'
+          'Selected Nutraceutical Compliance for health supplement approvals and claims.'
         );
         break;
       case 'training':
         addRecommendation(
           'training-programs',
           100,
-          'Training Programs is chosen to build food safety, FoSTaC, and audit competency for your team.'
+          'Selected Training Programs for team FoSTaC and audit certifications.'
         );
         break;
     }
   });
 
-  // --- 2. BUSINESS STAGE INFERENCES (Medium Priority, Score 80-90) ---
-  if (businessStage === 'new-idea' || businessStage === 'developing-product') {
-    if (businessType === 'food-startup' || businessType === 'food-brand') {
-      addRecommendation(
-        'product-development',
-        90,
-        'Your stage indicates you are working on new concepts; formulation trials are crucial.'
-      );
-      addRecommendation(
-        'food-testing',
-        80,
-        'Developing new products requires shelf-life and nutrient testing.'
-      );
-    }
-  }
-
-  if (businessStage === 'setting-up-factory') {
-    addRecommendation(
-      'factory-setup',
-      95,
-      'You are currently planning or setting up a factory layout. Correct engineering prevents structural issues.'
-    );
-    addRecommendation(
-      'regulatory-licensing',
-      85,
-      'FSSAI Manufacturing Licensing is crucial for starting factory operations.'
-    );
-  }
-
-  if (businessStage === 'setting-up-restaurant') {
-    addRecommendation(
-      'restaurant-setup',
-      95,
-      'Setting up a food retail kitchen requires custom layouts and specific equipment sourcing.'
-    );
-    addRecommendation(
-      'regulatory-licensing',
-      85,
-      'Retail food licenses and local NOCs are required before launching a restaurant.'
-    );
-  }
-
-  if (businessStage === 'preparing-launch') {
-    addRecommendation(
-      'label-validation',
-      85,
-      'As you prepare to launch, verifying packaging labels against legal standards prevents product recalls.'
-    );
-    addRecommendation(
-      'regulatory-licensing',
-      85,
-      'Ensuring valid FSSAI state or central licensing is mandatory before you launch retail sales.'
-    );
-  }
-
-  if (businessStage === 'ongoing-compliance') {
-    addRecommendation(
-      'regulatory-licensing',
-      90,
-      'Your priority is ongoing compliance, which demands returns management and modification filings.'
-    );
-    addRecommendation(
-      'food-safety-inspections',
-      80,
-      'Routine hygiene ratings and mock inspection audits maintain compliant operations.'
-    );
-  }
-
-  // --- 3. BUSINESS TYPE & PRIORITY INFERENCES (Medium-Low, Score 75-90) ---
+  // --- 2. BUSINESS TYPE & STAGE COMBINED SIGNALS ---
   if (businessType === 'food-manufacturers') {
     addRecommendation(
       'regulatory-licensing',
       90,
-      'Food Manufacturers require FSSAI Central/State licensing and statutory compliance.'
+      'Food Manufacturers require FSSAI Central/State licensing.'
     );
-    addRecommendation(
-      'factory-setup',
-      85,
-      'Factory layout optimization and machinery planning support processing operations.'
-    );
+    if (businessStage === 'setting-up-factory') {
+      addRecommendation(
+        'factory-setup',
+        95,
+        'Setting up a factory layout requires compliant engineering to prevent structural issues.'
+      );
+    } else {
+      addRecommendation(
+        'factory-setup',
+        85,
+        'Factory layout optimization supports expanding food processing lines.'
+      );
+    }
     if (priority === 'certification') {
       addRecommendation(
         'certification-documentation',
         90,
-        'HACCP or ISO certification helps food manufacturers qualify for retail and exports.'
+        'HACCP/ISO certification qualifies manufacturing lines for retail shelves and exports.'
       );
     }
   }
@@ -221,25 +202,33 @@ export function getRecommendedServices(answers: UserProfileAnswers): Recommended
     addRecommendation(
       'hospitality-consulting',
       90,
-      'Hospitality operations benefit from menu engineering, costing, and kitchen workflow design.'
+      'Hospitality operations benefit from menu engineering and kitchen workflow design.'
     );
-    addRecommendation(
-      'food-safety-inspections',
-      85,
-      'Hygiene audits and food safety inspections ensure top cleanliness ratings.'
-    );
+    if (businessStage === 'setting-up-restaurant') {
+      addRecommendation(
+        'restaurant-setup',
+        95,
+        'Setting up a food retail kitchen requires custom layouts and NOC clearances.'
+      );
+    } else {
+      addRecommendation(
+        'food-safety-inspections',
+        85,
+        'Hygiene audits and food safety inspections ensure top cleanliness ratings.'
+      );
+    }
   }
 
   if (businessType === 'food-import-export') {
     addRecommendation(
       'regulatory-licensing',
       95,
-      'Importing and exporting food requires Central FSSAI licensing and customs trade clearance.'
+      'Importing/exporting food requires Central FSSAI licensing and trade clearance.'
     );
     addRecommendation(
       'label-validation',
       90,
-      'Imported food products must comply with Indian packaging and labelling regulations.'
+      'Imported food products must comply with Indian legal metrology and labelling norms.'
     );
   }
 
@@ -260,12 +249,12 @@ export function getRecommendedServices(answers: UserProfileAnswers): Recommended
     addRecommendation(
       'label-validation',
       90,
-      'Retail & E-commerce platforms mandate accurate FSSAI label declarations and barcode details.'
+      'Retail & E-commerce platforms mandate accurate FSSAI label declarations.'
     );
     addRecommendation(
       'regulatory-licensing',
       85,
-      'E-commerce sellers and retail operations require valid food merchant licenses.'
+      'E-commerce sellers and retail stores require valid food merchant licenses.'
     );
   }
 
@@ -273,12 +262,12 @@ export function getRecommendedServices(answers: UserProfileAnswers): Recommended
     addRecommendation(
       'food-safety-inspections',
       90,
-      'Corporate and campus canteens require routine food safety and hygiene audits.'
+      'Corporate and campus canteens require routine food safety & hygiene audits.'
     );
     addRecommendation(
       'training-programs',
       85,
-      'FoSTaC food safety training empowers kitchen staff and food handlers in institutional setups.'
+      'FoSTaC training empowers staff and food handlers in institutional dining setups.'
     );
   }
 
@@ -286,21 +275,21 @@ export function getRecommendedServices(answers: UserProfileAnswers): Recommended
     addRecommendation(
       'food-safety-inspections',
       90,
-      'A primary concern for food safety aligns with our internal hygiene inspections and audits.'
+      'Aligned with primary focus on internal hygiene inspections and safety audits.'
     );
   }
 
-  // Default recommendations if no services are identified or "not sure" was chosen
+  // --- 3. FALLBACK MECHANISM ---
   if (recommendationsMap.size === 0 || requirements.includes('not-sure')) {
     addRecommendation(
       'regulatory-licensing',
       75,
-      'FSSAI Licensing is the baseline registration needed by every food business in India.'
+      'FSSAI Licensing is the baseline registration required for every food business.'
     );
     addRecommendation(
       'food-testing',
       70,
-      'General food testing helps establish initial quality and safety metrics.'
+      'General food testing establishes initial quality and safety metrics.'
     );
   }
 

@@ -2,6 +2,7 @@ export interface RequirementOption {
   id: string;
   label: string;
   description: string;
+  relevantForTypes?: string[];
 }
 
 export interface PriorityOption {
@@ -11,19 +12,19 @@ export interface PriorityOption {
 }
 
 export const requirements: RequirementOption[] = [
-  { id: 'licensing', label: 'FSSAI Licensing', description: 'Basic, state, or central food license, modifications, or renewals.' },
-  { id: 'testing', label: 'Food Testing', description: 'Testing for contaminants, pathogens, shelf-life, or nutrition.' },
-  { id: 'label', label: 'Label Validation', description: 'FSSAI and legal metrology package compliance reviews.' },
-  { id: 'nutrition', label: 'Nutritional Facts', description: 'Nutrition information calculation and FDA-approved table layout.' },
-  { id: 'product-dev', label: 'Product Development', description: 'Recipe formulation, pilot scale-ups, and cost optimization.' },
-  { id: 'haccp-iso', label: 'HACCP / ISO', description: 'Gap audits, FSMS manuals, and certification audit preparation.' },
-  { id: 'safety-hygiene', label: 'Food Safety & Hygiene', description: 'Staff training, physical inspection audits, and hygiene scores.' },
-  { id: 'restaurant-setup', label: 'Restaurant Setup', description: 'Kitchen workflows, equipment procurement, and catering setup.' },
-  { id: 'factory-setup', label: 'Factory Setup', description: 'Compliant architecture layout plans and utility design.' },
-  { id: 'manufacturing', label: 'Contract Manufacturing', description: 'Co-packer audit screening, Quality SLAs, and tech transfers.' },
-  { id: 'hospitality', label: 'Hospitality Consulting', description: 'Menu costing, platform onboarding, and operational audits.' },
-  { id: 'nutraceutical', label: 'Nutraceutical Compliance', description: 'Label and claim compliance, product classification, and product/claim approval for health supplements.' },
-  { id: 'training', label: 'Training Programs', description: 'FoSTaC certification, Internal & Lead Auditor courses, and HACCP Level 1 to 4 training.' },
+  { id: 'licensing', label: 'FSSAI Licensing', description: 'Basic, state, or central food license, modifications, or renewals.', relevantForTypes: ['food-manufacturers', 'hospitality-horeca', 'food-import-export', 'food-startups', 'retail-ecommerce', 'corporates-educational-institutions'] },
+  { id: 'testing', label: 'Food Testing', description: 'Testing for contaminants, pathogens, shelf-life, or nutrition.', relevantForTypes: ['food-manufacturers', 'food-import-export', 'food-startups', 'retail-ecommerce'] },
+  { id: 'label', label: 'Label Validation', description: 'FSSAI and legal metrology package compliance reviews.', relevantForTypes: ['food-manufacturers', 'food-import-export', 'food-startups', 'retail-ecommerce'] },
+  { id: 'nutrition', label: 'Nutritional Facts', description: 'Nutrition information calculation and FDA-approved table layout.', relevantForTypes: ['food-manufacturers', 'food-startups', 'retail-ecommerce'] },
+  { id: 'product-dev', label: 'Product Development', description: 'Recipe formulation, pilot scale-ups, and cost optimization.', relevantForTypes: ['food-manufacturers', 'food-startups'] },
+  { id: 'haccp-iso', label: 'HACCP / ISO', description: 'Gap audits, FSMS manuals, and certification audit preparation.', relevantForTypes: ['food-manufacturers', 'hospitality-horeca', 'food-import-export'] },
+  { id: 'safety-hygiene', label: 'Food Safety & Hygiene', description: 'Staff training, physical inspection audits, and hygiene scores.', relevantForTypes: ['hospitality-horeca', 'corporates-educational-institutions', 'food-manufacturers'] },
+  { id: 'restaurant-setup', label: 'Restaurant Setup', description: 'Kitchen workflows, equipment procurement, and catering setup.', relevantForTypes: ['hospitality-horeca'] },
+  { id: 'factory-setup', label: 'Factory Setup', description: 'Compliant architecture layout plans and utility design.', relevantForTypes: ['food-manufacturers', 'food-startups'] },
+  { id: 'manufacturing', label: 'Contract Manufacturing', description: 'Co-packer audit screening, Quality SLAs, and tech transfers.', relevantForTypes: ['food-manufacturers', 'food-startups', 'retail-ecommerce'] },
+  { id: 'hospitality', label: 'Hospitality Consulting', description: 'Menu costing, platform onboarding, and operational audits.', relevantForTypes: ['hospitality-horeca', 'corporates-educational-institutions'] },
+  { id: 'nutraceutical', label: 'Nutraceutical Compliance', description: 'Label and claim compliance, product classification, and product/claim approval for health supplements.', relevantForTypes: ['food-manufacturers', 'food-startups', 'retail-ecommerce'] },
+  { id: 'training', label: 'Training Programs', description: 'FoSTaC certification, Internal & Lead Auditor courses, and HACCP Level 1 to 4 training.', relevantForTypes: ['hospitality-horeca', 'corporates-educational-institutions', 'food-manufacturers'] },
   { id: 'not-sure', label: 'Not Sure', description: 'Unsure which path is right; seeking general consultancy guidance.' }
 ];
 

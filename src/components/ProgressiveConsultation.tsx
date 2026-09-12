@@ -17,6 +17,32 @@ import { companyData } from '../data/companyData';
 import { trackEvent } from '../utils/analytics';
 import { sendContactEmail } from '../services/emailjs';
 
+function CountUpScore({ value }: { value: number }) {
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const duration = 750;
+    const stepTime = 16;
+    const steps = duration / stepTime;
+    const increment = value / steps;
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= value) {
+        setDisplayValue(value);
+        clearInterval(timer);
+      } else {
+        setDisplayValue(Math.floor(start));
+      }
+    }, stepTime);
+
+    return () => clearInterval(timer);
+  }, [value]);
+
+  return <span>{displayValue}%</span>;
+}
+
 export default function ProgressiveConsultation() {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState(1);
@@ -432,7 +458,7 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                               className="p-4 rounded-2xl bg-brand-backgroundSoft border border-brand-border flex items-start gap-4"
                             >
                               <span className="w-8 h-8 rounded-lg bg-brand-primaryLight text-brand-primaryDark font-heading font-bold text-xs flex items-center justify-center shrink-0">
-                                {rec.matchScore}%
+                                <CountUpScore value={rec.matchScore} />
                               </span>
                               <div>
                                 <h5 className="font-heading font-bold text-sm text-brand-black">

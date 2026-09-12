@@ -44,22 +44,52 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
     }
   };
 
+  const [tilt, setTilt] = React.useState({ rotateX: 0, rotateY: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Disable on touch devices
+    if ('ontouchstart' in window) return;
+
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    // Max 3deg rotation
+    const rotateX = ((y - centerY) / centerY) * -2.5;
+    const rotateY = ((x - centerX) / centerX) * 2.5;
+
+    setTilt({ rotateX, rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setTilt({ rotateX: 0, rotateY: 0 });
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
+      style={{ perspective: 1000 }}
     >
       <NavLink
         to={`/services/${service.slug}`}
-        className="group relative flex flex-col justify-between h-full p-7 rounded-2xl bg-white border border-brand-border hover:border-brand-primary shadow-subtle hover:shadow-card-hover transform hover:-translate-y-1.5 transition-all duration-300"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          transform: `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
+          transformStyle: 'preserve-3d'
+        }}
+        className="group relative flex flex-col justify-between h-full p-7 rounded-2xl bg-white border border-brand-border hover:border-brand-primary shadow-subtle hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-300"
       >
         <div>
           {/* Top Row: Icon & Number */}
           <div className="flex items-center justify-between mb-6">
-            <div className="w-12 h-12 rounded-xl bg-brand-primaryLight flex items-center justify-center group-hover:bg-brand-softGold transition-colors duration-300">
-              <span className="transition-colors">
+            <div className="w-12 h-12 rounded-xl bg-brand-primaryLight flex items-center justify-center group-hover:bg-brand-softGold group-hover:scale-110 transition-all duration-300">
+              <span className="transition-transform group-hover:-translate-y-0.5">
                 {getIcon(service.iconName)}
               </span>
             </div>

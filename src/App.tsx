@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
+import BrandIntro from './components/BrandIntro';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -19,10 +21,23 @@ import TermsConditionsPage from './pages/TermsConditionsPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
+  const shouldReduceMotion = useReducedMotion();
+  const [isIntroComplete, setIsIntroComplete] = useState(() => {
+    return Boolean(sessionStorage.getItem('zenix_brand_intro_seen')) || Boolean(shouldReduceMotion);
+  });
+
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-brand-bgLight text-brand-slate">
+      {!isIntroComplete && (
+        <BrandIntro onComplete={() => setIsIntroComplete(true)} />
+      )}
+      <motion.div
+        initial={isIntroComplete ? false : { opacity: 0, y: 15 }}
+        animate={{ opacity: isIntroComplete ? 1 : 0, y: isIntroComplete ? 0 : 15 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="flex flex-col min-h-screen bg-brand-bgLight text-brand-slate"
+      >
         <Navbar />
         
         {/* pb-20 on mobile ensures the sticky action bar does not cover page content */}
@@ -47,7 +62,7 @@ export default function App() {
         <WhatsAppButton />
         <StickyMobileActionBar />
         <ProgressiveConsultation />
-      </div>
+      </motion.div>
     </Router>
   );
 }

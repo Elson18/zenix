@@ -75,13 +75,15 @@ export default function Hero() {
 
           {/* RIGHT: Visual Hero & Floating Feature Badges */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            initial={{ opacity: 0, scale: 0.95, rotateX: -6, rotateY: 8 }}
+            whileInView={{ opacity: 1, scale: 1, rotateX: 0, rotateY: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 relative"
+            style={{ perspective: 1000 }}
           >
-            {/* Main Rounded Image Container */}
-            <div className="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
+            {/* Main Rounded Image Container with 3D Depth */}
+            <div className="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white transition-transform duration-500 hover:rotate-1 hover:scale-[1.01]">
               <img
                 src={pageImages.homeHero.url}
                 alt={pageImages.homeHero.alt}
