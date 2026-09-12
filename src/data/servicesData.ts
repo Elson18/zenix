@@ -845,59 +845,29 @@ export const servicesData: ServiceItem[] = [
     number: "12",
     title: "Nutraceutical Licensing & Compliance",
     slug: "nutraceutical-licensing",
-    shortDescription: "Complete regulatory support for nutraceutical manufacturers, including licensing, classification, formulation and label compliance.",
-    fullDescription: "We provide complete regulatory support for nutraceutical manufacturers, including licensing, reversion handling, classification, formulation compliance, SOI documentation, and label compliance under FSSAI norms.",
+    shortDescription: "Complete regulatory support for nutraceutical and health supplement products, including label & claim compliance, classification guidance, and product/claim approval.",
+    fullDescription: "Complete regulatory support for nutraceutical and health supplement products, including:",
     iconName: "Pill",
     heroImage: serviceImages.nutraceuticalLicensing.url,
     seoTitle: "Nutraceutical Licensing & Compliance | Zenix Food Worx",
-    seoDescription: "Complete regulatory support for nutraceutical manufacturers, including licensing, classification, formulation compliance, documentation and label compliance.",
+    seoDescription: "Complete regulatory support for nutraceutical and health supplement products, including label and claim compliance, ingredient classification, and product or claim approval.",
     whatWeOffer: [
-      "End-to-end nutraceutical manufacturing license application assistance",
-      "Expert guidance for handling query responses and application reversions",
-      "License modification support for product addition and category changes",
-      "Timely tracking and processing of license renewals to avoid disruption",
-      "Product classification under nutraceuticals & health supplements per FSSAI norms",
-      "Formulation compliance checks ensuring permissible ingredient limits & dosage",
-      "Statement of Ingredients (SOI) drafting & regulatory submission",
-      "Preparation and technical review of all submission documents",
-      "Nutraceutical label compliance verification for claims and declarations"
+      "Label and Claim Compliance Check: Verifying product labels and health claims meet FSSAI's nutraceutical labelling and claim regulations",
+      "Product/Ingredient Classification Guidance: Helping you correctly classify your product or ingredient under the applicable food/nutraceutical category",
+      "Product/Claim Approval: End-to-end support for application, documentation, and dossier preparation for product or health claim approval"
     ],
     keyAreas: [
       {
-        title: "License Application",
-        description: "End-to-end assistance in applying for the required nutraceutical manufacturing license"
+        title: "Label and Claim Compliance Check",
+        description: "Verifying product labels and health claims meet FSSAI's nutraceutical labelling and claim regulations"
       },
       {
-        title: "Reversion Handling",
-        description: "Expert guidance on how to properly respond if any reversion, query, or clarification is raised by the licensing authority"
+        title: "Product/Ingredient Classification Guidance",
+        description: "Helping you correctly classify your product or ingredient under the applicable food/nutraceutical category"
       },
       {
-        title: "License Modification",
-        description: "Support for updating your existing license, including product addition or category changes"
-      },
-      {
-        title: "Renewal Support",
-        description: "Timely tracking and processing of license renewals to avoid business disruption"
-      },
-      {
-        title: "Product Classification Guidance",
-        description: "Helping you correctly classify your product under nutraceuticals/health supplements as per FSSAI norms"
-      },
-      {
-        title: "Formulation Compliance Check",
-        description: "Ensuring your ingredient composition and dosage align with permissible limits under regulations"
-      },
-      {
-        title: "SOI (Statement of Ingredients) Preparation",
-        description: "Drafting and submitting the SOI document as required for product approval"
-      },
-      {
-        title: "Documentation Support",
-        description: "Preparation and review of all required technical and regulatory documents for submission"
-      },
-      {
-        title: "Label Compliance",
-        description: "Verifying your product labels meet nutraceutical-specific declaration and claim requirements"
+        title: "Product/Claim Approval",
+        description: "End-to-end support for application, documentation, and dossier preparation for product or health claim approval"
       }
     ],
     whoNeedsThis: [
@@ -910,30 +880,25 @@ export const servicesData: ServiceItem[] = [
     process: [
       {
         step: "01",
-        title: "Classification & Formulation Check",
-        description: "Review ingredient dosage, composition, and FSSAI classification category."
+        title: "Label and Claim Compliance Check",
+        description: "Verifying product labels and health claims meet FSSAI's nutraceutical labelling and claim regulations."
       },
       {
         step: "02",
-        title: "SOI & Document Drafting",
-        description: "Prepare Statement of Ingredients (SOI), technical dossiers, and label declarations."
+        title: "Product/Ingredient Classification Guidance",
+        description: "Helping you correctly classify your product or ingredient under the applicable food/nutraceutical category."
       },
       {
         step: "03",
-        title: "Application Submission",
-        description: "Submit license applications, modifications, or renewals on the FoSCoS portal."
-      },
-      {
-        step: "04",
-        title: "Query Resolution & Approval",
-        description: "Address authority reversions or queries promptly until license issuance."
+        title: "Product/Claim Approval",
+        description: "End-to-end support for application, documentation, and dossier preparation for product or health claim approval."
       }
     ],
     benefits: [
       "Ensure 100% compliance with FSSAI nutraceutical and supplement regulations",
-      "Eliminate application delays and query reversions with expert dossier preparation",
-      "Accurately classify ingredients and permissible RDA dosages before market launch",
-      "Protect brand reputation with compliant packaging labels and claim verification"
+      "Verify product labels and health claims meet mandatory labelling norms",
+      "Correctly classify products and ingredients under applicable food or supplement categories",
+      "Complete end-to-end support for dossier preparation and product or claim approval"
     ],
     ctaText: "Discuss This Service",
     whatsappMessage: "Hi Zenix Food Worx, I would like to inquire about Nutraceutical Licensing & Compliance."

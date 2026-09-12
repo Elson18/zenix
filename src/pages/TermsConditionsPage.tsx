@@ -64,7 +64,7 @@ export default function TermsConditionsPage() {
               5. Governing Law
             </h2>
             <p>
-              These terms shall be governed by and construed in accordance with applicable statutory laws. For formal contract inquiries or legal correspondence, contact <span className="font-semibold text-brand-primaryDark">info@zenixfoodworx.com</span>.
+              These terms shall be governed by and construed in accordance with applicable statutory laws. For formal contract inquiries or legal correspondence, contact <a href="mailto:nithya@foodmaven.in" className="font-semibold text-brand-primaryDark hover:underline">nithya@foodmaven.in</a>.
             </p>
           </div>
 

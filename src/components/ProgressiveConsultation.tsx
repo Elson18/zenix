@@ -318,7 +318,7 @@ Requirements: ${selectedLabels.join(', ') || 'General'}`;
                       Try Again
                     </button>
                     <a
-                      href="mailto:info@zenixfoodworx.com"
+                      href={`mailto:${companyData.contact.email}`}
                       className="px-6 py-2.5 rounded-xl border border-brand-border hover:bg-brand-backgroundSoft text-brand-black font-heading font-bold text-sm transition-all duration-300 flex items-center justify-center"
                     >
                       Contact Us

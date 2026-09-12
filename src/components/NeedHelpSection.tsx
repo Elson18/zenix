@@ -51,7 +51,7 @@ export default function NeedHelpSection() {
     {
       id: 'nutraceutical',
       title: 'I Need Nutraceutical Compliance',
-      description: 'Regulatory support, ingredient classification, SOI preparation and label compliance.',
+      description: 'Label and claim compliance, product classification, and product or claim approval.',
       cta: 'Explore Nutraceutical Support',
       slug: 'nutraceutical-licensing',
       icon: Pill,

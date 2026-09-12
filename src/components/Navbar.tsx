@@ -41,17 +41,17 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
-          <NavLink to="/" className="flex items-center gap-3 group">
+          <NavLink to="/" className="flex items-center gap-3.5 group py-1">
             <img
               src="/zenixfoodwork.jpg"
               alt="Zenix Food Worx"
-              className="w-10 h-10 rounded-xl object-cover shadow-subtle group-hover:scale-105 transition-transform duration-300 border border-brand-border/40"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl object-cover shadow-subtle group-hover:scale-105 transition-transform duration-300 border border-brand-border/40 shrink-0"
             />
-            <div className="flex flex-col">
-              <span className="font-heading font-extrabold text-xl tracking-tight text-brand-black leading-tight">
+            <div className="flex flex-col justify-center">
+              <span className="font-heading font-extrabold text-2xl sm:text-2xl tracking-tight text-brand-black leading-tight">
                 ZENIX
               </span>
-              <span className="text-[10px] font-bold tracking-[0.2em] text-brand-primary uppercase leading-none">
+              <span className="text-[11px] font-bold tracking-[0.22em] text-brand-primary uppercase leading-none mt-0.5">
                 FOOD WORX
               </span>
             </div>

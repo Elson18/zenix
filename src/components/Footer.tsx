@@ -135,7 +135,9 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 text-brand-primary shrink-0 mt-1" />
-                <span>{companyData.contact.email}</span>
+                <a href={`mailto:${companyData.contact.email}`} className="hover:text-brand-primary transition-colors">
+                  {companyData.contact.email}
+                </a>
               </li>
               <li className="flex items-start gap-3">
                 <MessageCircle className="w-4 h-4 text-brand-primary shrink-0 mt-1" />

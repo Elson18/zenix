@@ -218,19 +218,19 @@ export default function ServiceDetailPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className={`grid grid-cols-1 ${service.keyAreas.length === 3 ? 'md:grid-cols-3 gap-6' : 'md:grid-cols-2 gap-8'}`}>
             {service.keyAreas.map((area, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-3xl bg-white border border-brand-border shadow-subtle space-y-3 hover:shadow-card-hover transition-all"
+                className="p-6 sm:p-7 rounded-3xl bg-white border border-brand-border shadow-subtle space-y-3 hover:shadow-card-hover transition-all flex flex-col justify-start"
               >
-                <div className="w-10 h-10 rounded-xl bg-brand-primaryLight flex items-center justify-center text-brand-primaryDark font-heading font-bold text-sm border border-brand-primary/10">
+                <div className="w-10 h-10 rounded-xl bg-brand-primaryLight flex items-center justify-center text-brand-primaryDark font-heading font-bold text-sm border border-brand-primary/10 shrink-0">
                   0{idx + 1}
                 </div>
-                <h3 className="font-heading font-bold text-xl text-brand-black">
+                <h3 className="font-heading font-bold text-lg sm:text-xl text-brand-black leading-snug break-words">
                   {area.title}
                 </h3>
-                <p className="text-brand-textSecondary text-sm sm:text-base leading-relaxed">
+                <p className="text-brand-textSecondary text-sm sm:text-base leading-relaxed break-words">
                   {area.description}
                 </p>
               </div>

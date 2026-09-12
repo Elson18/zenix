@@ -45,6 +45,8 @@ export async function sendContactEmail(params: ContactEmailParams): Promise<any>
   }
 
   const templateParams: Record<string, string> = {
+    to_email: 'nithya@foodmaven.in',
+    recipient_email: 'nithya@foodmaven.in',
     name: params.name,
     email: params.email,
     phone: params.phone,

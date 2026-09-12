@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { sendContactEmail } from '../services/emailjs';
+import { companyData } from '../data/companyData';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -8,7 +9,7 @@ export default function ContactForm() {
     companyName: '',
     phone: '',
     email: '',
-    businessType: 'Food Manufacturer',
+    businessType: 'Food Manufacturers',
     serviceRequired: 'Food Testing',
     message: ''
   });
@@ -18,13 +19,13 @@ export default function ContactForm() {
   const [isSubmissionError, setIsSubmissionError] = useState(false);
   const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
 
-  const businessTypes = [
-    'Food Manufacturer',
-    'Food Brand',
-    'Restaurant',
-    'Hotel / Hospitality',
-    'Cloud Kitchen',
-    'Food Startup',
+  const businessTypesOptions = [
+    'Food Manufacturers',
+    'Hospitality / HoReCa',
+    'Food Import / Food Export',
+    'Food Start up’s',
+    'Retail & E-commerce',
+    'Corporates / Educational institutions',
     'Other'
   ];
 
@@ -210,7 +211,7 @@ export default function ContactForm() {
             Try Again
           </button>
           <a
-            href="mailto:info@zenixfoodworx.com"
+            href={`mailto:${companyData.contact.email}`}
             className="px-6 py-3 rounded-xl border border-brand-border hover:bg-brand-backgroundSoft text-brand-black font-heading font-bold text-sm transition-all duration-300 flex items-center justify-center"
           >
             Contact Us
@@ -345,7 +346,7 @@ export default function ContactForm() {
                 validationErrors.businessType ? 'border-red-500 focus:ring-red-200' : 'border-brand-border focus:border-brand-primary focus:ring-brand-primary/20'
               } text-brand-black text-sm outline-none bg-white transition-all`}
             >
-              {businessTypes.map((type) => (
+              {businessTypesOptions.map((type) => (
                 <option key={type} value={type}>
                   {type}
                 </option>

@@ -63,7 +63,12 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-heading font-bold text-sm text-brand-black">Email Inquiry</h4>
-                    <p className="text-sm text-brand-textSecondary mt-0.5">{companyData.contact.email}</p>
+                    <a
+                      href={`mailto:${companyData.contact.email}`}
+                      className="text-sm text-brand-textSecondary hover:text-brand-primary font-medium mt-0.5 block transition-colors"
+                    >
+                      {companyData.contact.email}
+                    </a>
                   </div>
                 </div>
 

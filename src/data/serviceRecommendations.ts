@@ -196,37 +196,90 @@ export function getRecommendedServices(answers: UserProfileAnswers): Recommended
     );
   }
 
-  // --- 3. BUSINESS TYPE & PRIORITY INFERENCES (Medium-Low, Score 75-85) ---
-  if (businessType === 'restaurant' || businessType === 'cloud-kitchen' || businessType === 'hotel-hospitality') {
+  // --- 3. BUSINESS TYPE & PRIORITY INFERENCES (Medium-Low, Score 75-90) ---
+  if (businessType === 'food-manufacturers') {
     addRecommendation(
-      'hospitality-consulting',
-      80,
-      'Menu costing and Swiggy/Zomato onboarding support restaurants and cloud kitchens.'
+      'regulatory-licensing',
+      90,
+      'Food Manufacturers require FSSAI Central/State licensing and statutory compliance.'
     );
-    if (priority === 'cost-opt') {
-      addRecommendation(
-        'hospitality-consulting',
-        90,
-        'Menu engineering and portion control help optimize retail hospitality margins.'
-      );
-    }
-  }
-
-  if (businessType === 'food-manufacturer' || businessType === 'food-brand') {
+    addRecommendation(
+      'factory-setup',
+      85,
+      'Factory layout optimization and machinery planning support processing operations.'
+    );
     if (priority === 'certification') {
       addRecommendation(
         'certification-documentation',
         90,
-        'HACCP or ISO certification helps food brands qualify for retail shelves and exports.'
+        'HACCP or ISO certification helps food manufacturers qualify for retail and exports.'
       );
     }
-    if (priority === 'launch') {
-      addRecommendation(
-        'label-validation',
-        85,
-        'Launching packaged food requires regulatory and legal label sign-offs.'
-      );
-    }
+  }
+
+  if (businessType === 'hospitality-horeca') {
+    addRecommendation(
+      'hospitality-consulting',
+      90,
+      'Hospitality operations benefit from menu engineering, costing, and kitchen workflow design.'
+    );
+    addRecommendation(
+      'food-safety-inspections',
+      85,
+      'Hygiene audits and food safety inspections ensure top cleanliness ratings.'
+    );
+  }
+
+  if (businessType === 'food-import-export') {
+    addRecommendation(
+      'regulatory-licensing',
+      95,
+      'Importing and exporting food requires Central FSSAI licensing and customs trade clearance.'
+    );
+    addRecommendation(
+      'label-validation',
+      90,
+      'Imported food products must comply with Indian packaging and labelling regulations.'
+    );
+  }
+
+  if (businessType === 'food-startups') {
+    addRecommendation(
+      'product-development',
+      90,
+      'Food startups benefit from recipe formulation, shelf-life testing, and pilot trials.'
+    );
+    addRecommendation(
+      'label-validation',
+      85,
+      'Validating nutrition and claims ensures new product launches are market-compliant.'
+    );
+  }
+
+  if (businessType === 'retail-ecommerce') {
+    addRecommendation(
+      'label-validation',
+      90,
+      'Retail & E-commerce platforms mandate accurate FSSAI label declarations and barcode details.'
+    );
+    addRecommendation(
+      'regulatory-licensing',
+      85,
+      'E-commerce sellers and retail operations require valid food merchant licenses.'
+    );
+  }
+
+  if (businessType === 'corporates-educational-institutions') {
+    addRecommendation(
+      'food-safety-inspections',
+      90,
+      'Corporate and campus canteens require routine food safety and hygiene audits.'
+    );
+    addRecommendation(
+      'training-programs',
+      85,
+      'FoSTaC food safety training empowers kitchen staff and food handlers in institutional setups.'
+    );
   }
 
   if (priority === 'safety') {

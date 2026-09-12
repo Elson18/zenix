@@ -124,16 +124,16 @@ export const serviceFAQs: Record<string, FAQItem[]> = {
   ],
   'nutraceutical-licensing': [
     {
-      question: 'What is required for a nutraceutical manufacturing license in India?',
-      answer: 'Nutraceutical manufacturing requires Central FSSAI licensing under specific product categories (Nutraceuticals, Health Supplements, Foods for Special Dietary Use, etc.), along with detailed Statement of Ingredients (SOI), formulation safety data, label claim substantiation, and manufacturing facility layout approvals.'
+      question: 'How do you help with Label and Claim Compliance Check for health supplements?',
+      answer: 'We review your product labels and nutritional claim declarations against FSSAI nutraceutical labelling regulations to ensure full compliance before market launch.'
     },
     {
-      question: 'How do you assist with licensing authority queries or application reversions?',
-      answer: 'We analyze the exact clarification or query raised by FSSAI officers, draft technical compliance responses, verify ingredient RDA limits, and resubmit corrected dossiers to ensure swift application approval.'
+      question: 'What is Product/Ingredient Classification Guidance?',
+      answer: 'We assist food and supplement brands in correctly classifying products and ingredients under the applicable FSSAI food/nutraceutical regulatory categories.'
     },
     {
-      question: 'Can you help verify if our formulation meets FSSAI permissible limits?',
-      answer: 'Yes, we perform thorough formulation compliance checks against FSSAI Schedule VI/RDA limits for vitamins, minerals, botanical extracts, amino acids, and enzymes before you apply for licensing or launch production.'
+      question: 'What support is provided for Product/Claim Approval?',
+      answer: 'We provide end-to-end support for application preparation, dossier documentation, and submission for product or health claim approval with food safety authorities.'
     }
   ],
   'training-programs': [

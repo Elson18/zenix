@@ -43,17 +43,17 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             {/* Header */}
             <div>
               <div className="flex items-center justify-between p-6 border-b border-brand-border">
-                <NavLink to="/" onClick={onClose} className="flex items-center gap-2">
+                <NavLink to="/" onClick={onClose} className="flex items-center gap-3">
                   <img
                     src="/zenixfoodwork.jpg"
                     alt="Zenix Food Worx"
-                    className="w-9 h-9 rounded-lg object-cover shadow-sm border border-brand-border"
+                    className="w-11 h-11 rounded-xl object-cover shadow-sm border border-brand-border shrink-0"
                   />
                   <div>
-                    <span className="font-heading font-extrabold text-lg text-brand-black tracking-tight block leading-tight">
+                    <span className="font-heading font-extrabold text-xl text-brand-black tracking-tight block leading-tight">
                       ZENIX
                     </span>
-                    <span className="text-[10px] font-semibold tracking-widest text-brand-primary uppercase block leading-none">
+                    <span className="text-[10px] font-bold tracking-[0.2em] text-brand-primary uppercase block leading-none mt-0.5">
                       FOOD WORX
                     </span>
                   </div>
@@ -103,12 +103,17 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
               <div className="pt-3 border-t border-brand-border text-xs text-brand-textMuted space-y-2">
                 <div className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-brand-primary" />
+                  <Phone className="w-3.5 h-3.5 text-brand-primary shrink-0" />
                   <span>{companyData.contact.phone}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Mail className="w-3.5 h-3.5 text-brand-primary" />
-                  <span>{companyData.contact.email}</span>
+                  <Mail className="w-3.5 h-3.5 text-brand-primary shrink-0" />
+                  <a
+                    href={`mailto:${companyData.contact.email}`}
+                    className="hover:text-brand-primary transition-colors"
+                  >
+                    {companyData.contact.email}
+                  </a>
                 </div>
               </div>
             </div>

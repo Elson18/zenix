@@ -7,51 +7,39 @@ export interface BusinessType {
 
 export const businessTypes: BusinessType[] = [
   {
-    id: 'food-manufacturer',
-    label: 'Food Manufacturer',
+    id: 'food-manufacturers',
+    label: 'Food Manufacturers',
     icon: 'Factory',
-    description: 'Industrial food processing, processing plants, and packaging units.'
+    description: 'Industrial food processing, manufacturing facilities, and packaging units.'
   },
   {
-    id: 'restaurant',
-    label: 'Restaurant',
-    icon: 'Store',
-    description: 'Fine dining, cafes, QSR chains, bakeries, and retail food outlets.'
-  },
-  {
-    id: 'hotel-hospitality',
-    label: 'Hotel / Hospitality',
+    id: 'hospitality-horeca',
+    label: 'Hospitality / HoReCa',
     icon: 'Hotel',
-    description: 'Hotels, resorts, buffet services, and institutional catering operations.'
+    description: 'Hotels, restaurants, cafes, caterers, and food service operations.'
   },
   {
-    id: 'cloud-kitchen',
-    label: 'Cloud Kitchen',
-    icon: 'ChefHat',
-    description: 'Delivery-only food preparation, virtual brands, and central kitchens.'
+    id: 'food-import-export',
+    label: 'Food Import / Food Export',
+    icon: 'Globe',
+    description: 'Importers, exporters, customs compliance, and international food trade.'
   },
   {
-    id: 'food-startup',
-    label: 'Food Startup',
+    id: 'food-startups',
+    label: "Food Start up’s",
     icon: 'Rocket',
-    description: 'A new food product brand, D2C health foods, and innovative snacks.'
+    description: 'New food product brands, D2C health foods, and innovative food launches.'
   },
   {
-    id: 'food-brand',
-    label: 'Food Brand',
-    icon: 'Award',
-    description: 'Established packaged FMCG brands scaling retail presence and channels.'
+    id: 'retail-ecommerce',
+    label: 'Retail & E-commerce',
+    icon: 'ShoppingBag',
+    description: 'Supermarkets, grocery chains, online D2C platforms, and retail distribution.'
   },
   {
-    id: 'planning-business',
-    label: 'Planning a New Food Business',
-    icon: 'Compass',
-    description: 'Currently preparing blueprints, formulations, licensing, or site layouts.'
-  },
-  {
-    id: 'other',
-    label: 'Other',
-    icon: 'HelpCircle',
-    description: 'Import/export, cold storage, packaging manufacturers, and ingredient suppliers.'
+    id: 'corporates-educational-institutions',
+    label: 'Corporates / Educational institutions',
+    icon: 'Building2',
+    description: 'Corporate cafeterias, school & university canteens, and institutional dining.'
   }
 ];

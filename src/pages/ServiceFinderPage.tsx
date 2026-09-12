@@ -25,7 +25,10 @@ import {
   Handshake,
   Pill,
   GraduationCap,
-  CheckCircle2
+  CheckCircle2,
+  Globe,
+  ShoppingBag,
+  Building2
 } from 'lucide-react';
 import { businessTypes } from '../data/businessTypes';
 import { businessStages } from '../data/businessStages';
@@ -38,10 +41,13 @@ import { trackEvent } from '../utils/analytics';
 const IconMap: Record<string, React.ComponentType<any>> = {
   // Business types
   'Factory': Factory,
-  'Store': Store,
   'Hotel': Hotel,
-  'ChefHat': ChefHat,
+  'Globe': Globe,
   'Rocket': Rocket,
+  'ShoppingBag': ShoppingBag,
+  'Building2': Building2,
+  'Store': Store,
+  'ChefHat': ChefHat,
   'Award': Award,
   'Compass': Compass,
   'HelpCircle': HelpCircle,
@@ -221,7 +227,7 @@ Recommended Service: ${results[0]?.service?.title || 'None'}`;
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-2">
                     {businessTypes.map((type) => {
                       const TypeIcon = IconMap[type.icon] || HelpCircle;
                       const isSelected = selectedType === type.id;
@@ -230,21 +236,21 @@ Recommended Service: ${results[0]?.service?.title || 'None'}`;
                         <button
                           key={type.id}
                           onClick={() => handleTypeSelect(type.id)}
-                          className={`p-6 rounded-2xl border text-left flex flex-col justify-start h-full min-h-[180px] transition-all group focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-1 ${
+                          className={`p-6 rounded-2xl border text-left flex flex-col justify-start h-full min-h-[185px] transition-all group focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-1 ${
                             isSelected
                               ? 'bg-brand-black text-white border-brand-primary shadow-card-hover scale-[1.02]'
                               : 'bg-white border-brand-border hover:border-brand-primary/45 hover:bg-brand-backgroundSoft/30 text-brand-textSecondary shadow-sm'
                           }`}
                         >
-                          <div className={`p-2 rounded-xl w-10 h-10 flex items-center justify-center mb-4 transition-colors ${
+                          <div className={`p-2 rounded-xl w-10 h-10 flex items-center justify-center mb-4 transition-colors shrink-0 ${
                             isSelected ? 'bg-white/20 text-white' : 'bg-brand-primaryLight text-brand-primaryDark group-hover:bg-brand-primary group-hover:text-brand-black'
                           }`}>
                             <TypeIcon className="w-5 h-5" />
                           </div>
-                          <p className={`font-heading font-bold text-sm mb-1.5 ${isSelected ? 'text-white' : 'text-brand-black'}`}>
+                          <p className={`font-heading font-bold text-sm sm:text-base mb-1.5 leading-snug break-words whitespace-normal ${isSelected ? 'text-white' : 'text-brand-black'}`}>
                             {type.label}
                           </p>
-                          <p className={`text-[10px] leading-relaxed ${isSelected ? 'text-white/80' : 'text-brand-textMuted'}`}>
+                          <p className={`text-xs leading-relaxed ${isSelected ? 'text-white/80' : 'text-brand-textMuted'}`}>
                             {type.description}
                           </p>
                         </button>
