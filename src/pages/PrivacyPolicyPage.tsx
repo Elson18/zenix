@@ -71,7 +71,7 @@ export default function PrivacyPolicyPage() {
               5. Contact Us
             </h2>
             <p>
-              If you have questions regarding this Privacy Policy or wish to update your corporate communication preferences, please contact our compliance desk at <a href="mailto:nithya@foodmaven.in" className="font-semibold text-brand-primaryDark hover:underline">nithya@foodmaven.in</a>.
+              If you have questions regarding this Privacy Policy or wish to update your corporate communication preferences, please contact our compliance desk at <a href="mailto:support@zenixfoodworx.com" className="font-semibold text-brand-primaryDark hover:underline">support@zenixfoodworx.com</a>.
             </p>
           </div>
 
