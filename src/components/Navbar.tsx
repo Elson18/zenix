@@ -37,8 +37,8 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-nav border-b border-brand-border py-3.5'
-            : 'bg-white/70 backdrop-blur-sm border-b border-brand-border/40 py-5'
+            ? 'bg-white/95 backdrop-blur-md shadow-nav border-b border-brand-border py-2.5 sm:py-3'
+            : 'bg-white/70 backdrop-blur-sm border-b border-brand-border/40 py-3.5 sm:py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -71,14 +71,14 @@ export default function Navbar() {
                 <img
                   src="/zenixfoodwork.jpg"
                   alt="Zenix Food Worx"
-                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl object-cover shadow-subtle group-hover:scale-105 transition-transform duration-300 border border-brand-border/40 shrink-0 relative z-10"
+                  className="w-14 h-14 sm:w-16 sm:h-16 lg:w-[68px] lg:h-[68px] rounded-xl object-cover shadow-subtle group-hover:scale-105 transition-transform duration-300 border border-brand-border/40 shrink-0 relative z-10"
                 />
               </div>
               <div className="flex flex-col justify-center">
-                <span className="font-heading font-extrabold text-2xl sm:text-2xl tracking-tight text-brand-black leading-tight">
+                <span className="font-heading font-extrabold text-2xl sm:text-3xl tracking-tight text-brand-black leading-tight">
                   ZENIX
                 </span>
-                <span className="text-[11px] font-bold tracking-[0.22em] text-brand-primary uppercase leading-none mt-0.5">
+                <span className="text-[11px] sm:text-xs font-bold tracking-[0.24em] text-brand-primary uppercase leading-none mt-0.5">
                   FOOD WORX
                 </span>
               </div>

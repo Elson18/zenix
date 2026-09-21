@@ -123,7 +123,7 @@ export default function ServiceFinderPage() {
   const navigate = useNavigate();
   const shouldReduceMotion = useReducedMotion();
 
-  // Step state: 1 = Type + Stage, 2 = Adaptive Needs + Optional Priorities, 3 = Results
+  // Step state: 1 = Type + Stage, 2 = Adaptive Needs & Recommendations
   const [step, setStep] = useState(1);
   const [direction, setDirection] = useState(1); // 1 = forward, -1 = back
 
@@ -132,11 +132,20 @@ export default function ServiceFinderPage() {
   const [selectedReqs, setSelectedReqs] = useState<string[]>([]);
   const [selectedPriority, setSelectedPriority] = useState('');
 
-  const [results, setResults] = useState<RecommendedService[]>([]);
-
   useEffect(() => {
     trackEvent('service_finder_started', { page: 'service_finder_2_step' });
   }, []);
+
+  // Compute recommended services inline dynamically
+  const results = useMemo(() => {
+    if (!selectedType || !selectedStage) return [];
+    return getRecommendedServices({
+      businessType: selectedType,
+      businessStage: selectedStage,
+      requirements: selectedReqs,
+      priority: selectedPriority
+    });
+  }, [selectedType, selectedStage, selectedReqs, selectedPriority]);
 
   // Adaptive Requirements Sorting: Rank requirements relevant to selected business vertical first
   const sortedRequirements = useMemo(() => {
@@ -205,27 +214,6 @@ export default function ServiceFinderPage() {
     setStep(2);
   };
 
-  const handleCalculateResults = () => {
-    setDirection(1);
-    const recs = getRecommendedServices({
-      businessType: selectedType,
-      businessStage: selectedStage,
-      requirements: selectedReqs,
-      priority: selectedPriority
-    });
-    setResults(recs);
-    setStep(3);
-
-    trackEvent('service_finder_completed', {
-      businessType: selectedType,
-      businessStage: selectedStage,
-      requirement: selectedReqs.join(', '),
-      priority: selectedPriority || 'inferred',
-      recommendationsCount: recs.length,
-      page: 'service_finder_results'
-    });
-  };
-
   const handleBack = (prevStep: number) => {
     setDirection(-1);
     setStep(prevStep);
@@ -238,7 +226,6 @@ export default function ServiceFinderPage() {
     setSelectedStage('');
     setSelectedReqs([]);
     setSelectedPriority('');
-    setResults([]);
     trackEvent('service_finder_started', { page: 'service_finder_restart' });
   };
 
@@ -293,7 +280,7 @@ Top Recommendation: ${results[0]?.service?.title || 'General Consultation'}`;
   };
 
   return (
-    <div className="pt-24 min-h-screen bg-white flex flex-col justify-between relative overflow-hidden">
+    <div className="pt-20 lg:pt-22 pb-8 min-h-screen bg-white flex flex-col justify-between relative overflow-hidden">
       
       {/* Ambient Looping Gradient Background Mesh */}
       <div className="absolute inset-0 pointer-events-none opacity-25 overflow-hidden z-0">
@@ -310,44 +297,42 @@ Top Recommendation: ${results[0]?.service?.title || 'General Consultation'}`;
       </div>
 
       {/* Main Container */}
-      <div className="flex-grow flex items-center py-10 relative z-10">
+      <div className="flex-grow flex items-center py-4 sm:py-6 relative z-10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           
-          {/* Header & Live Progress Meter (Hidden on Results Page) */}
-          {step < 3 && (
-            <div className="text-center max-w-2xl mx-auto mb-8 space-y-3">
-              <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-primary px-3.5 py-1.5 rounded-full gold-badge bg-white shadow-sm border border-brand-border inline-block">
-                SMART SERVICE FINDER
-              </span>
-              <h1 className="font-heading font-extrabold text-3xl sm:text-4xl text-brand-black tracking-tight">
-                {step === 1 ? 'Tell Us About Your Food Business' : 'Select Your Specific Needs'}
-              </h1>
-              <p className="text-brand-textSecondary text-sm sm:text-base leading-relaxed">
-                {step === 1 
-                  ? 'Select your business vertical below to reveal relevant operational stages.' 
-                  : 'Choose the services or priorities you wish to solve immediately.'}
-              </p>
-              
-              {/* Progress & Live Confidence Bar */}
-              <div className="pt-4 max-w-md mx-auto">
-                <div className="flex justify-between items-center text-[11px] font-heading font-bold text-brand-textMuted uppercase tracking-wider mb-2">
-                  <span>Step {step} of 2</span>
-                  <span className="text-brand-primaryDark">Match Confidence: {confidenceScore}%</span>
-                </div>
-                <div className="h-2 w-full bg-brand-border/60 rounded-full overflow-hidden p-0.5 border border-brand-border/40">
-                  <motion.div 
-                    className="h-full bg-gradient-to-r from-brand-primary to-brand-primaryDark rounded-full" 
-                    initial={{ width: 0 }}
-                    animate={{ width: `${confidenceScore}%` }}
-                    transition={{ duration: 0.45, ease: "easeOut" }}
-                  />
-                </div>
+          {/* Header & Live Progress Meter */}
+          <div className="text-center max-w-2xl mx-auto mb-5 space-y-2">
+            <span className="text-[11px] font-heading font-extrabold uppercase tracking-widest text-brand-primary px-3 py-1 rounded-full gold-badge bg-white shadow-sm border border-brand-border inline-block">
+              SMART SERVICE FINDER
+            </span>
+            <h1 className="font-heading font-extrabold text-xl sm:text-2xl lg:text-3xl text-brand-black tracking-tight">
+              {step === 1 ? 'Tell Us About Your Food Business' : 'Select Your Specific Needs'}
+            </h1>
+            <p className="text-brand-textSecondary text-xs sm:text-sm leading-relaxed">
+              {step === 1 
+                ? 'Select your business vertical below to reveal relevant operational stages.' 
+                : 'Choose the services or priorities you wish to solve immediately.'}
+            </p>
+            
+            {/* Progress & Live Confidence Bar */}
+            <div className="pt-2.5 max-w-md mx-auto">
+              <div className="flex justify-between items-center text-[10px] sm:text-[11px] font-heading font-bold text-brand-textMuted uppercase tracking-wider mb-1.5">
+                <span>STEP {step} OF 2</span>
+                <span className="text-brand-primaryDark">Match Confidence: {confidenceScore}%</span>
+              </div>
+              <div className="h-1.5 sm:h-2 w-full bg-brand-border/60 rounded-full overflow-hidden p-0.5 border border-brand-border/40">
+                <motion.div 
+                  className="h-full bg-gradient-to-r from-brand-primary to-brand-primaryDark rounded-full" 
+                  initial={{ width: '50%' }}
+                  animate={{ width: `${step === 1 ? Math.max(50, confidenceScore * 0.7) : Math.max(85, confidenceScore)}%` }}
+                  transition={{ duration: 0.45, ease: "easeOut" }}
+                />
               </div>
             </div>
-          )}
+          </div>
 
           {/* Questionnaire Card Window */}
-          <div className="bg-white p-6 sm:p-10 rounded-3xl border border-brand-border shadow-card-hover min-h-[420px] flex flex-col justify-between relative overflow-hidden">
+          <div className="bg-white p-5 sm:p-7 md:p-8 rounded-2xl sm:rounded-3xl border-2 border-brand-border shadow-card-hover flex flex-col justify-between relative overflow-hidden w-full box-border">
             
             <AnimatePresence mode="wait" custom={direction}>
               
@@ -361,66 +346,60 @@ Top Recommendation: ${results[0]?.service?.title || 'General Consultation'}`;
                   animate="center"
                   exit="exit"
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="space-y-8"
+                  className="space-y-5 w-full box-border"
                 >
                   {/* Section A: Business Type Selection */}
-                  <div className="space-y-4">
+                  <div className="space-y-3 w-full box-border">
                     <div className="flex items-center justify-between">
-                      <h2 className="font-heading font-extrabold text-lg sm:text-xl text-brand-black flex items-center gap-2">
-                        <span className="w-6 h-6 rounded-full bg-brand-primaryLight text-brand-primaryDark text-xs flex items-center justify-center font-bold">1</span>
+                      <h2 className="font-heading font-extrabold text-base sm:text-lg text-brand-black flex items-center gap-2">
+                        <span className="w-5 h-5 rounded-full bg-brand-primaryLight text-brand-primaryDark text-[11px] flex items-center justify-center font-bold shrink-0">1</span>
                         <span>Select Your Business Vertical</span>
                       </h2>
                       {selectedType && (
-                        <span className="text-xs text-brand-primary font-bold">✓ Selected</span>
+                        <span className="text-xs text-brand-primary font-bold shrink-0">✓ Selected</span>
                       )}
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5 w-full box-border">
                       {businessTypes.map((type) => {
                         const TypeIcon = IconMap[type.icon] || HelpCircle;
                         const isSelected = selectedType === type.id;
                         const isAnySelected = Boolean(selectedType);
 
                         return (
-                          <motion.button
+                          <button
                             key={type.id}
-                            whileHover={shouldReduceMotion ? {} : { scale: 1.025 }}
-                            whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
+                            type="button"
                             onClick={() => handleTypeSelect(type.id)}
-                            className={`p-5 rounded-2xl border text-left flex flex-col justify-between transition-all relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-brand-primary ${
+                            className={`box-border p-3.5 sm:p-4 rounded-xl border-2 text-left flex flex-col justify-between transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary w-full h-full ${
                               isSelected
-                                ? 'bg-brand-black text-white border-brand-primary shadow-card-hover ring-2 ring-brand-primary/20 scale-[1.02]'
+                                ? 'bg-brand-black text-white border-brand-primary shadow-card-hover'
                                 : isAnySelected
-                                ? 'bg-white border-brand-border/60 text-brand-textSecondary opacity-65 hover:opacity-100 hover:border-brand-primary/45'
+                                ? 'bg-white border-brand-border/60 text-brand-textSecondary opacity-70 hover:opacity-100 hover:border-brand-primary/45'
                                 : 'bg-white border-brand-border text-brand-textSecondary hover:border-brand-primary/45 hover:shadow-sm'
                             }`}
                           >
                             <div>
-                              <div className="flex items-center justify-between mb-3">
-                                <div className={`p-2 rounded-xl w-10 h-10 flex items-center justify-center transition-colors ${
+                              <div className="flex items-center justify-between mb-2">
+                                <div className={`p-1.5 rounded-lg w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center transition-colors shrink-0 ${
                                   isSelected ? 'bg-brand-primary text-brand-black font-bold' : 'bg-brand-primaryLight text-brand-primaryDark'
                                 }`}>
-                                  <TypeIcon className="w-5 h-5" />
+                                  <TypeIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                                 </div>
                                 {isSelected && (
-                                  <motion.div
-                                    initial={{ scale: 0, opacity: 0 }}
-                                    animate={{ scale: 1, opacity: 1 }}
-                                    transition={{ type: "spring", stiffness: 400 }}
-                                    className="w-6 h-6 rounded-full bg-brand-primary text-brand-black flex items-center justify-center"
-                                  >
-                                    <Check className="w-4 h-4 stroke-[3]" />
-                                  </motion.div>
+                                  <div className="w-5 h-5 rounded-full bg-brand-primary text-brand-black flex items-center justify-center shrink-0">
+                                    <Check className="w-3.5 h-3.5 stroke-[3]" />
+                                  </div>
                                 )}
                               </div>
-                              <p className={`font-heading font-bold text-sm sm:text-base leading-snug mb-1 ${isSelected ? 'text-white' : 'text-brand-black'}`}>
+                              <p className={`font-heading font-bold text-xs sm:text-sm leading-snug mb-0.5 ${isSelected ? 'text-white' : 'text-brand-black'}`}>
                                 {type.label}
                               </p>
-                              <p className={`text-xs leading-relaxed ${isSelected ? 'text-white/80' : 'text-brand-textMuted'}`}>
+                              <p className={`text-[11px] leading-snug ${isSelected ? 'text-white/80' : 'text-brand-textMuted'}`}>
                                 {type.description}
                               </p>
                             </div>
-                          </motion.button>
+                          </button>
                         );
                       })}
                     </div>
@@ -434,28 +413,27 @@ Top Recommendation: ${results[0]?.service?.title || 'General Consultation'}`;
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                        className="pt-6 border-t border-brand-border space-y-4 overflow-hidden"
+                        className="pt-4 border-t border-brand-border space-y-3 overflow-hidden w-full box-border"
                       >
                         <div className="flex items-center justify-between">
-                          <h2 className="font-heading font-extrabold text-lg sm:text-xl text-brand-black flex items-center gap-2">
-                            <span className="w-6 h-6 rounded-full bg-brand-primaryLight text-brand-primaryDark text-xs flex items-center justify-center font-bold">2</span>
+                          <h2 className="font-heading font-extrabold text-base sm:text-lg text-brand-black flex items-center gap-2">
+                            <span className="w-5 h-5 rounded-full bg-brand-primaryLight text-brand-primaryDark text-[11px] flex items-center justify-center font-bold shrink-0">2</span>
                             <span>Where are you in your journey?</span>
                           </h2>
-                          <span className="text-xs text-brand-textMuted">Select your active phase</span>
+                          <span className="text-[11px] text-brand-textMuted shrink-0">Select your active phase</span>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5 w-full box-border">
                           {businessStages.map((stage) => {
                             const isSelected = selectedStage === stage.id;
                             const isAnySelected = Boolean(selectedStage);
 
                             return (
-                              <motion.button
+                              <button
                                 key={stage.id}
-                                whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
-                                whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
+                                type="button"
                                 onClick={() => handleStageSelect(stage.id)}
-                                className={`p-4 rounded-xl border text-left flex flex-col justify-between transition-all focus:outline-none focus:ring-2 focus:ring-brand-primary ${
+                                className={`box-border p-3 sm:p-3.5 rounded-lg border-2 text-left flex flex-col justify-between transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary w-full h-full ${
                                   isSelected
                                     ? 'bg-brand-primaryLight border-brand-primary text-brand-black shadow-sm font-semibold'
                                     : isAnySelected
@@ -464,22 +442,22 @@ Top Recommendation: ${results[0]?.service?.title || 'General Consultation'}`;
                                 }`}
                               >
                                 <div>
-                                  <div className="flex items-center justify-between mb-1">
-                                    <span className="text-[10px] font-heading font-bold uppercase tracking-wider text-brand-primaryDark">
+                                  <div className="flex items-center justify-between mb-0.5">
+                                    <span className="text-[9px] font-heading font-bold uppercase tracking-wider text-brand-primaryDark">
                                       Phase
                                     </span>
                                     {isSelected && (
-                                      <Check className="w-4 h-4 text-brand-primaryDark stroke-[3]" />
+                                      <Check className="w-3.5 h-3.5 text-brand-primaryDark stroke-[3]" />
                                     )}
                                   </div>
-                                  <p className="font-heading font-bold text-xs sm:text-sm text-brand-black mb-1">
+                                  <p className="font-heading font-bold text-xs text-brand-black mb-0.5">
                                     {stage.label}
                                   </p>
                                   <p className="text-[10px] text-brand-textMuted leading-tight">
                                     {stage.description}
                                   </p>
                                 </div>
-                              </motion.button>
+                              </button>
                             );
                           })}
                         </div>
@@ -488,21 +466,21 @@ Top Recommendation: ${results[0]?.service?.title || 'General Consultation'}`;
                   </AnimatePresence>
 
                   {/* Step 1 Action Bar */}
-                  <div className="pt-4 border-t border-brand-border flex justify-end">
-                    <motion.button
-                      whileTap={{ scale: 0.97 }}
+                  <div className="pt-3 border-t border-brand-border flex justify-end w-full box-border">
+                    <button
+                      type="button"
                       onClick={handleGoToNeeds}
                       disabled={!selectedType || !selectedStage}
-                      className="px-7 py-3 rounded-xl bg-brand-primary hover:bg-brand-primaryDark text-brand-black font-heading font-semibold text-xs disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2 shadow-sm transition-all"
+                      className="px-5 py-2.5 rounded-lg bg-brand-primary hover:bg-brand-primaryDark text-brand-black font-heading font-semibold text-xs disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2 shadow-sm transition-colors"
                     >
                       <span>Continue to Specific Needs</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </motion.button>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
                   </div>
                 </motion.div>
               )}
 
-              {/* STEP 2: Adaptive Specific Needs + Optional Priorities */}
+              {/* STEP 2: Adaptive Specific Needs + Live Recommended Solutions */}
               {step === 2 && (
                 <motion.div
                   key="step2"
@@ -512,81 +490,68 @@ Top Recommendation: ${results[0]?.service?.title || 'General Consultation'}`;
                   animate="center"
                   exit="exit"
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="space-y-6"
+                  className="space-y-4 w-full box-border"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="flex items-center justify-between w-full box-border">
                     <div>
-                      <h2 className="font-heading font-extrabold text-lg sm:text-xl text-brand-black">
+                      <h2 className="font-heading font-extrabold text-base sm:text-lg text-brand-black">
                         What do you need help with?
                       </h2>
-                      <p className="text-xs text-brand-textMuted mt-1">
+                      <p className="text-[11px] sm:text-xs text-brand-textMuted mt-0.5">
                         Select one or more items. Relevant options for your vertical are highlighted.
                       </p>
                     </div>
-                    {selectedReqs.length > 0 && (
-                      <motion.button
-                        whileTap={{ scale: 0.97 }}
-                        onClick={handleCalculateResults}
-                        className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-brand-primary hover:bg-brand-primaryDark text-brand-black font-heading font-semibold text-xs shadow-gold transition-all"
-                      >
-                        <span>See Recommended Services ({selectedReqs.length})</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </motion.button>
-                    )}
                   </div>
 
-                  {/* Adaptive Requirements Grid with Staggered Motion */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-h-[340px] overflow-y-auto pr-1 pt-1">
-                    {sortedRequirements.map((req, idx) => {
+                  {/* Adaptive Requirements Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5 w-full box-border">
+                    {sortedRequirements.map((req) => {
                       const isSelected = selectedReqs.includes(req.id);
                       const isRelevant = req.relevantForTypes && req.relevantForTypes.includes(selectedType);
 
                       return (
-                        <motion.button
+                        <button
                           key={req.id}
-                          initial={{ opacity: 0, y: 12 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.25, delay: idx * 0.035 }}
-                          whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
-                          whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
+                          type="button"
                           onClick={() => handleReqToggle(req.id)}
-                          className={`p-4 rounded-xl border text-left flex items-start gap-3 transition-all focus:outline-none focus:ring-2 focus:ring-brand-primary ${
+                          className={`box-border p-3 rounded-lg border-2 text-left flex items-start gap-2.5 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary w-full h-full ${
                             isSelected
-                              ? 'bg-brand-primaryLight border-brand-primary text-brand-black shadow-sm ring-1 ring-brand-primary/20'
+                              ? 'bg-brand-primaryLight border-brand-primary text-brand-black shadow-sm'
                               : isRelevant
-                              ? 'bg-white border-brand-primary/30 hover:border-brand-primary/60 text-brand-textSecondary'
-                              : 'bg-white border-brand-border/70 hover:bg-brand-backgroundSoft text-brand-textSecondary opacity-85'
+                              ? 'bg-white border-brand-primary/40 hover:border-brand-primary text-brand-textSecondary'
+                              : 'bg-white border-brand-border hover:bg-brand-backgroundSoft text-brand-textSecondary'
                           }`}
                         >
                           <div className={`mt-0.5 w-4 h-4 rounded border flex items-center justify-center shrink-0 transition-colors ${
                             isSelected ? 'bg-brand-primary border-brand-primary text-brand-black' : 'border-brand-border bg-white'
                           }`}>
-                            {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
+                            {isSelected && <Check className="w-2.5 h-2.5 stroke-[3]" />}
                           </div>
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <p className="font-heading font-bold text-xs sm:text-sm text-brand-black">{req.label}</p>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-1.5">
+                              <p className="font-heading font-bold text-xs text-brand-black truncate">{req.label}</p>
                               {isRelevant && (
-                                <span className="text-[9px] font-heading font-extrabold px-1.5 py-0.5 rounded bg-brand-primaryLight text-brand-primaryDark uppercase">
+                                <span className="text-[8px] font-heading font-extrabold px-1.5 py-0.5 rounded bg-brand-primaryLight text-brand-primaryDark uppercase shrink-0">
                                   Recommended
                                 </span>
                               )}
                             </div>
-                            <p className="text-[10px] text-brand-textMuted mt-0.5 leading-tight">{req.description}</p>
+                            <p className="text-[10px] text-brand-textMuted mt-0.5 leading-tight line-clamp-2">{req.description}</p>
                           </div>
-                        </motion.button>
+                        </button>
                       );
                     })}
                   </div>
 
                   {/* Optional Priority Chips */}
-                  <div className="pt-4 border-t border-brand-border space-y-2">
+                  <div className="pt-3 border-t border-brand-border space-y-1.5 w-full box-border">
                     <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-heading font-bold uppercase tracking-wider text-brand-textMuted">
+                      <span className="text-[10px] font-heading font-bold uppercase tracking-wider text-brand-textMuted">
                         Optional Focus Filter
                       </span>
                       {selectedPriority && (
                         <button 
+                          type="button"
                           onClick={() => setSelectedPriority('')}
                           className="text-[10px] font-heading font-bold text-brand-primaryDark hover:underline flex items-center gap-1"
                         >
@@ -595,14 +560,15 @@ Top Recommendation: ${results[0]?.service?.title || 'General Consultation'}`;
                         </button>
                       )}
                     </div>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5 w-full box-border">
                       {priorities.slice(0, 6).map((p) => {
                         const isChipSelected = selectedPriority === p.id;
                         return (
                           <button
                             key={p.id}
+                            type="button"
                             onClick={() => handlePriorityToggle(p.id)}
-                            className={`px-3 py-1.5 rounded-full text-xs font-heading font-semibold transition-all border ${
+                            className={`px-2.5 py-1 rounded-full text-[11px] font-heading font-semibold transition-colors border-2 ${
                               isChipSelected
                                 ? 'bg-brand-black text-brand-primary border-brand-primary shadow-sm'
                                 : 'bg-brand-backgroundSoft text-brand-charcoal border-brand-border hover:border-brand-primary/40'
@@ -616,205 +582,123 @@ Top Recommendation: ${results[0]?.service?.title || 'General Consultation'}`;
                     </div>
                   </div>
 
-                  {/* Step 2 Action Bar */}
-                  <div className="pt-4 border-t border-brand-border flex items-center justify-between">
-                    <button
-                      onClick={() => handleBack(1)}
-                      className="px-4 py-2.5 rounded-xl border border-brand-border text-brand-textSecondary hover:bg-brand-backgroundSoft text-xs font-heading font-bold flex items-center gap-1.5 transition-colors"
-                    >
-                      <ChevronRight className="w-3.5 h-3.5 rotate-180" />
-                      <span>Back to Profile</span>
-                    </button>
-
-                    <motion.button
-                      whileTap={{ scale: 0.97 }}
-                      onClick={handleCalculateResults}
-                      className="px-7 py-3 rounded-xl bg-brand-primary hover:bg-brand-primaryDark text-brand-black font-heading font-semibold text-xs flex items-center gap-2 shadow-gold transition-all"
-                    >
-                      <span>Show Recommendations</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </motion.button>
-                  </div>
-                </motion.div>
-              )}
-
-              {/* STEP 3: Results & Personalized Archetype */}
-              {step === 3 && (
-                <motion.div
-                  key="results"
-                  custom={direction}
-                  variants={stepVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="space-y-8"
-                >
-                  {/* Archetype Headline */}
-                  <div className="text-center space-y-2 border-b border-brand-border pb-6">
-                    <span className="text-xs font-heading font-extrabold uppercase tracking-widest text-brand-primary px-3.5 py-1.5 rounded-full bg-brand-primaryLight border border-brand-primary/20 inline-block">
-                      DIAGNOSTIC RESULTS
-                    </span>
-                    <motion.h2 
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="font-heading font-extrabold text-2xl sm:text-3xl text-brand-black"
-                    >
-                      You are a <span className="text-brand-primaryDark">{archetype.title}</span>
-                    </motion.h2>
-                    <p className="text-xs sm:text-sm text-brand-textMuted max-w-xl mx-auto">
-                      {archetype.subtitle}
-                    </p>
-                  </div>
-
-                  {/* Profile Summary Strip */}
-                  <div className="p-4 rounded-2xl bg-brand-backgroundSoft border border-brand-border grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
-                    <div>
-                      <p className="text-[10px] text-brand-textMuted uppercase font-heading font-bold">Business Vertical</p>
-                      <p className="font-bold text-brand-black mt-0.5">
-                        {businessTypes.find(t => t.id === selectedType)?.label || selectedType}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-brand-textMuted uppercase font-heading font-bold">Operational Phase</p>
-                      <p className="font-bold text-brand-black mt-0.5">
-                        {businessStages.find(s => s.id === selectedStage)?.label || selectedStage}
-                      </p>
-                    </div>
-                    <div className="col-span-2 sm:col-span-1">
-                      <p className="text-[10px] text-brand-textMuted uppercase font-heading font-bold">Primary Needs</p>
-                      <p className="font-bold text-brand-black mt-0.5 truncate">
-                        {selectedReqs.map(id => requirements.find(r => r.id === id)?.label).join(', ') || 'General Consultancy'}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Recommended Services Grid */}
-                  <div className="space-y-4">
-                    <h3 className="font-heading font-bold text-sm text-brand-textSecondary uppercase tracking-wider">
-                      Recommended Solutions ({results.length})
-                    </h3>
-
-                    {results.length === 0 ? (
-                      <div className="p-8 text-center rounded-2xl border border-dashed border-brand-border text-brand-textMuted text-sm">
-                        No specific matches found. Please contact our team for custom consultancy.
+                  {/* Inline Recommended Solutions */}
+                  {results.length > 0 && (
+                    <div className="pt-3.5 border-t border-brand-border space-y-3 w-full box-border">
+                      <div className="flex items-center justify-between w-full">
+                        <h3 className="font-heading font-bold text-xs text-brand-textSecondary uppercase tracking-wider flex items-center gap-1.5">
+                          <Sparkles className="w-3.5 h-3.5 text-brand-primaryDark shrink-0" />
+                          <span>Recommended Solutions ({results.length})</span>
+                        </h3>
+                        <span className="text-[10px] font-heading font-bold text-brand-primaryDark bg-brand-primaryLight border border-brand-primary/20 px-2 py-0.5 rounded-full shrink-0">
+                          Top Match: <CountUpNumber value={results[0]?.matchScore || 0} />
+                        </span>
                       </div>
-                    ) : (
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        {results.map((rec, idx) => {
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5 w-full box-border">
+                        {results.slice(0, 3).map((rec, idx) => {
                           const ServiceIcon = IconMap[rec.service.iconName] || FlaskConical;
                           const isTopMatch = idx === 0;
 
                           return (
-                            <motion.div
+                            <div
                               key={rec.service.id}
-                              initial={{ opacity: 0, y: 15 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.4, delay: idx * 0.08 }}
-                              className={`p-6 rounded-2xl border flex flex-col justify-between group transition-all duration-300 relative ${
+                              className={`box-border p-3.5 rounded-xl border-2 flex flex-col justify-between group transition-colors relative w-full h-full ${
                                 isTopMatch
-                                  ? 'bg-white border-brand-primary shadow-card-hover ring-2 ring-brand-primary/20 scale-[1.01]'
+                                  ? 'bg-white border-brand-primary shadow-card-hover'
                                   : 'bg-white border-brand-border hover:border-brand-primary/45 shadow-subtle'
                               }`}
                             >
-                              {/* Top Match Celebration Particles */}
-                              {isTopMatch && !shouldReduceMotion && <CelebrationBurst />}
-
                               <div>
-                                <div className="flex items-center justify-between mb-4">
-                                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                                <div className="flex items-center justify-between mb-2">
+                                  <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
                                     isTopMatch ? 'bg-brand-primary text-brand-black font-bold' : 'bg-brand-primaryLight text-brand-primaryDark'
                                   }`}>
-                                    <ServiceIcon className="w-5 h-5" />
+                                    <ServiceIcon className="w-3.5 h-3.5" />
                                   </div>
-                                  <div className="flex items-center gap-2">
+                                  <div className="flex items-center gap-1.5 shrink-0">
                                     {isTopMatch && (
-                                      <span className="text-[9px] font-heading font-extrabold px-2 py-0.5 rounded-full bg-brand-primary text-brand-black uppercase tracking-wider">
+                                      <span className="text-[8px] font-heading font-extrabold px-1.5 py-0.5 rounded-full bg-brand-primary text-brand-black uppercase tracking-wider">
                                         Top Match
                                       </span>
                                     )}
-                                    <span className="text-[11px] font-heading font-bold text-brand-primaryDark bg-brand-primaryLight border border-brand-primary/20 px-2.5 py-0.5 rounded-full">
-                                      Match Score: <CountUpNumber value={rec.matchScore} />
+                                    <span className="text-[10px] font-heading font-bold text-brand-primaryDark">
+                                      {rec.matchScore}%
                                     </span>
                                   </div>
                                 </div>
 
-                                <h4 className="font-heading font-bold text-base text-brand-black group-hover:text-brand-primary transition-colors">
+                                <h4 className="font-heading font-bold text-xs sm:text-sm text-brand-black group-hover:text-brand-primary transition-colors">
                                   {rec.service.title}
                                 </h4>
-                                <p className="text-xs text-brand-textSecondary mt-1 line-clamp-2">
+                                <p className="text-[11px] text-brand-textSecondary mt-0.5 line-clamp-2 leading-relaxed">
                                   {rec.service.shortDescription}
                                 </p>
-                                
-                                <div className="mt-4 pt-3 border-t border-brand-border">
-                                  <p className="text-[10px] text-brand-textMuted uppercase font-heading font-bold">Why recommended</p>
-                                  <p className="text-xs text-brand-textSecondary mt-0.5 leading-relaxed italic">
-                                    "{rec.reason}"
-                                  </p>
-                                </div>
                               </div>
 
-                              <div className="mt-6 pt-2">
-                                <motion.button
-                                  whileTap={{ scale: 0.97 }}
+                              <div className="mt-2.5 pt-2 border-t border-brand-border/60 flex items-center justify-between gap-2">
+                                <span className="text-[10px] text-brand-textMuted italic truncate">
+                                  "{rec.reason}"
+                                </span>
+                                <button
+                                  type="button"
                                   onClick={() => navigate(`/services/${rec.service.slug}`)}
-                                  className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-brand-backgroundSoft border border-brand-border hover:border-brand-primary hover:text-brand-primary font-heading font-bold text-xs text-brand-black transition-all group"
+                                  className="inline-flex items-center gap-1 text-[11px] font-heading font-bold text-brand-black hover:text-brand-primary transition-colors shrink-0"
                                 >
-                                  <span>Explore Service</span>
-                                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                                </motion.button>
+                                  <span>Explore</span>
+                                  <ArrowRight className="w-3 h-3" />
+                                </button>
                               </div>
-                            </motion.div>
+                            </div>
                           );
                         })}
                       </div>
-                    )}
-                  </div>
+                    </div>
+                  )}
 
-                  {/* Actions & Next Steps Bar */}
-                  <div className="p-6 rounded-2xl border border-brand-border bg-brand-backgroundSoft flex flex-col md:flex-row gap-6 items-center justify-between">
-                    <div className="text-center md:text-left space-y-1">
-                      <h4 className="font-heading font-bold text-base text-brand-black">
-                        Ready to take action?
-                      </h4>
-                      <p className="text-xs text-brand-textSecondary">
-                        Connect with a food safety & regulatory expert today.
-                      </p>
+                  {/* Step 2 Action & Next Steps Bar */}
+                  <div className="pt-3 border-t border-brand-border flex flex-col sm:flex-row items-center justify-between gap-3 w-full box-border">
+                    <div className="flex items-center gap-2 w-full sm:w-auto">
+                      <button
+                        type="button"
+                        onClick={() => handleBack(1)}
+                        className="px-3.5 py-2 rounded-lg border border-brand-border text-brand-textSecondary hover:bg-brand-backgroundSoft text-xs font-heading font-bold flex items-center gap-1 transition-colors"
+                      >
+                        <ChevronRight className="w-3.5 h-3.5 rotate-180" />
+                        <span>Back</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={handleRestart}
+                        className="px-3 py-2 rounded-lg border border-brand-border hover:bg-brand-backgroundSoft text-brand-textMuted hover:text-brand-black text-xs font-heading font-bold flex items-center gap-1 transition-colors"
+                      >
+                        <RotateCcw className="w-3 h-3" />
+                        <span>Reset</span>
+                      </button>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                      <motion.button
-                        whileTap={{ scale: 0.97 }}
+                    <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                      <button
+                        type="button"
                         onClick={handleTalkToExpert}
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-primary hover:bg-brand-primaryDark text-brand-black font-heading font-semibold text-xs shadow-gold transition-all"
+                        className="px-4 py-2.5 rounded-lg bg-brand-primary hover:bg-brand-primaryDark text-brand-black font-heading font-semibold text-xs shadow-gold transition-colors flex items-center gap-1.5"
                       >
-                        <CheckCircle2 className="w-4 h-4 text-brand-black" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-brand-black" />
                         <span>Talk to an Expert</span>
-                      </motion.button>
+                      </button>
 
-                      <motion.a
-                        whileTap={{ scale: 0.97 }}
+                      <a
                         href={getWhatsAppUrl()}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-black hover:bg-brand-charcoal text-brand-primary border border-brand-primary/20 font-heading font-semibold text-xs shadow-subtle transition-all"
+                        className="px-3.5 py-2.5 rounded-lg bg-brand-black hover:bg-brand-charcoal text-brand-primary border border-brand-primary/20 font-heading font-semibold text-xs shadow-subtle transition-colors flex items-center gap-1.5"
                       >
-                        <MessageCircle className="w-4 h-4 fill-current text-brand-primary" />
-                        <span className="text-white">WhatsApp Profile</span>
-                      </motion.a>
-
-                      <motion.button
-                        whileTap={{ scale: 0.97 }}
-                        onClick={handleRestart}
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-white border border-brand-border hover:bg-brand-backgroundSoft text-brand-black font-heading font-bold text-xs transition-colors"
-                      >
-                        <RotateCcw className="w-3.5 h-3.5" />
-                        <span>Start Again</span>
-                      </motion.button>
+                        <MessageCircle className="w-3.5 h-3.5 fill-current text-brand-primary" />
+                        <span className="text-white">WhatsApp</span>
+                      </a>
                     </div>
                   </div>
-
                 </motion.div>
               )}
 

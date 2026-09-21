@@ -47,13 +47,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   <img
                     src="/zenixfoodwork.jpg"
                     alt="Zenix Food Worx"
-                    className="w-11 h-11 rounded-xl object-cover shadow-sm border border-brand-border shrink-0"
+                    className="w-14 h-14 rounded-xl object-cover shadow-sm border border-brand-border shrink-0"
                   />
                   <div>
-                    <span className="font-heading font-extrabold text-xl text-brand-black tracking-tight block leading-tight">
+                    <span className="font-heading font-extrabold text-2xl text-brand-black tracking-tight block leading-tight">
                       ZENIX
                     </span>
-                    <span className="text-[10px] font-bold tracking-[0.2em] text-brand-primary uppercase block leading-none mt-0.5">
+                    <span className="text-[11px] font-bold tracking-[0.22em] text-brand-primary uppercase block leading-none mt-0.5">
                       FOOD WORX
                     </span>
                   </div>
