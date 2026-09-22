@@ -26,7 +26,7 @@ export const businessTypes: BusinessType[] = [
   },
   {
     id: 'food-startups',
-    label: "Food Start up’s",
+    label: "Food Startup's",
     icon: 'Rocket',
     description: 'New food product brands, D2C health foods, and innovative food launches.'
   },
@@ -38,7 +38,7 @@ export const businessTypes: BusinessType[] = [
   },
   {
     id: 'corporates-educational-institutions',
-    label: 'Corporates / Educational institutions',
+    label: 'Corporates / Educational Institutions',
     icon: 'Building2',
     description: 'Corporate cafeterias, school & university canteens, and institutional dining.'
   }
