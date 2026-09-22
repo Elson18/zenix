@@ -124,7 +124,7 @@ export default function ServiceFinderPage() {
     } else {
       setSelectedNeeds([...selectedNeeds, needId]);
     }
-    trackEvent('situation_selected', { situationId: needId, page: 'service_finder_step_2' });
+    trackEvent('situation_selected', { requirement: needId, page: 'service_finder_step_2' });
   };
 
   const handleBack = () => {
