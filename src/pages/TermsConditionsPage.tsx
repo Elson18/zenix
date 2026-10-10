@@ -1,8 +1,22 @@
 import React from 'react';
 
+import SEO from '../components/SEO';
+import { getBreadcrumbSchema } from '../utils/seoSchemas';
+
 export default function TermsConditionsPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Terms & Conditions', url: '/terms-and-conditions' }
+  ]);
+
   return (
     <div className="pt-24 space-y-0">
+      <SEO 
+        title="Terms & Conditions | Zenix Food Worx"
+        description="Review the terms and conditions of using Zenix Food Worx consultancy services and website."
+        canonical="/terms-and-conditions"
+        jsonLd={breadcrumbSchema}
+      />
       
       {/* Header */}
       <section className="py-16 bg-gradient-to-b from-brand-backgroundSoft via-white to-brand-section border-b border-brand-border">

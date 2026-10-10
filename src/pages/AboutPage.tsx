@@ -5,9 +5,25 @@ import { motion } from 'framer-motion';
 import CTASection from '../components/CTASection';
 import { pageImages } from '../data/imageConfig';
 
+import SEO from '../components/SEO';
+import { getBreadcrumbSchema, getOrganizationSchema } from '../utils/seoSchemas';
+
 export default function AboutPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'About Us', url: '/about' }
+  ]);
+  const organizationSchema = getOrganizationSchema();
+
   return (
     <div className="pt-24 space-y-0">
+      <SEO 
+        title="About Us | Zenix Food Worx - Food Safety & Compliance Experts"
+        description="Learn about Zenix Food Worx. We empower food manufacturers, restaurants, cloud kitchens, and food startups across India with practical, regulatory-aligned food safety and growth solutions."
+        keywords="about Zenix Food Worx, food safety team, food safety consultants India, FSSAI consultants Chennai, food factory setup consultants"
+        canonical="/about"
+        jsonLd={[breadcrumbSchema, organizationSchema]}
+      />
       
       {/* Page Hero */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-brand-backgroundSoft via-white to-brand-section border-b border-brand-border">

@@ -1,9 +1,23 @@
 import React from 'react';
 import { ShieldCheck } from 'lucide-react';
 
+import SEO from '../components/SEO';
+import { getBreadcrumbSchema } from '../utils/seoSchemas';
+
 export default function PrivacyPolicyPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Privacy Policy', url: '/privacy-policy' }
+  ]);
+
   return (
     <div className="pt-24 space-y-0">
+      <SEO 
+        title="Privacy Policy | Zenix Food Worx"
+        description="Read the privacy policy of Zenix Food Worx regarding data collection, client confidentiality, formulation security, and website security."
+        canonical="/privacy-policy"
+        jsonLd={breadcrumbSchema}
+      />
       
       {/* Header */}
       <section className="py-16 bg-gradient-to-b from-brand-backgroundSoft via-white to-brand-section border-b border-brand-border">

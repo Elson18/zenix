@@ -3,11 +3,27 @@ import ContactForm from '../components/ContactForm';
 import { companyData } from '../data/companyData';
 import { Phone, Mail, MapPin, Clock, MessageCircle, ShieldCheck } from 'lucide-react';
 
+import SEO from '../components/SEO';
+import { getBreadcrumbSchema, getOrganizationSchema } from '../utils/seoSchemas';
+
 export default function ContactPage() {
   const whatsappUrl = `https://wa.me/${companyData.contact.phoneClean}?text=${encodeURIComponent("Hi Zenix Food Worx, I would like to inquire about your consultancy services.")}`;
 
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Contact Us', url: '/contact' }
+  ]);
+  const organizationSchema = getOrganizationSchema();
+
   return (
     <div className="pt-24 space-y-0">
+      <SEO 
+        title="Contact Us | Zenix Food Worx - Get Expert Advice"
+        description="Get in touch with Zenix Food Worx for food testing, FSSAI licensing, factory setup, packaging validation, or product development consultations. Office located in Chennai, Tamil Nadu."
+        keywords="contact Zenix Food Worx, food safety helpline, FSSAI license contact, food testing consultation Chennai, food business consultants phone"
+        canonical="/contact"
+        jsonLd={[breadcrumbSchema, organizationSchema]}
+      />
       
       {/* Header */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-brand-backgroundSoft via-white to-brand-section border-b border-brand-border">

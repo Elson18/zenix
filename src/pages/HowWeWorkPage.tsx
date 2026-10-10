@@ -5,9 +5,26 @@ import { companyData } from '../data/companyData';
 import { CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+import SEO from '../components/SEO';
+import { getBreadcrumbSchema, getHowToSchema } from '../utils/seoSchemas';
+
 export default function HowWeWorkPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'How We Work', url: '/how-we-work' }
+  ]);
+
+  const howToSchema = getHowToSchema(companyData.howWeWork, 'Our 5-Step Food Safety & Compliance Process');
+
   return (
     <div className="pt-24 space-y-0 bg-white">
+      <SEO 
+        title="How We Work | 5-Step Food Safety & Compliance Process"
+        description="Discover Zenix Food Worx's 5-step methodology: Discover, Diagnose, Design, Deliver, and Sustain. Clear, structured, transparent food safety and regulatory consulting."
+        keywords="food safety process, FSSAI compliance workflow, food consultancy methodology, food factory setup process, food testing workflow"
+        canonical="/how-we-work"
+        jsonLd={[breadcrumbSchema, howToSchema]}
+      />
       
       {/* Hero Header */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-brand-backgroundSoft via-white to-brand-section border-b border-brand-border">

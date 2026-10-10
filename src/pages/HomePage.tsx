@@ -15,9 +15,21 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { pageImages } from '../data/imageConfig';
 
+import SEO from '../components/SEO';
+import { getOrganizationSchema, getWebSiteSchema } from '../utils/seoSchemas';
+
 export default function HomePage() {
+  const organizationSchema = getOrganizationSchema();
+  const websiteSchema = getWebSiteSchema();
+
   return (
     <div className="space-y-0 bg-white">
+      <SEO 
+        title="Zenix Food Worx | Food Safety, FSSAI & Food Business Consultancy"
+        description="Zenix Food Worx provides food testing, FSSAI licensing, regulatory compliance, product development, HACCP & ISO support, hospitality consulting and food factory setup services in India."
+        canonical="/"
+        jsonLd={[organizationSchema, websiteSchema]}
+      />
       
       {/* 1. Hero Section */}
       <Hero />

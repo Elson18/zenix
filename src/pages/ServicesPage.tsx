@@ -25,6 +25,8 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { trackEvent } from '../utils/analytics';
+import SEO from '../components/SEO';
+import { getBreadcrumbSchema, getServicesListSchema } from '../utils/seoSchemas';
 
 const whyChoosePoints = [
   {
@@ -82,7 +84,15 @@ const methodologyStages = [
   }
 ];
 
+
+
 export default function ServicesPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Services', url: '/services' }
+  ]);
+  const servicesListSchema = getServicesListSchema(servicesData);
+
   const handleTalkToExpert = (serviceTitle: string) => {
     trackEvent('consultation_clicked', {
       serviceName: serviceTitle,
@@ -115,6 +125,13 @@ export default function ServicesPage() {
 
   return (
     <div className="pt-24 space-y-0 bg-white">
+      <SEO 
+        title="Our Services | Food Safety, FSSAI & Factory Setup Consultancy"
+        description="Explore Zenix Food Worx's end-to-end food services: Food Testing, FSSAI Licensing, Label Validation, Nutritional Facts, Product Development, HACCP & ISO Certification, Food Safety Audits, Factory Setup, Restaurant Setup, Contract Manufacturing & FoSTaC Training."
+        keywords="food safety services, FSSAI registration, food testing lab, HACCP implementation, cloud kitchen setup, food factory design, nutritional panel calculation, food packaging validation, FoSTaC training"
+        canonical="/services"
+        jsonLd={[breadcrumbSchema, servicesListSchema]}
+      />
       
       {/* 1. Services Hero Section */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-brand-bgWarm via-white to-white border-b border-brand-border/40 relative overflow-hidden">

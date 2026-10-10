@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Home, ArrowLeft, AlertTriangle, Compass, PhoneCall } from 'lucide-react';
 
+import SEO from '../components/SEO';
+
 export default function NotFoundPage() {
-  // Update page title for SEO & context
   useEffect(() => {
-    document.title = '404 - Page Not Found | Zenix Food Worx';
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="pt-24 min-h-screen bg-brand-bgLight flex items-center justify-center px-4 relative overflow-hidden">
+      <SEO title="404 - Page Not Found | Zenix Food Worx" noindex={true} />
       {/* Dynamic Background Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
         <div className="absolute top-1/4 left-1/10 w-96 h-96 bg-brand-primaryLight rounded-full filter blur-3xl" />

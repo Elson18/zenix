@@ -26,6 +26,8 @@ import {
 } from '../data/serviceRecommendations';
 import { companyData } from '../data/companyData';
 import { trackEvent } from '../utils/analytics';
+import SEO from '../components/SEO';
+import { getBreadcrumbSchema } from '../utils/seoSchemas';
 
 // Map icon strings to Lucide components
 const IconMap: Record<string, React.ComponentType<any>> = {
@@ -64,7 +66,14 @@ function CountUpNumber({ value }: { value: number }) {
   return <span>{displayValue}%</span>;
 }
 
+
+
 export default function ServiceFinderPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Service Finder', url: '/service-finder' }
+  ]);
+
   const navigate = useNavigate();
   const shouldReduceMotion = useReducedMotion();
 
@@ -187,6 +196,13 @@ Top Recommendation: ${results[0]?.service?.title || 'General Consultation'}`;
 
   return (
     <div className="pt-20 lg:pt-22 pb-8 min-h-screen bg-white flex flex-col justify-between relative overflow-hidden">
+      <SEO 
+        title="Service Finder | Find Your Food Business & Compliance Solutions"
+        description="Not sure what licenses or testing your food business needs? Use our interactive Service Finder to instantly identify your exact regulatory, lab testing, and factory compliance requirements."
+        keywords="food service finder, FSSAI license finder, food compliance checklist, food factory requirements, food business tool"
+        canonical="/service-finder"
+        jsonLd={breadcrumbSchema}
+      />
       
       {/* Ambient Looping Gradient Background Mesh */}
       <div className="absolute inset-0 pointer-events-none opacity-25 overflow-hidden z-0">

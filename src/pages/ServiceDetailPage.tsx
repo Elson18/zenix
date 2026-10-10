@@ -18,19 +18,12 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+import SEO from '../components/SEO';
+import { getBreadcrumbSchema, getServiceSchema, getFAQSchema } from '../utils/seoSchemas';
+
 export default function ServiceDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const service = servicesData.find((s) => s.slug === slug);
-
-  React.useEffect(() => {
-    if (service) {
-      document.title = service.seoTitle || `${service.title} | Zenix Food Worx`;
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute('content', service.seoDescription || service.shortDescription);
-      }
-    }
-  }, [service]);
 
   if (!service) {
     return <Navigate to="/services" replace />;
@@ -45,6 +38,15 @@ export default function ServiceDetailPage() {
 
   // Dynamic FAQs
   const faqs = getServiceFAQs(service.id);
+
+  // SEO Schemas
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Services', url: '/services' },
+    { name: service.title, url: `/services/${service.slug}` }
+  ]);
+  const serviceSchema = getServiceSchema(service);
+  const faqSchema = getFAQSchema(faqs);
 
   // Dynamic Button Label (Smart CTA Behavior)
   const getSmartCtaLabel = (id: string) => {
@@ -97,6 +99,14 @@ export default function ServiceDetailPage() {
 
   return (
     <div className="pt-24 space-y-0 bg-white">
+      <SEO 
+        title={service.seoTitle || `${service.title} | Zenix Food Worx`}
+        description={service.seoDescription || service.shortDescription}
+        keywords={`${service.title}, FSSAI ${service.title}, food safety consultancy, ${service.slug.replace(/-/g, ' ')}, Zenix Food Worx`}
+        canonical={`/services/${service.slug}`}
+        ogImage={service.heroImage}
+        jsonLd={[breadcrumbSchema, serviceSchema, faqSchema]}
+      />
       
       {/* 1. Service Hero Header */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-brand-backgroundSoft via-white to-brand-section border-b border-brand-border relative overflow-hidden">

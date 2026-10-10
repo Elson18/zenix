@@ -1,4 +1,9 @@
+# Robots.txt for Zenix Food Worx
 User-agent: *
 Allow: /
 
+# Host
+Host: https://zenixfoodworx.com
+
+# Sitemap Location
 Sitemap: https://zenixfoodworx.com/sitemap.xml
