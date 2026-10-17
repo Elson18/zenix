@@ -102,7 +102,7 @@ export default function ServiceDetailPage() {
       <SEO 
         title={service.seoTitle || `${service.title} | Zenix Food Worx`}
         description={service.seoDescription || service.shortDescription}
-        keywords={`${service.title}, FSSAI ${service.title}, food safety consultancy, ${service.slug.replace(/-/g, ' ')}, Zenix Food Worx`}
+        keywords={service.keywords ? `${service.keywords}, ${service.title}, Zenix Food Worx` : `${service.title}, FSSAI ${service.title}, food safety consultancy, ${service.slug.replace(/-/g, ' ')}, Zenix Food Worx`}
         canonical={`/services/${service.slug}`}
         ogImage={service.heroImage}
         jsonLd={[breadcrumbSchema, serviceSchema, faqSchema]}

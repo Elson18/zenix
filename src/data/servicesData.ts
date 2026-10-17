@@ -29,6 +29,7 @@ export interface ServiceItem {
   whatsappMessage: string;
   seoTitle?: string;
   seoDescription?: string;
+  keywords?: string;
 }
 
 export const servicesData: ServiceItem[] = [
@@ -111,7 +112,8 @@ export const servicesData: ServiceItem[] = [
       "Clear guidance on non-conformance remediation"
     ],
     ctaText: "Need Food Testing Support?",
-    whatsappMessage: "Hi Zenix Food Worx, I would like to inquire about your Food Testing Services."
+    whatsappMessage: "Hi Zenix Food Worx, I would like to inquire about your Food Testing Services.",
+    keywords: "Food Shelf Life studies consultant, Inhouse food testing lab setup, Fssai Product testing report filing, Food Testing Services, Shelf Life Testing, Food Safety Laboratory"
   },
   {
     id: "regulatory-licensing",
@@ -184,7 +186,8 @@ export const servicesData: ServiceItem[] = [
       "Peace of mind to focus on business operations"
     ],
     ctaText: "Need FSSAI & Licensing Support?",
-    whatsappMessage: "Hi Zenix Food Worx, I would like to know more about your Regulatory & Licensing Services."
+    whatsappMessage: "Hi Zenix Food Worx, I would like to know more about your Regulatory & Licensing Services.",
+    keywords: "Fssai Registration Online, fssai food license, Fssai Registration Process, Fssai Registration for Restaurant, Fssai E-commerce license, Fssai Product testing report filing, Fssai Annual return filing, FSSAI Licensing, FoSCoS portal"
   },
   {
     id: "label-validation",
@@ -401,7 +404,8 @@ export const servicesData: ServiceItem[] = [
       "Commercialize recipes without compromising food safety"
     ],
     ctaText: "Develop Your Food Product →",
-    whatsappMessage: "Hi Zenix Food Worx, I would like to consult on New Product Development."
+    whatsappMessage: "Hi Zenix Food Worx, I would like to consult on New Product Development.",
+    keywords: "Food Product Development Consultant, Food Product Development Services, Sauces Product Development, Fruit Juices Development Consultant, Breakfast Cereals Plant Consultancy Service, Nutraceutical Products Development Services, Nutraceuticals Product Development Consultant, Nutritional Bars Development, Nut Energy Bar Plant, Functional food product Development, Ready Premixes product Development, Granola and Energy Bar Consultant, Proteins Bar Development Consultant, Energy Bar Consultant, Ready to Eat Product Development, Ready To Cook Product Development, Seasoning Product Development, Beverages Product Development, Blended Spice Product Development, Nutraceuticals Product Development, Nutritional Bar Development"
   },
   {
     id: "certification-documentation",
@@ -473,7 +477,8 @@ export const servicesData: ServiceItem[] = [
       "Demonstrate world-class quality commitment to stakeholders"
     ],
     ctaText: "Get Certification Ready →",
-    whatsappMessage: "Hi Zenix Food Worx, I would like to inquire about HACCP & ISO Certification support."
+    whatsappMessage: "Hi Zenix Food Worx, I would like to inquire about HACCP & ISO Certification support.",
+    keywords: "ISO Consultant, ISO 22000 Certification Services, FSSC 22000 Certification Services, HACCP Certification, Food Safety Audits, FSMS Documentation"
   },
   {
     id: "hospitality-consulting",
@@ -550,7 +555,8 @@ export const servicesData: ServiceItem[] = [
       "Elevate food safety and hygiene ratings"
     ],
     ctaText: "Optimize Your Hospitality Business →",
-    whatsappMessage: "Hi Zenix Food Worx, I would like to consult regarding Hospitality Services."
+    whatsappMessage: "Hi Zenix Food Worx, I would like to consult regarding Hospitality Services.",
+    keywords: "Food Beverage Consultants, Food and Beverages Consultant, Food Industry Consultant, Food Business Setup Consultant, Restaurant Set up Consultant, Cloud Kitchen Consultant, Bakery Kitchen Setup Consultant, Qsr set up consultant"
   },
   {
     id: "food-safety-inspections",
@@ -694,7 +700,8 @@ export const servicesData: ServiceItem[] = [
       "Build a modern, hygiene-first food processing facility"
     ],
     ctaText: "Plan Your Food Factory Setup →",
-    whatsappMessage: "Hi Zenix Food Worx, I would like to consult on Food Factory Setup Services."
+    whatsappMessage: "Hi Zenix Food Worx, I would like to consult on Food Factory Setup Services.",
+    keywords: "Mayonnaise Processing Plant, Rice Plant Processing Consultant, Rice Plant set up consultant, Rice Mill Plant Setup, Mayonnaise Plant Setup, Energy Bar Plant Set Up, Breakfast Cereals Plant Consultancy Service, Tomato Processing Line, Tomato Puree Processing Plant, Spice Plant Setups, Tomato Processing and Ketchup Plant, Tomato Ketchup Plant Machinery, Fruit Juice Processing Plant, Spice Plant Consultant, Muesli Plant Setup, Instant Mixes Plant Setup, Vegan Plant Consultant, Nutraceutical Plant Setup, Protein Bar Processing Plant, Premix Plant Setup, Muesli Processing Plant Setup, Oats Plant Consultant, Inhouse food testing lab setup, Food Processing Consultant, Food Project Consultant, Food Factory Setup Consultancy"
   },
   {
     id: "restaurant-setup",
@@ -766,7 +773,8 @@ export const servicesData: ServiceItem[] = [
       "Eliminate unnecessary equipment overspending"
     ],
     ctaText: "Plan Your Restaurant Launch →",
-    whatsappMessage: "Hi Zenix Food Worx, I would like to consult on Restaurant Setup Services."
+    whatsappMessage: "Hi Zenix Food Worx, I would like to consult on Restaurant Setup Services.",
+    keywords: "Restaurant Set up Consultant, Bakery Kitchen Setup Consultant, Cloud Kitchen Consultant, Cloud Kitchen Setup, Qsr set up consultant, Food Business Setup Consultant, Food Business Startup Consultant, Commercial Kitchen Planning"
   },
   {
     id: "contract-manufacturing",
@@ -838,7 +846,8 @@ export const servicesData: ServiceItem[] = [
       "Access specialized food processing technology immediately"
     ],
     ctaText: "Find Contract Manufacturing Support →",
-    whatsappMessage: "Hi Zenix Food Worx, I would like to inquire about Contract Manufacturing Support."
+    whatsappMessage: "Hi Zenix Food Worx, I would like to inquire about Contract Manufacturing Support.",
+    keywords: "Contract Manufacturing Services, Co-Packing Support, Premix Plant Setup, Third Party Food Manufacturing, Food Processing Consultant"
   },
   {
     id: "nutraceutical-licensing",
@@ -901,7 +910,8 @@ export const servicesData: ServiceItem[] = [
       "Complete end-to-end support for dossier preparation and product or claim approval"
     ],
     ctaText: "Discuss This Service",
-    whatsappMessage: "Hi Zenix Food Worx, I would like to inquire about Nutraceutical Licensing & Compliance."
+    whatsappMessage: "Hi Zenix Food Worx, I would like to inquire about Nutraceutical Licensing & Compliance.",
+    keywords: "Nutraceutical Products Development Services, Nutraceuticals Product Development Consultant, Nutraceutical Plant Setup, Nutraceuticals Product Development, FSSAI Nutraceutical License"
   },
   {
     id: "training-programs",
@@ -976,7 +986,8 @@ export const servicesData: ServiceItem[] = [
       "Reduce food safety risks and non-conformances through trained food handlers"
     ],
     ctaText: "Discuss This Service",
-    whatsappMessage: "Hi Zenix Food Worx, I would like to inquire about your Training Programs."
+    whatsappMessage: "Hi Zenix Food Worx, I would like to inquire about your Training Programs.",
+    keywords: "Fostac training, Food Safety Supervisor training, HACCP Lead Auditor training, Internal Auditor training, FoSTaC Certification, Food Safety Training"
   }
 ];
 

@@ -45,7 +45,25 @@ export const getOrganizationSchema = () => ({
     contactType: 'customer service',
     availableLanguage: ['English', 'Tamil', 'Hindi']
   },
-  sameAs: []
+  sameAs: [],
+  knowsAbout: [
+    "Food Business Setup Consultant",
+    "Bakery Kitchen Setup Consultant",
+    "Cloud Kitchen Setup",
+    "Food Processing Plant Setup",
+    "Rice Mill Plant Setup",
+    "Mayonnaise Processing Plant",
+    "Tomato Processing Line",
+    "Food Product Development Services",
+    "Energy Bar Plant Set Up",
+    "Nutraceuticals Product Development",
+    "FSSAI Registration Online",
+    "ISO 22000 Certification Services",
+    "FSSC 22000 Certification Services",
+    "Food Shelf Life Studies",
+    "Inhouse Food Testing Lab Setup",
+    "FoSTaC Training"
+  ]
 });
 
 // WebSite JSON-LD Schema

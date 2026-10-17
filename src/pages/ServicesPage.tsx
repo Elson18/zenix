@@ -128,7 +128,7 @@ export default function ServicesPage() {
       <SEO 
         title="Our Services | Food Safety, FSSAI & Factory Setup Consultancy"
         description="Explore Zenix Food Worx's end-to-end food services: Food Testing, FSSAI Licensing, Label Validation, Nutritional Facts, Product Development, HACCP & ISO Certification, Food Safety Audits, Factory Setup, Restaurant Setup, Contract Manufacturing & FoSTaC Training."
-        keywords="food safety services, FSSAI registration, food testing lab, HACCP implementation, cloud kitchen setup, food factory design, nutritional panel calculation, food packaging validation, FoSTaC training"
+        keywords="Food Business Setup Consultant, Bakery Kitchen Setup Consultant, Cloud Kitchen Consultant, Cloud Kitchen Setup, Food Beverage Consultants, Food Project Consultant, Food Business Startup Consultant, Food and Beverages Consultant, Food Processing Consultant, Food Consultant Services, Contract Manufacturing Services, FSSAI Registration Online, ISO Consultant, ISO 22000 Certification Services, FSSC 22000 Certification Services, Food Industry Consultant, Restaurant Set up Consultant, QSR Set up Consultant, Inhouse Food Testing Lab Setup, FoSTaC Training, Food Product Development Services, food safety services, FSSAI registration, food testing lab, HACCP implementation, food factory design, nutritional panel calculation, food packaging validation"
         canonical="/services"
         jsonLd={[breadcrumbSchema, servicesListSchema]}
       />
